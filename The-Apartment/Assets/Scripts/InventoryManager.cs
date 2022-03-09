@@ -21,7 +21,9 @@ public class InventoryManager : MonoBehaviour
     // max size of list
     public static int listSize = 3;
     // index of the item that is currently selected by the Player
-    public KeyCode cur = KeyCode.Alpha0;
+    public int cur = 0;
+
+    GameObject itemHolderPrefab;
     #endregion
 
     /* Adds amount number of itemID to the list. */
@@ -29,6 +31,7 @@ public class InventoryManager : MonoBehaviour
     {
         for (int i = 0; i < itemList.Count; i++)
         {
+            Debug.Log(itemList.Count);
             if (itemList[i].getItemID() == itemID)
             {
                 itemList[i].amount += amount;
@@ -36,10 +39,9 @@ public class InventoryManager : MonoBehaviour
             }
         }
         Item item = GetItem(itemID);
-        ItemSlot slot = new ItemSlot(item, amount);
         if (itemList.Count < listSize)
         {
-            itemList.Add(slot);
+            //itemList.Add(itemList[itemList.Count-1]);
             Debug.Log("Item has been added");
         }
         else
@@ -70,9 +72,9 @@ public class InventoryManager : MonoBehaviour
     }
 
     /* Updates cur to different index, if valid. */
-    void UpdateCur(KeyCode index)
+    void UpdateCur(int index)
     {
-        if (index >= 0 && inventoryKeys.Contains(index))
+        if (index >= 0 && index < itemList.Count)
         {
             this.cur = index;
         }
