@@ -4,17 +4,28 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+
+    #region Valid_Keycodes
+    public HashSet<KeyCode> inventoryKeys = new HashSet<KeyCode>()
+    {
+        KeyCode.Alpha0, KeyCode.Alpha1, KeyCode.Alpha2,
+        KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5,
+        KeyCode.Alpha6, KeyCode.Alpha7, KeyCode.Alpha8,
+        KeyCode.Alpha9
+    };
+    #endregion
+
     #region Variables
     // list of ItemSlots, which hold the item and the amount
-    public List<ItemSlot> itemList = new List<ItemSlot>();
+    public static List<ItemSlot> itemList = new List<ItemSlot>();
     // max size of list
-    public int listSize = 10;
+    public static int listSize = 3;
     // index of the item that is currently selected by the Player
-    public int cur = 0;
+    public KeyCode cur = KeyCode.Alpha0;
     #endregion
 
     /* Adds amount number of itemID to the list. */
-    void AddItem(int itemID, int amount)
+    public static void AddItem(int itemID, int amount)
     {
         for (int i = 0; i < itemList.Count; i++)
         {
@@ -29,7 +40,9 @@ public class InventoryManager : MonoBehaviour
         if (itemList.Count < listSize)
         {
             itemList.Add(slot);
-        } else
+            Debug.Log("Item has been added");
+        }
+        else
         {
             // capacity of list is exceeded
             Debug.Log("Inventory is full - cannot add.");
@@ -48,7 +61,7 @@ public class InventoryManager : MonoBehaviour
                 s.amount = Mathf.Max(0, s.amount - amount);
                 if (s.amount == 0)
                 {
-                    itemList.Remove(s); 
+                    itemList.Remove(s);
                 }
             }
         }
@@ -57,17 +70,27 @@ public class InventoryManager : MonoBehaviour
     }
 
     /* Updates cur to different index, if valid. */
-    void UpdateCur(int index)
+    void UpdateCur(KeyCode index)
     {
-        if (index >= 0 && index < itemList.Count)
+        if (index >= 0 && inventoryKeys.Contains(index))
         {
             this.cur = index;
         }
     }
 
     /* Returns the item associated with the input ID */
-    Item GetItem(int itemID) {
+    private static Item GetItem(int itemID)
+    {
         //TODO Retrieve item using id
         return null;
+    }
+
+    void SelectItem()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+
+        }
     }
 }

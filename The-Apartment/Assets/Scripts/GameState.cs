@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    #region GameState_Variables
+    // denotes whether all tasks are completed and can progress to the next day
+    public bool dayFinished;
+    // current day
+    public int day;
+    #endregion
+
+    private void Start()
     {
-        
+        dayFinished = false;
+        day = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    #region Functions
+    private void PrepareNextDay(int day)
     {
-        
+
+        // at the end
+        dayFinished = false;
     }
+
+    private void CheckIfFinished()
+    {
+
+    }
+    #endregion
 }
