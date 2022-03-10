@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - TaskObj
+  - GameManager
+  - ApartmentDoor
   layers:
   - Default
   - TransparentFX
