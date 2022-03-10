@@ -42,7 +42,6 @@ public class InventoryManager : MonoBehaviour
     public void Start()
     {
         invM = this;
-        //FillList();
     }
 
     private void FillList()
@@ -81,12 +80,13 @@ public class InventoryManager : MonoBehaviour
         if (tempItemHolder.Count < listSize)
         {
             // make new object
-            /*Item newItem = GetItem(itemID);
+            Item newItem = GetItem(itemID);
             GameObject slot = Instantiate(itemHolderPrefab, grid, false);
             slot.GetComponent<ItemSlot>().item = newItem;
             slot.GetComponent<ItemSlot>().amount = amount;
-            itemSlotList.Add(slot); */
+            itemSlotList.Add(slot);
             tempItemHolder[itemID] = amount;
+            FillList();
             Debug.Log("Item has been added");
         }
         else
@@ -129,10 +129,12 @@ public class InventoryManager : MonoBehaviour
     private Item GetItem(int itemID)
     {
         //TODO LATER Retrieve item using id
-        Item item = Instantiate(itemPrefab).GetComponent<Item>();
+        GameObject g = Instantiate(itemPrefab);
+        //temporarily setting inactive to make it not be in scene maybe refactor later
+        g.SetActive(false);
+        Item item = g.GetComponent<Item>();
         item.itemID = itemID;
-        return item;
-        
+        return item;   
     }
 
 }
