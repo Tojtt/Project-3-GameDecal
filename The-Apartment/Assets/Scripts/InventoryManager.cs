@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -16,30 +17,76 @@ public class InventoryManager : MonoBehaviour
     #endregion
 
     #region Variables
+    public static InventoryManager invM;
+
     // list of ItemSlots, which hold the item and the amount
-    public static List<ItemSlot> itemList = new List<ItemSlot>();
+    public List<GameObject> itemSlotList = new List<GameObject>();
+
+    public List<Item> itemList = new List<Item>();
+
+    public Dictionary<int, int> tempItemHolder = new Dictionary<int, int>();
     // max size of list
-    public static int listSize = 3;
+    public int listSize = 3;
     // index of the item that is currently selected by the Player
-    public KeyCode cur = KeyCode.Alpha0;
+    public int cur = 0;
     #endregion
 
-    /* Adds amount number of itemID to the list. */
-    public static void AddItem(int itemID, int amount)
+    #region Scene_Variables
+    public GameObject itemHolderPrefab;
+
+    public GameObject itemPrefab;
+
+    public Transform grid;
+    #endregion 
+
+    public void Start()
+    {
+        invM = this;
+        //FillList();
+    }
+
+    private void FillList()
     {
         for (int i = 0; i < itemList.Count; i++)
         {
-            if (itemList[i].getItemID() == itemID)
+            GameObject holder = Instantiate(itemHolderPrefab, grid, false);
+            ItemSlot holderScript = holder.GetComponent<ItemSlot>();
+          
+            itemSlotList.Add(holder);
+        }
+        Debug.Log(itemSlotList.Count);
+    }
+
+    /* Adds amount number of itemID to the list. */
+    public void AddItem(int itemID, int amount)
+    {
+
+        // add item to existing stack if already exists
+        /* for (int i = 0; i < itemSlotList.Count; i++)
+        {
+            Debug.Log(itemList.Count);
+            ItemSlot curSlot = itemSlotList[i].GetComponent<ItemSlot>();
+            if (curSlot.getItemID() == itemID)
             {
-                itemList[i].amount += amount;
+                itemSlotList[i].GetComponent<ItemSlot>().amount += amount;
                 return;
             }
-        }
-        Item item = GetItem(itemID);
-        ItemSlot slot = new ItemSlot(item, amount);
-        if (itemList.Count < listSize)
+
+            tempItemHolder[itemID] += amount;
+        } */
+        if (tempItemHolder.ContainsKey(itemID))
         {
-            itemList.Add(slot);
+            tempItemHolder[itemID] += amount;
+        }
+        if (tempItemHolder.Count < listSize)
+        {
+            // make new object
+            /*Item newItem = GetItem(itemID);
+            GameObject slot = Instantiate(itemHolderPrefab, grid, false);
+            slot.GetComponent<ItemSlot>().item = newItem;
+            slot.GetComponent<ItemSlot>().amount = amount;
+            itemSlotList.Add(slot); */
+            tempItemHolder[itemID] = amount;
             Debug.Log("Item has been added");
         }
         else
@@ -53,15 +100,15 @@ public class InventoryManager : MonoBehaviour
     void RemoveItem(int itemID, int amount)
     {
         // linear time for now
-        for (int i = 0; i < itemList.Count; i++)
+        for (int i = 0; i < itemSlotList.Count; i++)
         {
-            ItemSlot s = itemList[i];
+            ItemSlot s = itemSlotList[i].GetComponent<ItemSlot>();
             if (s.getItemID() == itemID)
             {
                 s.amount = Mathf.Max(0, s.amount - amount);
                 if (s.amount == 0)
                 {
-                    itemList.Remove(s);
+                    itemSlotList.Remove(itemSlotList[i]);
                 }
             }
         }
@@ -70,27 +117,22 @@ public class InventoryManager : MonoBehaviour
     }
 
     /* Updates cur to different index, if valid. */
-    void UpdateCur(KeyCode index)
+    void UpdateCur(int index)
     {
-        if (index >= 0 && inventoryKeys.Contains(index))
+        if (index >= 0 && index < itemList.Count)
         {
             this.cur = index;
         }
     }
 
     /* Returns the item associated with the input ID */
-    private static Item GetItem(int itemID)
+    private Item GetItem(int itemID)
     {
-        //TODO Retrieve item using id
-        return null;
+        //TODO LATER Retrieve item using id
+        Item item = Instantiate(itemPrefab).GetComponent<Item>();
+        item.itemID = itemID;
+        return item;
+        
     }
 
-    void SelectItem()
-    {
-
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-
-        }
-    }
 }
