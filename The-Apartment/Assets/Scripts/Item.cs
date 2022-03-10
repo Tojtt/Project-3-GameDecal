@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Item : MonoBehaviour
+[System.Serializable]
+public class Item : MonoBehaviour
 {
     public int itemID;
+    public string itemName;
+
+    public Sprite sprite;
 
 }

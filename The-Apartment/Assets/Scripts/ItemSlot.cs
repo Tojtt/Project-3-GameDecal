@@ -7,15 +7,9 @@ public class ItemSlot : MonoBehaviour
 {
 
     public Item item;
+    public GameObject itemName;
     public Image itemImage;
     public int amount;
-
-    public ItemSlot(Item item, int amount)
-    {
-        this.item = item;
-        this.amount = amount;
-
-    }
 
     public int getItemID()
     {
