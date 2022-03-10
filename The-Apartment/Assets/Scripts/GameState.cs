@@ -42,6 +42,20 @@ public class GameState : MonoBehaviour
 
     public GameObject getCurrentTask()
     {
+        //remove finished tasks 
+        if (taskQueue.Count > 0)
+        {
+            CobwebTaskScript s = taskQueue[0].GetComponent<CobwebTaskScript>();
+            while (s.isTaskComplete())
+            {
+                taskQueue.Remove(taskQueue[0]);
+                if (taskQueue.Count > 0)
+                {
+                    s = taskQueue[0].GetComponent<CobwebTaskScript>();
+                }
+            }
+        }
+        //return curr task or none if none left
         if (taskQueue.Count > 0)
         {
             return taskQueue[0];

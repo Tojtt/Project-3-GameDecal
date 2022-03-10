@@ -46,6 +46,10 @@ public class CobwebTaskScript : MonoBehaviour
         }
     }
 
+    public bool isTaskComplete()
+    {
+        return isComplete;
+    }
 
 
     #endregion
