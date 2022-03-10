@@ -17,8 +17,11 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D PlayerRB;
     #endregion
 
-    #region Animation_components
+    #region GameObject_components
     //Animator anim;
+    GameState gs;
+    GameManager gm;
+    GameObject gameManager;
     #endregion
 
 
@@ -26,10 +29,19 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        
         PlayerRB = GetComponent<Rigidbody2D>();
         //anim = GetComponent<Animator>();
     }
 
+    private void Start() 
+    {
+        //get GameManager object
+        gameManager = GameObject.FindWithTag("GameManager");
+        //then pull the script from the object
+        gm = gameManager.GetComponent<GameManager>();
+        gs = gameManager.GetComponent<GameState>();    
+    }
     private void Update()
     {
         //get inputs from keyboard
@@ -37,10 +49,23 @@ public class PlayerController : MonoBehaviour
         y_input = Input.GetAxisRaw("Vertical");
         Move();
 
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            if(gs.dayFinished)
+            {
+                StartCoroutine(gm.nightTransition());   
+            }
+            else 
+            {
+                Debug.Log("Need to finish tasks first");
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("space key pressed");
             Interact();
+            
         }
 
 

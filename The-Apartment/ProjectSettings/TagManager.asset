@@ -9,6 +9,7 @@ TagManager:
   - TaskObj
   - GameManager
   - ApartmentDoor
+  - Stair
   layers:
   - Default
   - TransparentFX

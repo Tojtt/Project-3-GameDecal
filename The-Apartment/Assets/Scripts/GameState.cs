@@ -13,7 +13,7 @@ public class GameState : MonoBehaviour
     // denotes whether all tasks are completed and can progress to the next day
     public bool dayFinished;
     // current day
-    public int day;
+    public int day = 1;
     private List<GameObject> taskQueue;
     #endregion
 
@@ -65,5 +65,7 @@ public class GameState : MonoBehaviour
             return null;
         }
     }
+
     #endregion
+
 }
