@@ -5,6 +5,8 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class MouseInput : MonoBehaviour
 {
+    public InventoryManager invM;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +28,10 @@ public class MouseInput : MonoBehaviour
                 GameObject target = allOverlaps[i].gameObject;
                 if (target.CompareTag("Collectible"))
                 {
-                    int id = 0;
-                    InventoryManager.AddItem(id, 1);
+
+                    invM.AddItem(target.GetComponent<Item>().itemID, 1);
                     Destroy(target);
+                    Debug.Log("Added");
 
                 }
                 else if (target.CompareTag("Trash"))
