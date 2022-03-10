@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Collectible
   - Trash
+  - TaskObj
+  - GameManager
+  - ApartmentDoor
   layers:
   - Default
   - TransparentFX
