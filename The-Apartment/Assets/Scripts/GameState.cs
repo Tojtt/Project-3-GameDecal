@@ -60,7 +60,10 @@ public class GameState : MonoBehaviour
         {
             return taskQueue[0];
         }
-        return null;
+        else {
+            dayFinished = true;
+            return null;
+        }
     }
     #endregion
 }
