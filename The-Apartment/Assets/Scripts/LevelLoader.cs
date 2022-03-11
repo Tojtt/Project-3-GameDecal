@@ -19,16 +19,6 @@ public class LevelLoader : MonoBehaviour
             StartCoroutine(LoadLevel("Apartment"));
         }
     }
-    
-
-    void Update()
-    {
-        if(Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("Coming THROUGH!!");
-            StartCoroutine(LoadLevel("Apartment"));
-        }
-    }
 
     IEnumerator LoadLevel(string sceneName)
     {

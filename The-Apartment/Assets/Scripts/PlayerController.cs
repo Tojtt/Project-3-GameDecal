@@ -22,7 +22,9 @@ public class PlayerController : MonoBehaviour
     //Animator anim;
     GameState gs;
     GameManager gm;
+    LevelLoader load;
     GameObject gameManager;
+    GameObject levelLoader;
     #endregion
 
 
@@ -37,11 +39,13 @@ public class PlayerController : MonoBehaviour
 
     private void Start() 
     {
-        //get GameManager object
+        //get GameManager and loadlevel object
         gameManager = GameObject.FindWithTag("GameManager");
+        levelLoader = GameObject.FindWithTag("LevelLoader");
         //then pull the script from the object
         gm = gameManager.GetComponent<GameManager>();
-        gs = gameManager.GetComponent<GameState>();    
+        gs = gameManager.GetComponent<GameState>();   
+        load = levelLoader.GetComponent<LevelLoader>(); 
     }
     private void Update()
     {
