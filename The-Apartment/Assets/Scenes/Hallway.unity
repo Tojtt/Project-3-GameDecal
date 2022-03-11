@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6944791037775653820, guid: 6676c85d0f885364290275d1e5992554, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.12
+      value: 27.01
       objectReference: {fileID: 0}
     - target: {fileID: 6944791037775653820, guid: 6676c85d0f885364290275d1e5992554, type: 3}
       propertyPath: m_LocalPosition.y
@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 1432092704}
   - component: {fileID: 1432092703}
   m_Layer: 0
-  m_Name: Stairs
+  m_Name: Stair1
   m_TagString: Stair
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

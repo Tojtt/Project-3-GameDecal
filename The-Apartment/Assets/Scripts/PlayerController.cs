@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -49,11 +50,11 @@ public class PlayerController : MonoBehaviour
         y_input = Input.GetAxisRaw("Vertical");
         Move();
 
-        if (Input.GetKeyDown(KeyCode.N))
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            if(gs.dayFinished)
+            if(gs.dayFinished && SceneManager.GetActiveScene().name == "Apartment")
             {
-                StartCoroutine(gm.nightTransition());   
+                gm.nightTransition();   
             }
             else 
             {
@@ -91,12 +92,12 @@ public class PlayerController : MonoBehaviour
             currDirection = Vector2.left;
         }
 
-        else if (y_input > 0)
+        else if (y_input > 0 && SceneManager.GetActiveScene().name != "Hallway")
         {
             PlayerRB.velocity = Vector2.up * movespeed;
             currDirection = Vector2.up;
         }
-        else if (y_input < 0)
+        else if (y_input < 0 && SceneManager.GetActiveScene().name != "Hallway")
         {
             PlayerRB.velocity = Vector2.down * movespeed;
             currDirection = Vector2.down;
@@ -127,6 +128,28 @@ public class PlayerController : MonoBehaviour
         //     }
         // }
     }
+    
+    private void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.CompareTag("ApartmentDoor"))
+        {
+            if(SceneManager.GetActiveScene().name == "Apartment")
+            {
+                gm.Hallway();
+            }
+
+            if(SceneManager.GetActiveScene().name == "Hallway")
+            {
+                gm.Apartment();
+            }    
+        }
+
+        if (coll.CompareTag("Stair"))
+        {
+        }
+    }
+
     #endregion
+    
 
 }
