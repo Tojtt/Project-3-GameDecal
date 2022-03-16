@@ -1,0 +1,17 @@
+﻿title: Start
+tags:
+---
+Player1: Hello
+Player2: Welcome to the apartment
+
+-> Choose option A
+    <<set $option to "A">>
+-> Choose option B
+    <<set $option to "B">>
+
+<<if $option == "A">>
+    Player1: Option A
+<<else>>
+    Player2: Option B
+<<endif>>
+===
