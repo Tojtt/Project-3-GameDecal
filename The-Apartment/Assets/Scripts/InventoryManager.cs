@@ -44,7 +44,7 @@ public class InventoryManager : MonoBehaviour
         invM = this;
     }
 
-    private void FillList()
+    /* private void FillList()
     {
         for (int i = 0; i < itemList.Count; i++)
         {
@@ -56,12 +56,11 @@ public class InventoryManager : MonoBehaviour
         Debug.Log(itemSlotList.Count);
     }
 
-    /* Adds amount number of itemID to the list. */
     public void AddItem(int itemID, int amount)
     {
 
         // add item to existing stack if already exists
-        /* for (int i = 0; i < itemSlotList.Count; i++)
+        for (int i = 0; i < itemSlotList.Count; i++)
         {
             Debug.Log(itemList.Count);
             ItemSlot curSlot = itemSlotList[i].GetComponent<ItemSlot>();
@@ -72,7 +71,7 @@ public class InventoryManager : MonoBehaviour
             }
 
             tempItemHolder[itemID] += amount;
-        } */
+        }
         if (tempItemHolder.ContainsKey(itemID))
         {
             tempItemHolder[itemID] += amount;
@@ -116,7 +115,7 @@ public class InventoryManager : MonoBehaviour
 
     }
 
-    /* Updates cur to different index, if valid. */
+    Updates cur to different index, if valid.
     void UpdateCur(int index)
     {
         if (index >= 0 && index < itemList.Count)
@@ -125,7 +124,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    /* Returns the item associated with the input ID */
+    /* Returns the item associated with the input ID
     private Item GetItem(int itemID)
     {
         //TODO LATER Retrieve item using id
@@ -135,6 +134,6 @@ public class InventoryManager : MonoBehaviour
         Item item = g.GetComponent<Item>();
         item.itemID = itemID;
         return item;   
-    }
+    } */
 
 }

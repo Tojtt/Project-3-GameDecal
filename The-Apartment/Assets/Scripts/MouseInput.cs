@@ -29,7 +29,7 @@ public class MouseInput : MonoBehaviour
                 if (target.CompareTag("Collectible"))
                 {
 
-                    invM.AddItem(target.GetComponent<Item>().itemID, 1);
+                    //invM.AddItem(target.GetComponent<Item>().itemID, 1);
                     Destroy(target);
                     Debug.Log("Added");
 

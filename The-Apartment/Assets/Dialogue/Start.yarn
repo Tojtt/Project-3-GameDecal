@@ -1,5 +1,4 @@
 ﻿title: Start
-tags:
 ---
 Player1: Hello
 Player2: Welcome to the apartment
@@ -11,7 +10,21 @@ Player2: Welcome to the apartment
 
 <<if $option == "A">>
     Player1: Option A
+    <<jump optA>>
 <<else>>
     Player2: Option B
+    <<jump optB>>
 <<endif>>
+
+
+===
+title: optA
+---
+Player1: Help me with task A
+
+===
+title: optB
+---
+Player2: Help me with task B
+
 ===

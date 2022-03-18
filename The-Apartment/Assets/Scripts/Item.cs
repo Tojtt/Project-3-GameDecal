@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Item : MonoBehaviour
+[CreateAssetMenu(fileName = "Item", menuName = "Item/baseItem")]
+public class Item : ScriptableObject
 {
-    public int itemID;
-    public string itemName;
 
-    public Sprite sprite;
+    // new
+    new public string name = "Default Item";
+    public Sprite icon = null;
+
+    /* Parent Use function, will be overriddden. */
+    public virtual void Use()
+    {
+        Debug.Log("Using " + name);
+    }
 
 }
