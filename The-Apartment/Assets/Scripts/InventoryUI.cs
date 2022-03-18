@@ -11,10 +11,16 @@ public class InventoryUI : MonoBehaviour
     public GameObject invTab;
     public GameObject craftTab;
 
+    private List<ItemSlot> itemSlotList = new List<ItemSlot>();
+    public GameObject itemSlotPrefab;
+    public Transform invItemTransform;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        Inventory.instance.onItemChange += UpdateInventoryUI;
+        UpdateInventoryUI();
+
     }
 
     // Update is called once per frame
@@ -29,6 +35,42 @@ public class InventoryUI : MonoBehaviour
             {
                 OpenInventory();
             }
+        }
+    }
+
+    private void UpdateInventoryUI()
+    {
+        // count of items in the Inventory
+        int count = Inventory.instance.invItemList.Count;
+
+        if (count > itemSlotList.Count)
+        {
+            AddItemSlots(count);
+
+        }
+
+        for (int i = 0; i < itemSlotList.Count; i++)
+        {
+            if (i <= count)
+            {
+                itemSlotList[i].AddItem(Inventory.instance.invItemList[i]);
+            } else
+            {
+                itemSlotList[i].DestroySlot();
+                itemSlotList.RemoveAt(i);
+            }
+        }
+    }
+
+    private void AddItemSlots(int count)
+    {
+        // amount of slots we need 
+        int amt = count - itemSlotList.Count;
+        for (int i = 0; i < amt; i++)
+        {
+            GameObject itemSlotObj = Instantiate(itemSlotPrefab, invItemTransform);
+            ItemSlot newSlot = itemSlotObj.GetComponent<ItemSlot>();
+            itemSlotList.Add(newSlot);
         }
     }
 

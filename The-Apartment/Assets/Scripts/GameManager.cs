@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = null;
 
+    public List<Item> itemList = new List<Item>();
+
     #region Unity_functions
 
     private void Awake() 
@@ -20,11 +22,19 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Inventory.instance.AddItem(this.itemList[Random.Range(0, itemList.Count)]);
+        }
+    }
     #endregion
 
     #region Scene_transitions
 
-        //Starting out game
+    //Starting out game
     public void StartGame()
     {
         SceneManager.LoadScene("Hallway");

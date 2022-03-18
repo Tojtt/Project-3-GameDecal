@@ -21,4 +21,9 @@ public class ItemSlot : MonoBehaviour
             item.Use();
         }
     }
+
+    public void DestroySlot()
+    {
+        Destroy(gameObject);
+    }
 }
