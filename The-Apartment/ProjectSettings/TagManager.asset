@@ -48,3 +48,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Wall
+    uniqueID: 2981736145
+    locked: 0
+  - name: Door
+    uniqueID: 4281953617
+    locked: 0
+  - name: Player
+    uniqueID: 1007314729
+    locked: 0
