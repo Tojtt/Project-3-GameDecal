@@ -62,7 +62,6 @@ public class DoorManager : MonoBehaviour
     #region Dialogue_functions
     public string GetDialogue(int dialogue_id, int clickCount)
     {
-        Debug.Log(doorDialogues);
         int i = System.Math.Min(clickCount - 1, doorDialogues[dialogue_id].Count - 1);
         return doorDialogues[dialogue_id][i];
     }
@@ -70,7 +69,6 @@ public class DoorManager : MonoBehaviour
     #region Range_functions
     public bool InClickRange(Vector3 doorPosition)
     {
-        Debug.Log(DistanceToPlayer(doorPosition));
         return  DistanceToPlayer(doorPosition) < clickRadius;
     }
 

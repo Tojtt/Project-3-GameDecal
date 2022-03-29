@@ -41,16 +41,19 @@ public class Door : MonoBehaviour
     #region Interact_functions
     public void Interact()
     {
-        
         clickCount++;
-        Debug.Log("CLICKED door: " + gameObject.name + " for the " + clickCount.ToString() + "th time!!!");
-        Debug.Log(doorManager.GetDialogue(dialogue_id, clickCount));
+        //Replace with interact code
+        Debug.Log(name + " clicked");
+
+        //Debug.Log(doorManager.GetDialogue(dialogue_id, clickCount));
     }
 
     void OnMouseDown()
     {
+        //LATER: add wait timer for in between clicks
         if (doorManager.InClickRange(transform.position))
         {
+            
             Interact();
         }
         
