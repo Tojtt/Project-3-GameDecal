@@ -22,6 +22,44 @@ public class Inventory : MonoBehaviour
     // holds all items present in inventory
     public List<Item> invItemList = new List<Item>();
 
+    public List<Item> hotbarList = new List<Item>();
+    public HotBarControl hotbarControl;
+
+    public void SwitchHotbarInv(Item item)
+    {
+        // inventory to hotbar
+        foreach (Item i in invItemList)
+        {
+            if (i.Equals(item))
+            {
+                if (hotbarList.Count >= hotbarControl.HotbarSlotSize)
+                {
+                    Debug.Log("No more slots");
+                }
+                else
+                {
+                    hotbarList.Add(item);
+                    invItemList.Remove(item);
+                    onItemChange.Invoke();
+                }
+
+                return;
+            }
+        }
+
+        // hotbar to inventory
+        foreach (Item i in hotbarList)
+        {
+            if (i.Equals(item))
+            {
+                hotbarList.Remove(item);
+                invItemList.Add(item);
+                onItemChange.Invoke();
+                return;
+            }
+        }
+    }
+
     public void AddItem(Item item)
     {
         invItemList.Add(item);
