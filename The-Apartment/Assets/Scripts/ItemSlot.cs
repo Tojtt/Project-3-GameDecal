@@ -11,12 +11,25 @@ public class ItemSlot : MonoBehaviour
     public void AddItem(Item newItem)
     {
         item = newItem;
-        icon.sprite = newItem.icon;
+        //icon.sprite = newItem.icon;
+    }
+
+    public void ClearSlot()
+    {
+        item = null;
+        icon.sprite = null;
     }
 
     public void UseItem()
     {
-        if (item != null)
+        if (item == null) return;
+
+        // switches to hotbar inventory 
+        if (Input.GetKey(KeyCode.H))
+        {
+            Debug.Log("Trying to switch");
+            Inventory.instance.SwitchHotbarInv(item);
+        } else
         {
             item.Use();
         }

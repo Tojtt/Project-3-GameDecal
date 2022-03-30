@@ -722,9 +722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a22457ab2b74e9f9cd1585f8f15f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
-  sprite: {fileID: 0}
 --- !u!212 &774775573
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1315,7 +1312,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1726115933}
   m_HandleRect: {fileID: 1726115932}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1506,9 +1503,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a22457ab2b74e9f9cd1585f8f15f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 1
-  itemName: 
-  sprite: {fileID: 0}
 --- !u!212 &1133558593
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1751,6 +1745,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invItemList: []
+  hotbarList: []
+  hotbarControl: {fileID: 1594321231}
 --- !u!1001 &1569246298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1907,6 +1903,7 @@ GameObject:
   - component: {fileID: 1594321229}
   - component: {fileID: 1594321228}
   - component: {fileID: 1594321230}
+  - component: {fileID: 1594321231}
   m_Layer: 5
   m_Name: Hotbar
   m_TagString: Untagged
@@ -2000,6 +1997,18 @@ MonoBehaviour:
   m_Spacing: {x: 5, y: 5}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &1594321231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594321226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9694af3c1984434692df5c212a6e787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1629860027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2218,8 +2227,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 237, y: 23}
-  m_SizeDelta: {x: -534.0046, y: -203.441}
+  m_AnchoredPosition: {x: 157.4, y: 33}
+  m_SizeDelta: {x: -351.8398, y: -203.441}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1693355074
 MonoBehaviour:
@@ -2461,6 +2470,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invItemList: []
+  hotbarList: []
+  hotbarControl: {fileID: 0}
 --- !u!1001 &1927870008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2596,9 +2607,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a22457ab2b74e9f9cd1585f8f15f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 1
-  itemName: Treasure1
-  sprite: {fileID: 0}
 --- !u!1 &1985181519
 GameObject:
   m_ObjectHideFlags: 0
@@ -2891,9 +2899,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a22457ab2b74e9f9cd1585f8f15f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: Trash1
-  sprite: {fileID: 0}
 --- !u!1 &2114895986
 GameObject:
   m_ObjectHideFlags: 0

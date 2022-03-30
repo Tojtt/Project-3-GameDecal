@@ -66,5 +66,16 @@ public class Inventory : MonoBehaviour
         onItemChange.Invoke();
     }
 
+    public void RemoveItem(Item item)
+    {
+        if (invItemList.Contains(item))
+        {
+            invItemList.Remove(item);
+        } else if (hotbarList.Contains(item))
+        {
+            hotbarList.Remove(item);
+        }
+        onItemChange.Invoke();
+    }
 
 }
