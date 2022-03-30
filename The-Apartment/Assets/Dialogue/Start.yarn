@@ -1,30 +1,27 @@
 ﻿title: Start
 ---
-Player1: Hello
-Player2: Welcome to the apartment
+Player: I should look around...
 
--> Choose option A
-    <<set $option to "A">>
--> Choose option B
-    <<set $option to "B">>
 
-<<if $option == "A">>
-    Player1: Option A
-    <<jump optA>>
+===
+title: Stalker
+---
+Stalker: ...
+-> Why are you following me?
+    <<set $stalkerResponse to 0>>
+-> Can I help you?
+    <<set $stalkerResponse to 1>>
+
+<<if $stalkerResponse == 0>>
+    Stalker: ...
 <<else>>
-    Player2: Option B
-    <<jump optB>>
+    Stalker: ...no.
 <<endif>>
-
-
 ===
-title: optA
+title: StalkerDone
 ---
-Player1: Help me with task A
-
+Stalker: I'm done talking with you.
+Stalker: If you're excessively rude, bad things will surely happen.
+<<disable NPC>>
 ===
-title: optB
----
-Player2: Help me with task B
 
-===
