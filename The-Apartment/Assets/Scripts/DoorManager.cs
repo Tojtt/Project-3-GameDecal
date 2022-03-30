@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class DoorManager : MonoBehaviour
 {
@@ -44,6 +45,7 @@ public class DoorManager : MonoBehaviour
         Debug.Log(doors);
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -65,6 +67,7 @@ public class DoorManager : MonoBehaviour
         int i = System.Math.Min(clickCount - 1, doorDialogues[dialogue_id].Count - 1);
         return doorDialogues[dialogue_id][i];
     }
+
     #endregion
     #region Range_functions
     public bool InClickRange(Vector3 doorPosition)
