@@ -1,0 +1,26 @@
+﻿title: Start
+---
+Player: I should look around...
+
+
+===
+title: Stalker
+---
+Stalker: ...
+-> Why are you following me?
+    <<set $stalkerResponse to 0>>
+-> Can I help you?
+    <<set $stalkerResponse to 1>>
+
+<<if $stalkerResponse == 0>>
+    Stalker: ...
+<<else>>
+    Stalker: ...no.
+<<endif>>
+===
+title: StalkerDone
+---
+Stalker: I'm done talking with you.
+Stalker: If you're excessively rude, bad things will surely happen.
+<<disable NPC>>
+===
