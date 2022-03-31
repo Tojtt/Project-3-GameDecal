@@ -39,7 +39,6 @@ public class Door : MonoBehaviour
         //dialogueRunner.AddCommandHandler("random", GetDialogue);
     }
 
-
     // Update is called once per frame
     void Update()
     {

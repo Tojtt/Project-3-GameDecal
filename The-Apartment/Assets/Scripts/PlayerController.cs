@@ -12,6 +12,15 @@ public class PlayerController : MonoBehaviour
     float x_input;
     float y_input;
     Vector2 currDirection;
+    
+    bool atHomeDoor = false;
+    bool inHome =  false;
+    #endregion
+
+    #region Position_variables
+
+    public Vector2 homePosition = new Vector2(30f, 3f);
+    
     #endregion
 
     #region Physics_components
@@ -25,6 +34,9 @@ public class PlayerController : MonoBehaviour
     LevelLoader load;
     GameObject gameManager;
     GameObject levelLoader;
+
+    private GameObject doorTeleporter;
+    private GameObject stairTeleporter;
     #endregion
 
 
@@ -53,7 +65,6 @@ public class PlayerController : MonoBehaviour
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
         Move();
-
         if (Input.GetKeyDown(KeyCode.D))
         {
             if(gs.dayFinished && SceneManager.GetActiveScene().name == "Apartment")
@@ -63,6 +74,20 @@ public class PlayerController : MonoBehaviour
             else 
             {
                 Debug.Log("Need to finish tasks first");
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if(doorTeleporter != null)
+            {
+                transform.position = doorTeleporter.GetComponent<Teleporter>().GetDestination().position;
+                StartCoroutine("Teleport");
+            }
+
+            if(stairTeleporter != null)
+            {
+                transform.position = stairTeleporter.GetComponent<Teleporter>().GetDestination().position;
             }
         }
         if (Input.GetKeyDown(KeyCode.Space))
@@ -132,27 +157,46 @@ public class PlayerController : MonoBehaviour
         // }
     }
     
+    
+    #endregion
+    
+    #region Teleporter_Destinations
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.CompareTag("ApartmentDoor"))
+        if (coll.CompareTag("homeTeleporter"))
         {
-            if(SceneManager.GetActiveScene().name == "Apartment")
-            {
-                gm.Hallway();
-            }
-
-            if(SceneManager.GetActiveScene().name == "Hallway")
-            {
-                gm.Apartment();
-            }    
+            doorTeleporter = coll.gameObject;
         }
-
         if (coll.CompareTag("Stair"))
         {
+            stairTeleporter = coll.gameObject;
         }
+    }
+    private void OnTriggerExit2D(Collider2D coll)
+    {
+        if (coll.CompareTag("homeTeleporter"))
+        {
+            if (coll.gameObject == doorTeleporter)
+            {
+                doorTeleporter = null;
+            }
+        }
+        if (coll.CompareTag("homeTeleporter"))
+        {
+            if (coll.gameObject == stairTeleporter)
+            {
+                stairTeleporter = null;
+            }
+        }
+    } 
+
+    IEnumerable Teleport()
+    {
+        Debug.Log("Teleport is running");
+        //yield return StartCoroutine(levelLoader.GetComponent<FadeScript>().FadeIn());
+        yield return transform.position = doorTeleporter.GetComponent<Teleporter>().GetDestination().position;
+        //yield return StartCoroutine(levelLoader.GetComponent<FadeScript>().FadeOut());
     }
 
     #endregion
-    
-
 }
