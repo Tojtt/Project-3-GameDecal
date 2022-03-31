@@ -16,16 +16,14 @@ public class LevelLoader : MonoBehaviour
         if (coll.CompareTag("ApartmentDoor"))
         {
             
-            StartCoroutine(LoadLevel("Apartment"));
+            StartCoroutine("LoadLevel");
         }
     }
 
-    IEnumerator LoadLevel(string sceneName)
+    IEnumerator LoadLevel()
     {
         transition.SetTrigger("Start");
         
         yield return new WaitForSeconds(transitionTime);
-
-        SceneManager.LoadScene(sceneName);
     }
 }

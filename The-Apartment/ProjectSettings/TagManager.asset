@@ -11,6 +11,9 @@ TagManager:
   - ApartmentDoor
   - Stair
   - LevelLoader
+  - AptDoorIN
+  - AptDoorOUT
+  - homeTeleporter
   layers:
   - Default
   - TransparentFX
