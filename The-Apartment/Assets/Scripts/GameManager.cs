@@ -5,12 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance = null;
+    #region Editor Variables
+    [SerializeField]
+    [Tooltip("A place to keep the default player object in the level. If a player object already exists, delete this one.")]
+    private GameObject m_Player;
+    
+    static GameObject p_PlayerInstance;
 
-    #region Unity_functions
+    public static GameManager Instance = null;
+	#endregion
+
+
+    #region Awake_functions
 
     private void Awake() 
     {
+        DontDestroyOnLoad(m_Player);
+        if (p_PlayerInstance == null)
+        {
+            p_PlayerInstance = m_Player; 
+        
+        } else {
+            Destroy(m_Player);
+        }
+        
         if(Instance == null)
         {
             Instance = this;

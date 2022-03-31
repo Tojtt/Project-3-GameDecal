@@ -9,6 +9,7 @@ public class GameState : MonoBehaviour
     GameObject[] tasks;
     #endregion
 
+    
     #region GameState_Variables
     // denotes whether all tasks are completed and can progress to the next day
     public bool dayFinished;
