@@ -12,6 +12,15 @@ public class PlayerController : MonoBehaviour
     float x_input;
     float y_input;
     Vector2 currDirection;
+    
+    bool atHomeDoor = false;
+    bool inHome =  false;
+    #endregion
+
+    #region Position_variables
+
+    public Vector2 homePosition = new Vector2(30f, 3f);
+    
     #endregion
 
     #region Physics_components
@@ -25,6 +34,8 @@ public class PlayerController : MonoBehaviour
     LevelLoader load;
     GameObject gameManager;
     GameObject levelLoader;
+
+    private GameObject doorTeleporter;
     #endregion
 
 
@@ -53,7 +64,6 @@ public class PlayerController : MonoBehaviour
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
         Move();
-
         if (Input.GetKeyDown(KeyCode.D))
         {
             if(gs.dayFinished && SceneManager.GetActiveScene().name == "Apartment")
@@ -63,6 +73,14 @@ public class PlayerController : MonoBehaviour
             else 
             {
                 Debug.Log("Need to finish tasks first");
+            }
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if(doorTeleporter != null)
+            {
+                transform.position = doorTeleporter.GetComponent<Teleporter>().GetDestination().position;
             }
         }
         if (Input.GetKeyDown(KeyCode.Space))
@@ -132,27 +150,27 @@ public class PlayerController : MonoBehaviour
         // }
     }
     
-    private void OnTriggerEnter2D(Collider2D coll)
-    {
-        if (coll.CompareTag("ApartmentDoor"))
-        {
-            if(SceneManager.GetActiveScene().name == "Apartment")
-            {
-                gm.Hallway();
-            }
-
-            if(SceneManager.GetActiveScene().name == "Hallway")
-            {
-                gm.Apartment();
-            }    
-        }
-
-        if (coll.CompareTag("Stair"))
-        {
-        }
-    }
-
+    
     #endregion
     
+    #region Teleporter_Destinations
+    private void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.CompareTag("homeTeleporter"))
+        {
+            doorTeleporter = coll.gameObject;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D coll)
+    {
+        if (coll.CompareTag("homeTeleporter"))
+        {
+            if (coll.gameObject == doorTeleporter)
+            {
+                doorTeleporter = null;
+            }
+        }
+    } 
 
+    #endregion
 }
