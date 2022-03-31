@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class Door : MonoBehaviour
 {
@@ -18,6 +19,12 @@ public class Door : MonoBehaviour
     #region Editor_variables
     public bool random;
     public int dialogue_id;
+
+    public DialogueRunner dialogueRunner;
+
+    public string doorDialogueNode;
+
+    public string dialogue;
     #endregion
 
     #region Non_editor_variables
@@ -29,6 +36,12 @@ public class Door : MonoBehaviour
     void Awake()
     {
         doorManager = GameObject.Find("DoorManager").GetComponent<DoorManager>();
+    }
+
+    private void Start()
+    {
+        GetComponent<DialogueRunner>().AddFunction("DoorDialogue",
+            () => { return dialogue; });
     }
 
     // Update is called once per frame
@@ -44,8 +57,16 @@ public class Door : MonoBehaviour
         clickCount++;
         //Replace with interact code
         Debug.Log(name + " clicked");
+        dialogue = doorManager.GetDialogue(dialogue_id, clickCount);
+        Debug.Log(dialogue);
+        dialogueRunner.StartDialogue(doorDialogueNode);
+    }
 
-        //Debug.Log(doorManager.GetDialogue(dialogue_id, clickCount));
+    [YarnCommand("GetDoorDialogue")]
+    public string GetDialogue()
+    {
+        Debug.Log("Gets door dialogue");
+        return dialogue;
     }
 
     void OnMouseDown()
