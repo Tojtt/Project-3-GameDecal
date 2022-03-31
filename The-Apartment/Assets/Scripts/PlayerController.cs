@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     GameObject levelLoader;
 
     private GameObject doorTeleporter;
+    private GameObject stairTeleporter;
     #endregion
 
 
@@ -76,11 +77,17 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if(doorTeleporter != null)
             {
                 transform.position = doorTeleporter.GetComponent<Teleporter>().GetDestination().position;
+                StartCoroutine("Teleport");
+            }
+
+            if(stairTeleporter != null)
+            {
+                transform.position = stairTeleporter.GetComponent<Teleporter>().GetDestination().position;
             }
         }
         if (Input.GetKeyDown(KeyCode.Space))
@@ -160,6 +167,10 @@ public class PlayerController : MonoBehaviour
         {
             doorTeleporter = coll.gameObject;
         }
+        if (coll.CompareTag("Stair"))
+        {
+            stairTeleporter = coll.gameObject;
+        }
     }
     private void OnTriggerExit2D(Collider2D coll)
     {
@@ -170,7 +181,22 @@ public class PlayerController : MonoBehaviour
                 doorTeleporter = null;
             }
         }
+        if (coll.CompareTag("homeTeleporter"))
+        {
+            if (coll.gameObject == stairTeleporter)
+            {
+                stairTeleporter = null;
+            }
+        }
     } 
+
+    IEnumerable Teleport()
+    {
+        Debug.Log("Teleport is running");
+        //yield return StartCoroutine(levelLoader.GetComponent<FadeScript>().FadeIn());
+        yield return transform.position = doorTeleporter.GetComponent<Teleporter>().GetDestination().position;
+        //yield return StartCoroutine(levelLoader.GetComponent<FadeScript>().FadeOut());
+    }
 
     #endregion
 }
