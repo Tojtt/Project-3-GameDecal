@@ -24,3 +24,14 @@ Stalker: I'm done talking with you.
 Stalker: If you're excessively rude, bad things will surely happen.
 <<disable NPC>>
 ===
+title: FriendInteract
+---
+Friend: Welcome to the apartment!
+Friend: Do you need anything?
+-> I'm fine.
+    <<set $temp to true>>
+
+<<if $temp == true>>
+    Friend: Hope you enjoy your stay!
+<<endif>>
+===
