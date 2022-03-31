@@ -99,8 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   random: 0
   dialogue_id: 0
-  dialogueRunner: {fileID: 3262327145402082127, guid: a988072cc8ad94c23bce245f482a7423, type: 3}
-  doorDialogueNode: 
+  dialogueRunner: {fileID: 0}
+  doorDialogueNode: DoorDone
+  dialogue: 
 --- !u!61 &3617283538031195840
 BoxCollider2D:
   m_ObjectHideFlags: 0

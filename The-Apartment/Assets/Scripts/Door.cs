@@ -39,12 +39,6 @@ public class Door : MonoBehaviour
         //dialogueRunner.AddCommandHandler("random", GetDialogue);
     }
 
-    private void Start()
-    {
-        // Adds a Yarn Command to generate a number [0, range)
-        GetComponent<DialogueRunner>().AddFunction("random",
-            (int range) => { return Random.Range(0, range); });
-    }
 
     // Update is called once per frame
     void Update()
