@@ -1,4 +1,92 @@
-﻿title: DoorInteract
+﻿title: GenericDoorInteract
 ---
 This is a door. It is locked.
+===
+title: DoorInteract200
+---
+<<set $response to random(2)>>
+<<if $response == 0>>
+    Unknown: Who's there?
+<<elseif $response == 1>>
+    Unknown: Stop that!
+<<else>>
+    Unknown: That's enough!
+<<endif>>
+
+===
+title: DoorInteract201
+---
+<<set $response201 to random(2)>>
+<<if $response201 == 0>>
+    Unknown: Hehehe...
+<<elseif $response201 == 1>>
+    Unknown: La la la la
+<<else>>
+    Unknown: Yes... very nice...
+<<endif>>
+===
+title: EmptyDoorInteract
+---
+Unknown: ...
+===
+title: DoorInteract202
+---
+Unknown: Just leave it at the door!
+
+===
+title: DoorDone
+---
+<<set $response2 to random(2)>>
+<<if $response2 == 0>>
+    Unknown: SHUT UP!!!
+<<elseif $response2 == 1>>
+    Unknown: That's enough!
+<<else>>
+    Unknown: Knock one more time and I'll call the cops!
+<<endif>>
+
+===
+title: Task3Day1
+---
+Resident: (On Phone) Do you have the money???  
+Resident: (On Phone) Argh, I told you I need it NOW!!!
+Resident: (On Phone) You idiot, I told you to deliver it to my place!
+Resident: (On Phone) Yes, cash! What?
+Resident: (On Phone) ...yes, just wait a few more days. (something creepy/foreshadowing)
+Resident: (On Phone) Ok, bye.
+Resident: (Hangs up)
+
+===
+title: Task3Day2
+---
+Resident: (On Phone) What do you mean, it got lost in the mail? 
+Resident: (On Phone) Don't send it by mail again! You'll just say it got lost again.
+Resident: (On Phone) Just do drive here yourself, and put it in my mailbox.
+Resident: (On Phone) I don't care! Don't forget why you owe me money...
+Resident: (On Phone) ...Whatever, you better take care of it, got it? You better drop it off tomorrow.
+Resident: (Hangs up)
+
+===
+title: Task3Day3
+---
+Resident: (On Phone) That's great. So did you get me the money yet?
+Resident: (On Phone) Haha finally. I'll go pick it up tomorrow morning. I'm too tired to leave my apartment.
+Resident: (On Phone) ...
+Resident: (On Phone) Yes, I know the mailbox is only one floor below. Don't tell me what to do!
+Resident: (Hangs up)
+
+===
+title: DoorDog
+---
+<<set $responseDog to random(2)>>
+<<if $responseDog == 0>>
+    Woof woof!
+<<elseif $responseDog == 1>>
+    Bark!
+<<elseif $responseDog == 2>>
+    Grrr.....BARK!
+<<else>>
+    Ruff ruff ruff?
+<<endif>>
+
 ===

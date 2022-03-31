@@ -45,7 +45,6 @@ public class DoorManager : MonoBehaviour
         Debug.Log(doors);
     }
 
-
     // Update is called once per frame
     void Update()
     {

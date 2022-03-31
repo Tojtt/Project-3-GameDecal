@@ -36,13 +36,9 @@ public class Door : MonoBehaviour
     void Awake()
     {
         doorManager = GameObject.Find("DoorManager").GetComponent<DoorManager>();
+        //dialogueRunner.AddCommandHandler("random", GetDialogue);
     }
 
-    private void Start()
-    {
-        GetComponent<DialogueRunner>().AddFunction("DoorDialogue",
-            () => { return dialogue; });
-    }
 
     // Update is called once per frame
     void Update()

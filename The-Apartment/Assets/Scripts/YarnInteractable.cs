@@ -38,7 +38,7 @@ public class YarnInteractable : MonoBehaviour
         }
 
         dialogueRunner.StartDialogue(conversationStartNode);
-        timesSpoken++;
+        //timesSpoken++;
     }
 
     private void EndConversation()
