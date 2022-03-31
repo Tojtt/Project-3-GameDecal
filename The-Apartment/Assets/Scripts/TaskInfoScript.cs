@@ -22,8 +22,8 @@ public class TaskInfoScript : MonoBehaviour
         if (task != null)
         {
             // use inheritance to make this more general later!
-            CobwebTaskScript s = task.GetComponent<CobwebTaskScript>();
-            tx.text = "Current task: " + s.getTaskName() + ", Progress: " + s.getProgressString();
+            AbstractTask s = task.GetComponent<AbstractTask>();
+            tx.text = "Current task: " + s.getTaskName() + ", Progress: " + s.getProgessString();
         }
         else
         {

@@ -27,7 +27,9 @@ public class GameState : MonoBehaviour
     private void PrepareNextDay(int day)
     {
         taskQueue.Add(Instantiate(tasks[0]));
+        taskQueue.Add(Instantiate(tasks[1]));
         dayFinished = false;
+        Debug.Log(taskQueue.Count);
     }
 
     /* The player sleeps and this function is called to advance the day. */
@@ -45,19 +47,20 @@ public class GameState : MonoBehaviour
         //remove finished tasks 
         if (taskQueue.Count > 0)
         {
-            CobwebTaskScript s = taskQueue[0].GetComponent<CobwebTaskScript>();
+            AbstractTask s = taskQueue[0].GetComponent<AbstractTask>();
             while (s.isTaskComplete())
             {
                 taskQueue.Remove(taskQueue[0]);
                 if (taskQueue.Count > 0)
                 {
-                    s = taskQueue[0].GetComponent<CobwebTaskScript>();
+                    s = taskQueue[0].GetComponent<AbstractTask>();
                 }
             }
         }
         //return curr task or none if none left
         if (taskQueue.Count > 0)
         {
+            taskQueue[0].SetActive(true);
             return taskQueue[0];
         }
         else {

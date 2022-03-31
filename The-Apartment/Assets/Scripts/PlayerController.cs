@@ -65,7 +65,6 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Need to finish tasks first");
             }
         }
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("space key pressed");
@@ -85,7 +84,7 @@ public class PlayerController : MonoBehaviour
         //anim.SetBool("Moving", true);  
         if (x_input > 0)
         {
-            Debug.Log("input working right?");
+            //Debug.Log("input working right?");
             PlayerRB.velocity = Vector2.right * movespeed;
             currDirection = Vector2.right;
 

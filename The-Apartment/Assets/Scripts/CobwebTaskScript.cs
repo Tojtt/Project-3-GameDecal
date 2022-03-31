@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CobwebTaskScript : MonoBehaviour
+public class CobwebTaskScript : AbstractTask
 {
     #region Progress Varaibles
 
@@ -16,7 +16,7 @@ public class CobwebTaskScript : MonoBehaviour
     #endregion
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
         totalCobwebs = 3;
         isComplete = false;
@@ -25,19 +25,24 @@ public class CobwebTaskScript : MonoBehaviour
         taskName = "Cobwebs";
     }
 
+    public override void Update()
+    {
+       
+    }
+
     #region Task Functions
 
-    public string getTaskName()
+    public override string getTaskName()
     {
         return taskName;
     }
 
-    public string getProgressString()
+    public override string getProgessString()
     {
         return numCobwebsSwept + " / " + totalCobwebs;
     }
 
-    public void incrementProgress()
+    public override void incrementProgress()
     {
         numCobwebsSwept += 1;
         if (numCobwebsSwept == totalCobwebs)
@@ -46,7 +51,7 @@ public class CobwebTaskScript : MonoBehaviour
         }
     }
 
-    public bool isTaskComplete()
+    public override bool isTaskComplete()
     {
         return isComplete;
     }
