@@ -459,6 +459,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
+--- !u!1 &921203561 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2753718018764665327, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
+  m_PrefabInstance: {fileID: 921203560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &921203562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921203561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4df3a231a6d71437790f74f059ee5de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &982886767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -533,7 +550,7 @@ PrefabInstance:
       objectReference: {fileID: 1048226724}
     - target: {fileID: 2485097342402872708, guid: f1dfce2a481390f40a93b70cefd3b603, type: 3}
       propertyPath: doorDialogueNode
-      value: DoorInteract
+      value: DoorInteract301
       objectReference: {fileID: 0}
     - target: {fileID: 2485097342402872711, guid: f1dfce2a481390f40a93b70cefd3b603, type: 3}
       propertyPath: m_RootOrder
@@ -595,7 +612,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3579681405068720530, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
   m_PrefabInstance: {fileID: 921203560}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 921203561}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bec29c0a230741bdac901dba8da47ee, type: 3}
@@ -618,7 +635,7 @@ PrefabInstance:
       objectReference: {fileID: 1048226724}
     - target: {fileID: 2485097342402872708, guid: f1dfce2a481390f40a93b70cefd3b603, type: 3}
       propertyPath: doorDialogueNode
-      value: DoorInteract
+      value: DoorInteract101
       objectReference: {fileID: 0}
     - target: {fileID: 2485097342402872711, guid: f1dfce2a481390f40a93b70cefd3b603, type: 3}
       propertyPath: m_RootOrder
@@ -697,7 +714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timesSpoken: 0
-  conversationStartNode: 
+  conversationStartNode: DoorInteract101
   disableNode: 
 --- !u!1 &1575422082
 GameObject:
@@ -884,7 +901,7 @@ PrefabInstance:
       objectReference: {fileID: 1048226724}
     - target: {fileID: 2485097342402872708, guid: f1dfce2a481390f40a93b70cefd3b603, type: 3}
       propertyPath: doorDialogueNode
-      value: DoorInteract
+      value: DoorInteract201
       objectReference: {fileID: 0}
     - target: {fileID: 2485097342402872711, guid: f1dfce2a481390f40a93b70cefd3b603, type: 3}
       propertyPath: m_RootOrder

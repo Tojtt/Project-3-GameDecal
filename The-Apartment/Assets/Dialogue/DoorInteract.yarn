@@ -1,4 +1,31 @@
-﻿title: DoorInteract
+﻿title: GenericDoorInteract
 ---
 This is a door. It is locked.
+===
+title: DoorInteract101
+---
+<<set $response to random(2)>>
+<<if $response == 0>>
+    Unknown: Hi.
+<<elseif $response == 1>>
+    Unknown: Bye.
+<<else>>
+    Unknown: Stop that.
+<<endif>>
+
+===
+title: DoorInteract201
+---
+<<set $response2 to random(2)>>
+<<if $response2 == 0>>
+    Unknown: Who's there?
+<<elseif $response2 == 1>>
+    Unknown: OK.
+<<else>>
+    Unknown: Grr.
+<<endif>>
+===
+title: DoorInteract301
+---
+Unknown: ...
 ===
