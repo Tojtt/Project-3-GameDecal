@@ -220,7 +220,7 @@ public class PlayerController : MonoBehaviour
                 doorTeleporter = null;
             }
         }
-        if (coll.CompareTag("homeTeleporter"))
+        if (coll.CompareTag("Stair"))
         {
             if (coll.gameObject == stairTeleporter)
             {
