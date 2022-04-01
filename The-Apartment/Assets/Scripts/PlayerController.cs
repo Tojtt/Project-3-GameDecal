@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     float x_input;
     float y_input;
     Vector2 currDirection;
+    bool move2D = false;
     
     bool atHomeDoor = false;
     bool inHome =  false;
@@ -39,13 +40,18 @@ public class PlayerController : MonoBehaviour
     private GameObject stairTeleporter;
     #endregion
 
+    #region UI
+    Text floorText;
+    #endregion
 
+    int floor;
     #region Unity_functions
 
     private void Awake()
     {
         
         PlayerRB = GetComponent<Rigidbody2D>();
+        floorText = GameObject.Find("FloorDescription").GetComponent<UnityEngine.UI.Text>();
         //anim = GetComponent<Animator>();
     }
 
@@ -54,6 +60,7 @@ public class PlayerController : MonoBehaviour
         //get GameManager and loadlevel object
         gameManager = GameObject.FindWithTag("GameManager");
         levelLoader = GameObject.FindWithTag("LevelLoader");
+        floor = 2;
         //then pull the script from the object
         gm = gameManager.GetComponent<GameManager>();
         gs = gameManager.GetComponent<GameState>();   
@@ -82,11 +89,44 @@ public class PlayerController : MonoBehaviour
             if(doorTeleporter != null)
             {
                 transform.position = doorTeleporter.GetComponent<Teleporter>().GetDestination().position;
+
+                if (doorTeleporter.transform.name == "Apt Door")
+                { //Player room
+
+                    move2D = true;
+                }
+
                 StartCoroutine("Teleport");
             }
 
             if(stairTeleporter != null)
             {
+                if (stairTeleporter.transform.name.Contains("up"))
+                {
+                    floor += 1;
+                    floorText.text = "Floor " + floor.ToString();
+
+                }
+                else if (stairTeleporter.transform.name == "HallwayDoor")
+                { //Player room
+
+                    move2D = false;
+                }
+                else
+                {
+
+                    floor -= 1;
+                    if (floor == 0)
+                    {
+                        floorText.text = "Basement";
+                    }
+                    else
+                    {
+                        floorText.text = "Floor " + floor.ToString();
+                    }
+
+
+                }
                 transform.position = stairTeleporter.GetComponent<Teleporter>().GetDestination().position;
             }
         }
@@ -118,14 +158,12 @@ public class PlayerController : MonoBehaviour
         {
             PlayerRB.velocity = Vector2.left * movespeed;
             currDirection = Vector2.left;
-        }
-
-        else if (y_input > 0 && SceneManager.GetActiveScene().name != "Hallway")
+        } else if (y_input > 0 && move2D)  //&& SceneManager.GetActiveScene().name != "HallwayLayout")
         {
             PlayerRB.velocity = Vector2.up * movespeed;
             currDirection = Vector2.up;
         }
-        else if (y_input < 0 && SceneManager.GetActiveScene().name != "Hallway")
+        else if (y_input < 0 && move2D)  //&& SceneManager.GetActiveScene().name != "HallwayLayout")
         {
             PlayerRB.velocity = Vector2.down * movespeed;
             currDirection = Vector2.down;
@@ -193,9 +231,12 @@ public class PlayerController : MonoBehaviour
     IEnumerable Teleport()
     {
         Debug.Log("Teleport is running");
+
+        
         //yield return StartCoroutine(levelLoader.GetComponent<FadeScript>().FadeIn());
         yield return transform.position = doorTeleporter.GetComponent<Teleporter>().GetDestination().position;
         //yield return StartCoroutine(levelLoader.GetComponent<FadeScript>().FadeOut());
+
     }
 
     #endregion

@@ -21,7 +21,7 @@ public class StaringNPC : MonoBehaviour
     public Sprite stareCenter;
     public Sprite stareRight;
     public int stare; //0 = Left, 1 = Center, 2 = Right
-    int halfRange = 1;
+    double halfRange = 0.5;
     #endregion
     GameObject player;
 

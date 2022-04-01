@@ -4,7 +4,7 @@ This is a door. It is locked.
 ===
 title: DoorInteract200
 ---
-<<set $response to random(2)>>
+<<set $response to random(3)>>
 <<if $response == 0>>
     Unknown: Who's there?
 <<elseif $response == 1>>
@@ -16,7 +16,7 @@ title: DoorInteract200
 ===
 title: DoorInteract201
 ---
-<<set $response201 to random(2)>>
+<<set $response201 to random(3)>>
 <<if $response201 == 0>>
     Unknown: Hehehe...
 <<elseif $response201 == 1>>
@@ -36,7 +36,7 @@ Unknown: Just leave it at the door!
 ===
 title: DoorDone
 ---
-<<set $response2 to random(2)>>
+<<set $response2 to random(3)>>
 <<if $response2 == 0>>
     Unknown: SHUT UP!!!
 <<elseif $response2 == 1>>

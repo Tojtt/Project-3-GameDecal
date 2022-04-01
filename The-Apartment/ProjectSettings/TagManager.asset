@@ -60,6 +60,9 @@ TagManager:
   - name: Door
     uniqueID: 4281953617
     locked: 0
+  - name: NPC
+    uniqueID: 4225023185
+    locked: 0
   - name: Player
     uniqueID: 1007314729
     locked: 0
