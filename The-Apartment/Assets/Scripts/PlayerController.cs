@@ -95,6 +95,11 @@ public class PlayerController : MonoBehaviour
 
                     move2D = true;
                 }
+                else if (doorTeleporter.transform.name == "HallwayDoor")
+                { //Player room
+
+                    move2D = false;
+                }
 
                 StartCoroutine("Teleport");
             }
@@ -107,11 +112,7 @@ public class PlayerController : MonoBehaviour
                     floorText.text = "Floor " + floor.ToString();
 
                 }
-                else if (stairTeleporter.transform.name == "HallwayDoor")
-                { //Player room
-
-                    move2D = false;
-                }
+                
                 else
                 {
 
