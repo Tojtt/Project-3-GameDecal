@@ -9,11 +9,7 @@ public class GameState : MonoBehaviour
     GameObject[] tasks;
     #endregion
 
-    #region Singleton_Variable
-    public static GameState Instance;
-
-    #endregion
-
+    
     #region GameState_Variables
     // denotes whether all tasks are completed and can progress to the next day
     public bool dayFinished;
@@ -24,25 +20,9 @@ public class GameState : MonoBehaviour
 
     private void Start()
     {
-        Instance = this;
         taskQueue = new List<GameObject>();
         PrepareNextDay(day);
     }
-
-    #region Persistence_Functions
-    private void Awake ()   
-       {
-        if (Instance == null)
-        {
-            DontDestroyOnLoad(gameObject);
-            Instance = this;
-        }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-        }
-    }
-    #endregion
 
     #region Functions
     private void PrepareNextDay(int day)
@@ -51,8 +31,7 @@ public class GameState : MonoBehaviour
         taskQueue.Add(Instantiate(tasks[1]));
         dayFinished = false;
         Debug.Log(taskQueue.Count);
-        
-    } 
+    }
 
     /* The player sleeps and this function is called to advance the day. */
     public void nextDay()

@@ -38,10 +38,7 @@ public class PlayerController : MonoBehaviour
 
     private GameObject doorTeleporter;
     private GameObject stairTeleporter;
-
     #endregion
-    
-    public static PlayerController Instance = null;
 
     #region UI
     Text floorText;
@@ -52,15 +49,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            DontDestroyOnLoad(gameObject);
-            Instance = this;
-        }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-        }
+        
         PlayerRB = GetComponent<Rigidbody2D>();
         floorText = GameObject.Find("FloorDescription").GetComponent<UnityEngine.UI.Text>();
         //anim = GetComponent<Animator>();
@@ -69,7 +58,7 @@ public class PlayerController : MonoBehaviour
     private void Start() 
     {
         //get GameManager and loadlevel object
-        gameManager = GameObject.FindWithTag("GameController");
+        gameManager = GameObject.FindWithTag("GameManager");
         levelLoader = GameObject.FindWithTag("LevelLoader");
         floor = 2;
         //then pull the script from the object
@@ -83,15 +72,6 @@ public class PlayerController : MonoBehaviour
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
         Move();
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            Debug.Log("Player x position:" + transform.position.x);
-        }
-        if (Input.GetKeyDown(KeyCode.P)) //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        {
-            Debug.Log("About to switch scene");
-            gm.TestSwitchScene();
-        }
         if (Input.GetKeyDown(KeyCode.D))
         {
             if(gs.dayFinished && SceneManager.GetActiveScene().name == "Apartment")
@@ -162,7 +142,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    #region Movement_functions
+    #region Movment_functions
 
     private void Move()
     {

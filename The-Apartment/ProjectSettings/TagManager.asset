@@ -7,6 +7,7 @@ TagManager:
   - Collectible
   - Trash
   - TaskObj
+  - GameManager
   - ApartmentDoor
   - Stair
   - LevelLoader
