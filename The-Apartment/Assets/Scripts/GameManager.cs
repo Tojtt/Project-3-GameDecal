@@ -48,11 +48,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Hallway");
     }
 
-
-    public void Hallway()
+    public void TestSwitchScene()
     {
-        SceneManager.LoadScene("Hallway");
+        SceneManager.LoadScene("DAY6");
     }
+
     public void Apartment()
     {
         SceneManager.LoadScene("Apartment");

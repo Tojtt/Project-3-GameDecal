@@ -68,6 +68,7 @@ public class DoorManager : MonoBehaviour
     }
 
     #endregion
+
     #region Range_functions
     public bool InClickRange(Vector3 doorPosition)
     {
