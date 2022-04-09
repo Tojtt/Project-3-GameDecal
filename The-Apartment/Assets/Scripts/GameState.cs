@@ -14,7 +14,7 @@ public class GameState : MonoBehaviour
     // denotes whether all tasks are completed and can progress to the next day
     public bool dayFinished;
     // current day
-    public int day = 1;
+    public int day;
     private List<GameObject> taskQueue;
     #endregion
 
@@ -27,10 +27,13 @@ public class GameState : MonoBehaviour
     #region Functions
     private void PrepareNextDay(int day)
     {
-        taskQueue.Add(Instantiate(tasks[0]));
-        taskQueue.Add(Instantiate(tasks[1]));
-        dayFinished = false;
-        Debug.Log(taskQueue.Count);
+        if (day < 6)
+        {
+            taskQueue.Add(Instantiate(tasks[0]));
+            taskQueue.Add(Instantiate(tasks[1]));
+            dayFinished = false;
+            Debug.Log(taskQueue.Count);
+        }
     }
 
     /* The player sleeps and this function is called to advance the day. */
