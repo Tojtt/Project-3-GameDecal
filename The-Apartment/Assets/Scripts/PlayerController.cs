@@ -66,7 +66,6 @@ public class PlayerController : MonoBehaviour
     {
         
         Move();
-
         if (Input.GetKeyDown(KeyCode.D)) //Night transition
         {
             if(gs.dayFinished && SceneManager.GetActiveScene().name == "Apartment")
@@ -86,7 +85,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    #region Movement_functions
+    #region Movment_functions
 
     private void Move()
     {
