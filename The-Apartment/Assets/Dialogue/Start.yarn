@@ -39,3 +39,25 @@ title: SilentMan
 ---
 Man: ...
 ===
+title: TVMessages
+---
+<<set $day to getCurrentDay()>>
+<<if $day == 0>>
+    [[TVDay0]]
+<<else>>
+    [[TVDay3]]
+<<endif>>
+
+===
+title: TVDay0
+---
+Reporter: The weather will be sunny tomorrow.
+Reporter: Thanks for tuning in!
+ 
+===
+title: TVDay3
+---
+Reporter: Breaking news! Kenn Lastname, a local college student in the area is missing.
+Reporter: His family is hoping for any news regarding his disappearance.
+Reporter: Thanks for tuning in!
+===
