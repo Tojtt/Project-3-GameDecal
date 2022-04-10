@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 920511364}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: GameController
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tasks:
   - {fileID: 7695479361598868855, guid: 5894de8ab806c428ba4deaae8b474819, type: 3}
-  - {fileID: 3285851587316986930, guid: ccf31ad24881541df99125e93544e23b, type: 3}
   dayFinished: 0
   day: 0
 --- !u!114 &920511364
@@ -154,7 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf595a32129cfd478b1c7c6256fc93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Player: {fileID: 0}
 --- !u!1 &5854135430320337745
 GameObject:
   m_ObjectHideFlags: 0
