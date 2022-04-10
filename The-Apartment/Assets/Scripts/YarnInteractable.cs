@@ -9,7 +9,7 @@ public class YarnInteractable : MonoBehaviour
 
     private bool canInteract;
 
-    private bool isCurConvo;
+    private bool isCurConvo = false;
 
     public int timesSpoken;
 
@@ -61,7 +61,8 @@ public class YarnInteractable : MonoBehaviour
     #region Interact_Functions 
     public void OnMouseDown()
     {
-        if (canInteract && !dialogueRunner.IsDialogueRunning)
+        Debug.Log(isCurConvo);
+        if (canInteract && !dialogueRunner.IsDialogueRunning && !isCurConvo)
         {
             StartConversation();
         }
