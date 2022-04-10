@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NightCutScene.unity
     guid: e44e73fda0a1ae848bd468647f6508f4
+  - enabled: 1
+    path: Assets/Scenes/HallwayLayout.unity
+    guid: 47037764881b1b84bb9c55da44200e40
   m_configObjects: {}
