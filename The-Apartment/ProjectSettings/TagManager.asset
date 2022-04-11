@@ -14,6 +14,10 @@ TagManager:
   - AptDoorIN
   - AptDoorOUT
   - homeTeleporter
+  - Inventory
+  - ItemSlot
+  - Floor
+  - GasManager
   layers:
   - Default
   - TransparentFX
@@ -59,6 +63,9 @@ TagManager:
     locked: 0
   - name: Door
     uniqueID: 4281953617
+    locked: 0
+  - name: BackItem
+    uniqueID: 1312223797
     locked: 0
   - name: NPC
     uniqueID: 4225023185

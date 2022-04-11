@@ -85,8 +85,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    #region Movment_functions
-
+    #region Movement_functions
     private void Move()
     {
         //get inputs from keyboard
@@ -235,4 +234,19 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
+
+    #region Getter_Functions
+    public Vector2 GetDirection()
+    {
+        return currDirection;
+    }
+
+    public Vector2 GetPosition()
+    {
+        return transform.position;
+    }
+    #endregion
+
+
 }
+

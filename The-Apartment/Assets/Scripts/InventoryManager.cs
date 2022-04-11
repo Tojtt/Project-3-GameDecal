@@ -20,15 +20,18 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager invM;
 
     // list of ItemSlots, which hold the item and the amount
-    public List<GameObject> itemSlotList = new List<GameObject>();
+    public Dictionary<int, GameObject> itemSlotList = new Dictionary<int, GameObject>();
 
-    public List<Item> itemList = new List<Item>();
+    public Dictionary<int, Item> itemList = new Dictionary<int, Item>(); //ItemID: Item
 
-    public Dictionary<int, int> tempItemHolder = new Dictionary<int, int>();
+    //public Dictionary<int, int> tempItemHolder = new Dictionary<int, int>(); <<don't need anymore since for counts
     // max size of list
-    public int listSize = 3;
+    public int maxListSize = 3;
     // index of the item that is currently selected by the Player
     public int cur = 0;
+
+    public int currSelected = -1; //ItemID of currently selected item
+    bool selecting = false;
     #endregion
 
     #region Scene_Variables
@@ -37,104 +40,142 @@ public class InventoryManager : MonoBehaviour
     public GameObject itemPrefab;
 
     public Transform grid;
-    #endregion 
+    #endregion
 
+    #region Unity_Functions
     public void Start()
     {
         invM = this;
     }
+    #endregion
 
-    private void FillList()
-    {
-        for (int i = 0; i < itemList.Count; i++)
-        {
-            GameObject holder = Instantiate(itemHolderPrefab, grid, false);
-            ItemSlot holderScript = holder.GetComponent<ItemSlot>();
+    #region Inventory_Functions
+    //private void FillList()
+    //{
+    //    for (int i = 0; i < itemList.Count; i++)
+    //    {
+    //        GameObject holder = Instantiate(itemHolderPrefab, grid, false);
+    //        ItemSlot holderScript = holder.GetComponent<ItemSlot>();
           
-            itemSlotList.Add(holder);
-        }
-        Debug.Log(itemSlotList.Count);
-    }
+    //        itemSlotList.Add(holder);
+    //    }
+    //    Debug.Log(itemSlotList.Count);
+
+    //}
 
     /* Adds amount number of itemID to the list. */
-    public void AddItem(int itemID, int amount)
+    public void AddItem(Item newItem)
     {
-
-        // add item to existing stack if already exists
-        /* for (int i = 0; i < itemSlotList.Count; i++)
+        int itemID = newItem.itemID;
+        if (itemList.ContainsKey(itemID))
         {
-            Debug.Log(itemList.Count);
-            ItemSlot curSlot = itemSlotList[i].GetComponent<ItemSlot>();
-            if (curSlot.getItemID() == itemID)
-            {
-                itemSlotList[i].GetComponent<ItemSlot>().amount += amount;
-                return;
-            }
-
-            tempItemHolder[itemID] += amount;
-        } */
-        if (tempItemHolder.ContainsKey(itemID))
-        {
-            tempItemHolder[itemID] += amount;
+            Debug.Log("Item already in inventory.");
         }
-        if (tempItemHolder.Count < listSize)
+        if (itemList.Count < maxListSize)
         {
-            // make new object
-            Item newItem = GetItem(itemID);
-            GameObject slot = Instantiate(itemHolderPrefab, grid, false);
-            slot.GetComponent<ItemSlot>().item = newItem;
-            slot.GetComponent<ItemSlot>().amount = amount;
-            itemSlotList.Add(slot);
-            tempItemHolder[itemID] = amount;
-            FillList();
+            itemList[itemID] = newItem;
+
+            //Creating new ItemSlot
+            GameObject slotObject = Instantiate(itemHolderPrefab, grid, false);
+            ItemSlot itemSlot = slotObject.GetComponent<ItemSlot>();
+            itemSlot.item = newItem;
+            
+
+            itemSlotList[itemID] = slotObject;
+
             Debug.Log("Item has been added");
+
+            //Add listener for select itemSlot
+            itemSlot.button.onClick.AddListener(() => SelectItem(itemID));
         }
         else
         {
             // capacity of list is exceeded
             Debug.Log("Inventory is full - cannot add.");
         }
+        PrintInventory();
         return;
     }
 
-    void RemoveItem(int itemID, int amount)
+    void RemoveItem(int itemID)
     {
-        // linear time for now
-        for (int i = 0; i < itemSlotList.Count; i++)
+        itemList.Remove(itemID);
+        GameObject itemSlot = itemSlotList[itemID];
+        Destroy(itemSlot);
+        itemSlotList.Remove(itemID);
+        Debug.Log("Removed item");
+        PrintInventory();
+    }
+
+    //void RemoveItem(int itemID, int amount)
+    //{
+    //    // linear time for now
+    //    for (int i = 0; i < itemSlotList.Count; i++)
+    //    {
+    //        ItemSlot s = itemSlotList[i].GetComponent<ItemSlot>();
+    //        if (s.getItemID() == itemID)
+    //        {
+    //            s.amount = Mathf.Max(0, s.amount - amount);
+    //            if (s.amount == 0)
+    //            {
+    //                itemSlotList.Remove(itemSlotList[i]);
+    //                Debug.Log("Removed Item");
+    //                return;
+    //            }
+    //        }
+    //    }
+    //    Debug.Log("No matching items found in inventory.");
+    //    PrintInventory();
+    //}
+
+    public void SelectItem(int itemID)
+    {
+        currSelected = itemID;
+        Debug.Log("selected" + currSelected);
+        selecting = true;
+        Debug.Log("Selected item");
+    }
+
+    public void DeselectItem()
+    {
+        if (selecting)
         {
-            ItemSlot s = itemSlotList[i].GetComponent<ItemSlot>();
-            if (s.getItemID() == itemID)
-            {
-                s.amount = Mathf.Max(0, s.amount - amount);
-                if (s.amount == 0)
-                {
-                    itemSlotList.Remove(itemSlotList[i]);
-                }
-            }
+            currSelected = -1;
+            selecting = false;
+            Debug.Log("Deselected item");
         }
-        Debug.Log("No matching items found in inventory.");
-
     }
 
-    /* Updates cur to different index, if valid. */
-    void UpdateCur(int index)
+    public Item GetSelectedItem()
     {
-        if (index >= 0 && index < itemList.Count)
+        if (!selecting)
         {
-            this.cur = index;
+            Debug.Log("No currently select item.");
+            return null;
         }
+        return itemList[currSelected];
     }
 
-    /* Returns the item associated with the input ID */
-    private Item GetItem(int itemID)
+    public int GetSelectedID()
     {
-        //TODO LATER Retrieve item using id
-        GameObject g = Instantiate(itemPrefab);
-        //temporarily setting inactive to make it not be in scene maybe refactor later
-        g.SetActive(false);
-        Item item = g.GetComponent<Item>();
-        item.itemID = itemID;
-        return item;   
+        return currSelected;
     }
+
+    public bool HasItem(int itemID)
+    {
+        return itemList.ContainsKey(itemID);
+    }
+
+    public void PrintInventory()
+    {
+        Debug.Log("Inventory contents:");
+        foreach (int itemID in itemList.Keys)
+        {
+            Item item = itemList[itemID];
+            Debug.Log(itemID + ": " + item.itemName);
+        }
+        Debug.Log(".");
+    }
+    #endregion
 
 }

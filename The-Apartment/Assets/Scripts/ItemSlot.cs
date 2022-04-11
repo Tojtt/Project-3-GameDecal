@@ -7,14 +7,19 @@ public class ItemSlot : MonoBehaviour
 {
 
     public Item item;
-    public GameObject itemName;
+    //public String itemName;
     public Image itemImage;
-    public int amount;
+    public Button button;
+
+    void Awake()
+    {
+        button = this.GetComponent<Button>();
+    }
 
     public int getItemID()
     {
         return item.itemID;
     }
 
-
+    
 }
