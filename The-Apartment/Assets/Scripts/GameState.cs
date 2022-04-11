@@ -42,7 +42,7 @@ public class GameState : MonoBehaviour
     // current day
     public int day;
     // current tasks active now
-    private List<GameObject> taskQueue;
+    public List<GameObject> taskQueue;
     #endregion
 
     private void Awake()
@@ -79,11 +79,17 @@ public class GameState : MonoBehaviour
         }*/
         taskQueue = new List<GameObject>();
 
+        Debug.Log("Preparing day");
+
         foreach (GameObject task in tasks_for_day[day - 1])
         {
             taskQueue.Add(Instantiate(task));
+            Debug.Log(task.name);
         }
         dayFinished = false;
+        taskQueue[0].SetActive(true);
+
+        Debug.Log(taskQueue.Count);
 
     }
 

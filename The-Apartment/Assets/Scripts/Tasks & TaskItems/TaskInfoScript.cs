@@ -21,8 +21,8 @@ public class TaskInfoScript : MonoBehaviour
         GameObject task = gs.getCurrentTask();
         if (task != null)
         {
-            // use inheritance to make this more general later!
             AbstractTask s = task.GetComponent<AbstractTask>();
+            Debug.Log(s.getTaskName());
             tx.text = "Current task: " + s.getTaskName() + ", Progress: " + s.getProgessString();
         }
         else

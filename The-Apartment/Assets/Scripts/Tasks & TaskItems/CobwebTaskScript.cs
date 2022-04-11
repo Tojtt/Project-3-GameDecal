@@ -18,11 +18,18 @@ public class CobwebTaskScript : AbstractTask
     // Start is called before the first frame update
     public override void Start()
     {
+
+    }
+
+
+    public override void Awake()
+    {
         totalCobwebs = 3;
         isComplete = false;
         description = "Sweep up the cobwebs scattered around the building!";
         numCobwebsSwept = 0;
         taskName = "Cobwebs";
+        DontDestroyOnLoad(gameObject);
     }
 
     public override void Update()
