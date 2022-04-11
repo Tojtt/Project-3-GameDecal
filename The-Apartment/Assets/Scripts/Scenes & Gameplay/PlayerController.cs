@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
         // Start is called before the first frame update
-    #region Movement_variables
+    #region Movment_variables
     public float movespeed;
     float x_input;
     float y_input;
@@ -32,7 +32,9 @@ public class PlayerController : MonoBehaviour
     //Animator anim;
     GameState gs;
     GameManager gm;
+    LevelLoader load;
     GameObject gameManager;
+    GameObject levelLoader;
 
     private GameObject doorTeleporter;
     private GameObject stairTeleporter;
@@ -47,6 +49,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        
         PlayerRB = GetComponent<Rigidbody2D>();
         floorText = GameObject.Find("FloorDescription").GetComponent<UnityEngine.UI.Text>();
         //anim = GetComponent<Animator>();
@@ -55,18 +58,21 @@ public class PlayerController : MonoBehaviour
     private void Start() 
     {
         //get GameManager and loadlevel object
-        gameManager = GameObject.Find("GameManager");
+        gameManager = GameObject.FindWithTag("GameManager");
+        levelLoader = GameObject.FindWithTag("LevelLoader");
         floor = 2;
-
         //then pull the script from the object
         gm = gameManager.GetComponent<GameManager>();
-        gs = gameManager.GetComponent<GameState>();
+        gs = gameManager.GetComponent<GameState>();   
+        load = levelLoader.GetComponent<LevelLoader>(); 
     }
     private void Update()
     {
-        
+        //get inputs from keyboard
+        x_input = Input.GetAxisRaw("Horizontal");
+        y_input = Input.GetAxisRaw("Vertical");
         Move();
-        if (Input.GetKeyDown(KeyCode.D)) //Night transition
+        if (Input.GetKeyDown(KeyCode.D))
         {
             if(gs.dayFinished && SceneManager.GetActiveScene().name == "Apartment")
             {
@@ -78,10 +84,61 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) //Teleport
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Teleport();
+            if(doorTeleporter != null)
+            {
+                transform.position = doorTeleporter.GetComponent<Teleporter>().GetDestination().position;
+
+                if (doorTeleporter.transform.name == "Apt Door")
+                { //Player room
+
+                    move2D = true;
+                }
+                else if (doorTeleporter.transform.name == "HallwayDoor")
+                { //Player room
+
+                    move2D = false;
+                }
+
+                StartCoroutine("Teleport");
+            }
+
+            if(stairTeleporter != null)
+            {
+                if (stairTeleporter.transform.name.Contains("up"))
+                {
+                    floor += 1;
+                    floorText.text = "Floor " + floor.ToString();
+
+                }
+                
+                else
+                {
+
+                    floor -= 1;
+                    if (floor == 0)
+                    {
+                        floorText.text = "Basement";
+                    }
+                    else
+                    {
+                        floorText.text = "Floor " + floor.ToString();
+                    }
+
+
+                }
+                transform.position = stairTeleporter.GetComponent<Teleporter>().GetDestination().position;
+            }
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("space key pressed");
+            Interact();
+            
+        }
+
+
     }
     #endregion
 
@@ -89,10 +146,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        //get inputs from keyboard
-        x_input = Input.GetAxisRaw("Horizontal");
-        y_input = Input.GetAxisRaw("Vertical");
-
+        
         //anim.SetBool("Moving", true);  
         if (x_input > 0)
         {
@@ -146,54 +200,6 @@ public class PlayerController : MonoBehaviour
     #endregion
     
     #region Teleporter_Destinations
-    private void Teleport()
-    {
-        if (doorTeleporter != null)
-        {
-            transform.position = doorTeleporter.GetComponent<Teleporter>().GetDestination().position;
-
-            if (doorTeleporter.transform.name == "Apt Door")
-            { //Player room
-
-                move2D = true;
-            }
-            else if (doorTeleporter.transform.name == "HallwayDoor")
-            { //Player room
-
-                move2D = false;
-            }
-
-            StartCoroutine("TeleportCoroutine");
-        }
-
-        if (stairTeleporter != null)
-        {
-            if (stairTeleporter.transform.name.Contains("up"))
-            {
-                floor += 1;
-                floorText.text = "Floor " + floor.ToString();
-
-            }
-
-            else
-            {
-
-                floor -= 1;
-                if (floor == 0)
-                {
-                    floorText.text = "Basement";
-                }
-                else
-                {
-                    floorText.text = "Floor " + floor.ToString();
-                }
-
-
-            }
-            transform.position = stairTeleporter.GetComponent<Teleporter>().GetDestination().position;
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.CompareTag("homeTeleporter"))
@@ -223,7 +229,7 @@ public class PlayerController : MonoBehaviour
         }
     } 
 
-    IEnumerable TeleportCoroutine()
+    IEnumerable Teleport()
     {
         Debug.Log("Teleport is running");
 

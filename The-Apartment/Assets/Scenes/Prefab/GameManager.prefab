@@ -103,9 +103,10 @@ GameObject:
   - component: {fileID: 5854135430133821461}
   - component: {fileID: 5854135430133821460}
   - component: {fileID: 920511364}
+  - component: {fileID: -4743384560071952412}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: GameController
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,9 +140,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tasks:
   - {fileID: 7695479361598868855, guid: 5894de8ab806c428ba4deaae8b474819, type: 3}
-  - {fileID: 3285851587316986930, guid: ccf31ad24881541df99125e93544e23b, type: 3}
+  day1_tasks: []
+  day2_tasks: []
+  day3_tasks: []
+  day4_tasks: []
+  day5_tasks: []
+  day6_tasks: []
+  day7_tasks: []
   dayFinished: 0
   day: 0
+  taskQueue: []
 --- !u!114 &920511364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +163,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Player: {fileID: 0}
+--- !u!114 &-4743384560071952412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854135430133821467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39b46e4cb567f354d9ae23a7782cad8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionAnim: {fileID: 0}
+  nextscene: 
 --- !u!1 &5854135430320337745
 GameObject:
   m_ObjectHideFlags: 0
