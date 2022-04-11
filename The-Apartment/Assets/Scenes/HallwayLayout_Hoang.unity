@@ -3313,11 +3313,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6944791037775653820, guid: 6676c85d0f885364290275d1e5992554, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.47
+      value: 8.97
       objectReference: {fileID: 0}
     - target: {fileID: 6944791037775653820, guid: 6676c85d0f885364290275d1e5992554, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.92
+      value: 13.88
       objectReference: {fileID: 0}
     - target: {fileID: 6944791037775653820, guid: 6676c85d0f885364290275d1e5992554, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3356,6 +3356,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6944791037775653823, guid: 6676c85d0f885364290275d1e5992554, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6944791037775653823, guid: 6676c85d0f885364290275d1e5992554, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
@@ -3390,7 +3394,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 8334086812554273466, guid: 3bf071dd355cdc04ab3d54f4b567d156, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8334086812554273466, guid: 3bf071dd355cdc04ab3d54f4b567d156, type: 3}
       propertyPath: m_LocalScale.x
@@ -3639,8 +3643,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1540809940}
   - {fileID: 2095502269}
+  - {fileID: 1540809940}
   - {fileID: 831112949}
   - {fileID: 1914402437}
   - {fileID: 1790960555}
@@ -4932,7 +4936,7 @@ Transform:
   m_LocalScale: {x: 41.47434, y: 41.47434, z: 41.47434}
   m_Children: []
   m_Father: {fileID: 1628838395}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2095502270
 SpriteRenderer:
