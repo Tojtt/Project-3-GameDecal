@@ -100,6 +100,8 @@ public class GameState : MonoBehaviour
         if (dayFinished)
         {
             day += 1;
+
+            GameManager.Instance.nightTransition();
             SceneManager.LoadScene("Day" + day + "Scene");
             PrepareNextDay(day);
         }
