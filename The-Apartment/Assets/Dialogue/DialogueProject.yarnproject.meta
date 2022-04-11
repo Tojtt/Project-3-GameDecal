@@ -11,13 +11,7 @@ ScriptedImporter:
   sourceScripts:
   - {fileID: 6391573757903218779, guid: ada0a5c1efd8246dfb4f125cecfabeee, type: 3}
   - {fileID: 6391573757903218779, guid: 4f0272fd9ff1a45e1b5098f8adba4e8f, type: 3}
-  compileErrors:
-  - '19:0: Error: $response (Number) cannot be assigned a undefined
-
-    <<set $response
-    to random(2)>>
-
-'
+  compileErrors: []
   serializedDeclarations: []
   defaultLanguage: en-US
   languagesToSourceAssets: []
