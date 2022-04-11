@@ -5,7 +5,10 @@ using Yarn.Unity;
 
 public class YarnInteractable : MonoBehaviour
 {
+    #region Dialogue_vars
     private DialogueRunner dialogueRunner;
+    public LineView lineview;
+    #endregion 
 
     private bool canInteract;
 
@@ -16,10 +19,19 @@ public class YarnInteractable : MonoBehaviour
     public void Start()
     {
         dialogueRunner = FindObjectOfType<DialogueRunner>();
+        lineview = FindObjectOfType<LineView>();
         dialogueRunner.onDialogueComplete.AddListener(EndConversation);
         canInteract = true;
         timesSpoken = 0;
 
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            lineview.OnContinueClicked();
+        }
     }
 
     // then we need a function to tell Yarn Spinner to start from {specifiedNodeName}
@@ -34,7 +46,7 @@ public class YarnInteractable : MonoBehaviour
         // small test in disabling character dialogue
         if (timesSpoken == 2)
         {
-            dialogueRunner.StartDialogue(disableNode);
+            //dialogueRunner.StartDialogue(disableNode);
         }
 
         dialogueRunner.StartDialogue(conversationStartNode);
@@ -50,11 +62,11 @@ public class YarnInteractable : MonoBehaviour
 
     }
 
-    //[YarnCommand("disable")]
-    //private void DisableConversation()
-    //{
-    //    canInteract = false;
-    //}
+    [YarnCommand("disable")]
+    private void DisableConversation()
+    {
+        canInteract = false;
+    }
 
     #endregion
 
