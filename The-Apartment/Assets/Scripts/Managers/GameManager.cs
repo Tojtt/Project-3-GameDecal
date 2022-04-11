@@ -28,14 +28,14 @@ public class GameManager : MonoBehaviour
         } else {
             Destroy(m_Player);
         }
-        
-        if(Instance == null)
+
+        if (Instance != null)
         {
-            Instance = this;
-        } else if (Instance != this)
-        {
-            Destroy(this.gameObject);        
+            Destroy(gameObject);
+            return;
         }
+
+        Instance = this;
         DontDestroyOnLoad(gameObject);
     }
     #endregion

@@ -7,6 +7,9 @@ public abstract class AbstractTask : MonoBehaviour
     // Start is called before the first frame update
     public abstract void Start();
 
+    // Start is called before the first frame update
+    public abstract void Awake();
+
     // Update is called once per frame
     public abstract void Update();
 

@@ -15,6 +15,12 @@ public class MakeDinnerTask : AbstractTask
     #endregion
 
     #region AbstractTask_Funcs
+
+    public override void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     // Start is called before the first frame update
     public override void Start()
     {

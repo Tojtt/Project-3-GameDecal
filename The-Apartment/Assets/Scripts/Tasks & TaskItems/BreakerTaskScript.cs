@@ -15,6 +15,12 @@ public class BreakerTaskScript : AbstractTask
     #endregion
 
     // Start is called before the first frame update
+
+    public override void Awake()
+    {
+        
+    }
+
     public override void Start()
     {
         isComplete = false;
