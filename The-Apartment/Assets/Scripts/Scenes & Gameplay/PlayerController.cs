@@ -149,7 +149,6 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Movement_functions
-
     private void Move()
     {
         
@@ -247,4 +246,19 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
+
+    #region Getter_Functions
+    public Vector2 GetDirection()
+    {
+        return currDirection;
+    }
+
+    public Vector2 GetPosition()
+    {
+        return transform.position;
+    }
+    #endregion
+
+
 }
+

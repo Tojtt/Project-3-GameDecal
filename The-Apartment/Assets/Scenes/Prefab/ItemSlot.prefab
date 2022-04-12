@@ -111,7 +111,7 @@ RectTransform:
   m_GameObject: {fileID: 7846662989558735040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.0058234856, y: 0.011493521, z: 0.058669}
   m_Children:
   - {fileID: 7846662989073508249}
   m_Father: {fileID: 0}
@@ -238,6 +238,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemName: {fileID: 0}
-  itemPrice: {fileID: 0}
   itemImage: {fileID: 0}
   amount: 0
+  button: {fileID: 0}

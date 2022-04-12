@@ -53,7 +53,16 @@ public class GameState : MonoBehaviour
     public int roomNum = -1;
     #endregion
 
-    #region Unity_Functions
+   #region Day6_Variables
+   public bool pouredGas;
+   bool entranceChainedUp;
+   bool fireExtinguisherStolen;
+   bool fireStarted;
+
+   int noGasAttempts;
+   #endregion
+
+   #region Unity_Functions
     private void Awake()
     {
         Camera.main.orthographicSize = 10;
@@ -75,8 +84,23 @@ public class GameState : MonoBehaviour
         day = 1;
         watchedTV = false;
         PrepareNextDay(day);
+        if (day == 6)
+        {
+            ResetDay6();
+        }
     }
-    #endregion 
+
+    void Update()
+    {
+        if (false) //End of day timer
+        {
+            //Ending 0 Cutscene
+        } else if (false) //End of fire timer
+        {
+            //Ending 5 cutscene
+        }
+    }
+    #endregion
 
     #region Daily_Functions
     private void PrepareNextDay(int day)
@@ -146,6 +170,66 @@ public class GameState : MonoBehaviour
         return dayFinished;
     }
 
-    #endregion
+    #region Day6_Functions
+    void ResetDay6()
+    {
+        pouredGas = false;
+        entranceChainedUp = false;
+        fireExtinguisherStolen = false;
+        fireStarted = false;
+        noGasAttempts = 0;
+    }
 
+    void EndDay6() //<<<<<<Call this function when reached outside
+    {
+        //Assuming we are outside
+        if (fireStarted)
+        {
+            if (!entranceChainedUp) //Ending 4
+            {
+                //Ending 4 cutscene
+            }
+            else //Ending 1 cutscene
+            {
+                //Ending 1 cutscene
+            }
+        }
+        
+    }
+
+    void StartFire()
+    {
+        if (true) //Not near gasoline spill
+        {
+            if (noGasAttempts == 3)
+            {
+                //Ending 3 Cutscene
+            } else
+            {
+                //Fire sizzles out cutscene
+                noGasAttempts++;
+            }
+        } else if (!fireExtinguisherStolen) //Ending 2
+        {
+            //Begin fire animation only for a few seconds
+            fireStarted = true;
+            //Ending 2 Cutscene 
+        } else
+        {
+            //Begin fire animation
+            fireStarted = true;
+        }
+    }
+
+    /**List of Day 6 Endings:
+    Ending 0) Still in building by the end of dayTimer ->die
+    Ending 1) Success -> All tasks completed
+    Ending 2) Did not steal fire extinguisher, but started fire
+    Ending 3) Tried to start fire 3 times without gasoline
+    Ending 4) Started fire but ending not chained up 
+    Ending 5) Started fire but timer ran out and you did not escape by end of fireTimer -> burn
+    //Add on
+    Ending 6) You spill gas in front of NPC -> they like what u doing
+    **/
+    #endregion
 }
