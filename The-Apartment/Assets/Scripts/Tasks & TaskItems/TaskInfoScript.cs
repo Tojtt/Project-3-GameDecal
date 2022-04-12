@@ -22,7 +22,7 @@ public class TaskInfoScript : MonoBehaviour
         if (task != null)
         {
             AbstractTask s = task.GetComponent<AbstractTask>();
-            Debug.Log(s.getTaskName());
+            //Debug.Log(s.getTaskName());
             tx.text = "Current task: " + s.getTaskName() + ", Progress: " + s.getProgessString();
         }
         else

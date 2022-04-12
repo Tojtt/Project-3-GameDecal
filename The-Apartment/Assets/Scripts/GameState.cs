@@ -43,6 +43,8 @@ public class GameState : MonoBehaviour
     public int day;
     // current tasks active now
     public List<GameObject> taskQueue;
+    // denotes whether the player has watched the TV
+    public bool watchedTV;
     #endregion
 
     private void Awake()
@@ -63,6 +65,7 @@ public class GameState : MonoBehaviour
         taskQueue = new List<GameObject>();
         tasks_for_day = new List<GameObject[]> {day1_tasks, day2_tasks, day3_tasks, day4_tasks, day5_tasks, day6_tasks, day7_tasks};
         day = 1;
+        watchedTV = false;
         PrepareNextDay(day);
     }
 
