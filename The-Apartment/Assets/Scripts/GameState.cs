@@ -47,8 +47,16 @@ public class GameState : MonoBehaviour
     public bool watchedTV;
     #endregion
 
+    #region Location_Variables
+    public int floor = 2;// 0-Basement, 4-Outside
+    public bool inRoom = false;
+    public int roomNum = -1;
+    #endregion
+
+    #region Unity_Functions
     private void Awake()
     {
+        Camera.main.orthographicSize = 10;
 
         if (Instance != null)
         {
@@ -68,31 +76,27 @@ public class GameState : MonoBehaviour
         watchedTV = false;
         PrepareNextDay(day);
     }
+    #endregion 
 
-    #region Functions
+    #region Daily_Functions
     private void PrepareNextDay(int day)
     {
-        //old code
-        /**if (day < 6)
+        if (day < 6)
         {
-            taskQueue.Add(Instantiate(tasks[0]));
-            taskQueue.Add(Instantiate(tasks[1]));
+            taskQueue = new List<GameObject>();
+
+            Debug.Log("Preparing day");
+
+            foreach (GameObject task in tasks_for_day[day - 1])
+            {
+                taskQueue.Add(Instantiate(task));
+                Debug.Log(task.name);
+            }
             dayFinished = false;
+            taskQueue[0].SetActive(true);
+
             Debug.Log(taskQueue.Count);
-        }*/
-        taskQueue = new List<GameObject>();
-
-        Debug.Log("Preparing day");
-
-        foreach (GameObject task in tasks_for_day[day - 1])
-        {
-            taskQueue.Add(Instantiate(task));
-            Debug.Log(task.name);
         }
-        dayFinished = false;
-        taskQueue[0].SetActive(true);
-
-        Debug.Log(taskQueue.Count);
 
     }
 

@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    // Start is called before the first frame update
+    #region Follow_variables
     public Transform target;
     public Vector3 offset;
     [Range(1,10)]
     public float smoothFactor;
+    bool a = false;
+    #endregion
 
     private void LateUpdate() 
     {
@@ -19,6 +21,6 @@ public class CameraFollow : MonoBehaviour
     {
         Vector3 targetPosition = target.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, targetPosition, smoothFactor* Time.fixedDeltaTime );
-        transform.position = targetPosition ;
+        transform.position = targetPosition;
     }
 }

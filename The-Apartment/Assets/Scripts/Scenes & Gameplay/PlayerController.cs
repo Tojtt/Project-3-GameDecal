@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
         // Start is called before the first frame update
-    #region Movment_variables
+    #region Movement_variables
     public float movespeed;
     float x_input;
     float y_input;
@@ -44,7 +44,11 @@ public class PlayerController : MonoBehaviour
     Text floorText;
     #endregion
 
-    int floor;
+    #region CameraSize_Variables
+    float defaultCameraSize = 5;
+    public float zoomedInSize = 3.5; //3.5 or 4
+    #endregion
+
     #region Unity_functions
 
     private void Awake()
@@ -53,6 +57,8 @@ public class PlayerController : MonoBehaviour
         PlayerRB = GetComponent<Rigidbody2D>();
         floorText = GameObject.Find("FloorDescription").GetComponent<UnityEngine.UI.Text>();
         //anim = GetComponent<Animator>();
+
+        Camera.main.orthographicSize = defaultCameraSize;
     }
 
     private void Start() 
@@ -142,7 +148,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    #region Movment_functions
+    #region Movement_functions
 
     private void Move()
     {
