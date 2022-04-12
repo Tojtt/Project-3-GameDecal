@@ -28,7 +28,7 @@ public class TV : MonoBehaviour
     {
         // Load TV scene
         Debug.Log("TV Clicked");
-        //gs.watchedTV = true;
-        //StartCoroutine(sceneTransition.LoadScene(nextScene));
+        gs.watchedTV = true;
+        StartCoroutine(sceneTransition.LoadScene(nextScene));
     }
 }
