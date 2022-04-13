@@ -50,18 +50,6 @@ public class InventoryManager : MonoBehaviour
     #endregion
 
     #region Inventory_Functions
-    //private void FillList()
-    //{
-    //    for (int i = 0; i < itemList.Count; i++)
-    //    {
-    //        GameObject holder = Instantiate(itemHolderPrefab, grid, false);
-    //        ItemSlot holderScript = holder.GetComponent<ItemSlot>();
-          
-    //        itemSlotList.Add(holder);
-    //    }
-    //    Debug.Log(itemSlotList.Count);
-
-    //}
 
     /* Adds amount number of itemID to the list. */
     public void AddItem(Item newItem)
@@ -106,27 +94,6 @@ public class InventoryManager : MonoBehaviour
         Debug.Log("Removed item");
         PrintInventory();
     }
-
-    //void RemoveItem(int itemID, int amount)
-    //{
-    //    // linear time for now
-    //    for (int i = 0; i < itemSlotList.Count; i++)
-    //    {
-    //        ItemSlot s = itemSlotList[i].GetComponent<ItemSlot>();
-    //        if (s.getItemID() == itemID)
-    //        {
-    //            s.amount = Mathf.Max(0, s.amount - amount);
-    //            if (s.amount == 0)
-    //            {
-    //                itemSlotList.Remove(itemSlotList[i]);
-    //                Debug.Log("Removed Item");
-    //                return;
-    //            }
-    //        }
-    //    }
-    //    Debug.Log("No matching items found in inventory.");
-    //    PrintInventory();
-    //}
 
     public void SelectItem(int itemID)
     {

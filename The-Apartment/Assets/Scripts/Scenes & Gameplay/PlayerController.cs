@@ -79,7 +79,14 @@ public class PlayerController : MonoBehaviour
         //get inputs from keyboard
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
-        Move();
+        if (!gameState.freezePlayer)
+        {
+            Move();
+        } else
+        {
+            PlayerRB.velocity = Vector2.zero;
+        }
+        
         if (Input.GetKeyDown(KeyCode.D))
         {
             NightTransition(); //<< Are we still using this?

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 
-public class Door : MonoBehaviour
+public class FortuneTellerDoor : MonoBehaviour
 {
     /*NOTES:
-    1. Add collider to door
-    2. Check isTrigger
-    */
+   1. Add collider to door
+   2. Check isTrigger
+   */
 
     /* For each door:
      * 1. List of dialogue for each day
@@ -44,15 +44,9 @@ public class Door : MonoBehaviour
     {
         if (doorManager.InClickRange(transform.position))
         {
-            
             Interact();
         }
-        
-    }
-    
-    
-    #endregion
 
-    
-    //>>>>>LATER -> changing appearance/image: https://forum.unity.com/threads/changing-sprite-during-run-time.211817/
+    }
+    #endregion
 }
