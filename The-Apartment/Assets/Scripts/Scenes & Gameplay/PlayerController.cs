@@ -9,13 +9,12 @@ public class PlayerController : MonoBehaviour
         // Start is called before the first frame update
     #region Movement_variables
     public float movespeed;
+    float defaultMoveSpeed;
+    float roomMoveSpeed = 2.5f;
     float x_input;
     float y_input;
     Vector2 currDirection;
     bool move2D = false;
-    
-    bool atHomeDoor = false;
-    bool inHome =  false;
     #endregion
 
     #region Position_variables
@@ -26,15 +25,14 @@ public class PlayerController : MonoBehaviour
 
     #region Physics_components
     Rigidbody2D PlayerRB;
+    BoxCollider2D collider;
     #endregion
 
     #region GameObject_components
     //Animator anim;
-    GameState gs;
+    GameState gameState;
     GameManager gm;
-    LevelLoader load;
     GameObject gameManager;
-    GameObject levelLoader;
 
     private GameObject doorTeleporter;
     private GameObject stairTeleporter;
@@ -48,16 +46,18 @@ public class PlayerController : MonoBehaviour
 
     #region CameraSize_Variables
     float defaultCameraSize = 5;
-    public float zoomedInSize = 3.5F; //3.5 or 4
+    float zoomedInSize = 3.5f; //3.5 or 4
     #endregion
 
     #region Unity_functions
 
     private void Awake()
     {
-        
+        //>>>>>NOTE: In inspector, make sure "Order in Sorting Layer" = 1
+        defaultMoveSpeed = movespeed;
         PlayerRB = GetComponent<Rigidbody2D>();
         floorText = GameObject.Find("FloorDescription").GetComponent<UnityEngine.UI.Text>();
+        collider = GetComponent<BoxCollider2D>();
         //anim = GetComponent<Animator>();
 
         Camera.main.orthographicSize = defaultCameraSize;
@@ -67,12 +67,12 @@ public class PlayerController : MonoBehaviour
     {
         //get GameManager and loadlevel object
         gameManager = GameObject.FindWithTag("GameManager");
-        levelLoader = GameObject.FindWithTag("LevelLoader");
-        floor = 2;
+        
         //then pull the script from the object
         gm = gameManager.GetComponent<GameManager>();
-        gs = gameManager.GetComponent<GameState>();   
-        load = levelLoader.GetComponent<LevelLoader>(); 
+        gameState = gameManager.GetComponent<GameState>();
+        gameState.floor = 2;
+        Debug.Log("good");
     }
     private void Update()
     {
@@ -82,71 +82,94 @@ public class PlayerController : MonoBehaviour
         Move();
         if (Input.GetKeyDown(KeyCode.D))
         {
-            if(gs.dayFinished && SceneManager.GetActiveScene().name == "Apartment")
-            {
-                gm.nightTransition();   
-            }
-            else 
-            {
-                Debug.Log("Need to finish tasks first");
-            }
+            NightTransition(); //<< Are we still using this?
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(doorTeleporter != null)
+            DoTeleport();
+        }
+    }
+    #endregion
+
+    //Note: Put functions for update in here, instead of cluttering Update
+    #region Update_functions
+    void NightTransition()
+    {
+        if (gameState.dayFinished && SceneManager.GetActiveScene().name == "Apartment")
+        {
+            gm.nightTransition();
+        }
+        else
+        {
+            //Debug.Log("Need to finish tasks first");
+        }
+    }
+
+    void DoTeleport()
+    {
+        if (doorTeleporter != null)
+        {
+            transform.position = doorTeleporter.GetComponent<Teleporter>().GetDestination().position;
+
+            if (doorTeleporter.transform.name == "Apt Door") //Teleport into main character's room
             {
-                transform.position = doorTeleporter.GetComponent<Teleporter>().GetDestination().position;
-
-                if (doorTeleporter.transform.name == "Apt Door")
-                { //Player room
-
-                    move2D = true;
-                }
-                else if (doorTeleporter.transform.name == "HallwayDoor")
-                { //Player room
-
-                    move2D = false;
-                }
-
-                StartCoroutine("Teleport");
+                SetRoomVariables(206);
+            }
+            else if (doorTeleporter.transform.name == "HallwayDoor206") //Teleport from mainCharacter's room into Hallway
+            {
+                SetHallwayVariables();  
             }
 
-            if(stairTeleporter != null)
-            {
-                if (stairTeleporter.transform.name.Contains("up"))
-                {
-                    floor += 1;
-                    floorText.text = "Floor " + floor.ToString();
+            StartCoroutine("Teleport");
+        }
 
+        if (stairTeleporter != null)
+        {
+            if (stairTeleporter.transform.name.Contains("up"))
+            {
+                gameState.floor += 1;
+                floorText.text = "Floor " + gameState.floor.ToString();
+
+            }
+
+            else
+            {
+
+                gameState.floor -= 1;
+                if (gameState.floor == 0)
+                {
+                    floorText.text = "Basement";
                 }
-                
                 else
                 {
-
-                    floor -= 1;
-                    if (floor == 0)
-                    {
-                        floorText.text = "Basement";
-                    }
-                    else
-                    {
-                        floorText.text = "Floor " + floor.ToString();
-                    }
-
-
+                    floorText.text = "Floor " + gameState.floor.ToString();
                 }
-                transform.position = stairTeleporter.GetComponent<Teleporter>().GetDestination().position;
+
+
             }
+            transform.position = stairTeleporter.GetComponent<Teleporter>().GetDestination().position;
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("space key pressed");
-            Interact();
-            
-        }
+    }
+    
+    void SetRoomVariables(int roomNum)
+    {
+        move2D = true;
+        movespeed = roomMoveSpeed;
+        Debug.Log(gameState);
+        gameState.inRoom = true;
+        gameState.roomNum = 206;
+        Camera.main.orthographicSize = zoomedInSize;
+        Debug.Log("Zoomed in");
+    }
 
-
+    void SetHallwayVariables()
+    {
+        move2D = false;
+        movespeed = defaultMoveSpeed;
+        gameState.inRoom = false;
+        gameState.roomNum = -1;
+        Camera.main.orthographicSize = defaultCameraSize;
     }
     #endregion
 
@@ -241,7 +264,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Teleport is running");
 
         
-        //yield return StartCoroutine(levelLoader.GetComponent<FadeScript>().FadeIn());
+        //yield return StartCoroutine(levelLoader.GetComponent<FadeScript>().FadeIn()); <<<<<-Do this without levelLoader
         yield return transform.position = doorTeleporter.GetComponent<Teleporter>().GetDestination().position;
         //yield return StartCoroutine(levelLoader.GetComponent<FadeScript>().FadeOut());
 
@@ -258,6 +281,11 @@ public class PlayerController : MonoBehaviour
     public Vector2 GetPosition()
     {
         return transform.position;
+    }
+
+    public float GetColliderY()
+    {
+        return collider.bounds.center.y;// + (collider.size.y / 2);// - collider.offset.y;
     }
     #endregion
 

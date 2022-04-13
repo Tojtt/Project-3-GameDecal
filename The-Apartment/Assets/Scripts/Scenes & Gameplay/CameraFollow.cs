@@ -9,7 +9,6 @@ public class CameraFollow : MonoBehaviour
     public Vector3 offset;
     [Range(1,10)]
     public float smoothFactor;
-    bool a = false;
     #endregion
 
     private void LateUpdate() 
