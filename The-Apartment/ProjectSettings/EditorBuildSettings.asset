@@ -24,6 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/TVScene.unity
     guid: 245fe9c0d82164948a638eb78294ba19
   - enabled: 1
-    path: Assets/Scenes/Day2Scene.unity
+    path: Assets/Scenes/Day2Scene_Old.unity
     guid: d66d7a0d64d653249b2e09c8cd3f02eb
   m_configObjects: {}
