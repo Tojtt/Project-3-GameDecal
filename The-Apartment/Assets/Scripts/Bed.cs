@@ -20,30 +20,37 @@ public class Bed : MonoBehaviour
     private void OnMouseDown()
     {
         Debug.Log("Bed clicked");
-        //Debug.Log(GameState.Instance.dayFinished);
+        Debug.Log(GameState.Instance.dayFinished);
         if (GameState.Instance.dayFinished)
         {
             if (GameState.Instance.watchedTV)
             {
                 // can progress to next day
-                GameState.Instance.nextDay();
+                //GameState.Instance.nextDay();
+                StartCoroutine(sceneTransition.LoadScene("NightCutScene"));
             } else
             {
                 // run Dialogue telling Player to watch the TV
-                runTVDialogue();
+                runTVDialogue(0);
                 
             }
         } else
         {
-            runTVDialogue();
+            runTVDialogue(1);
         }
     }
 
-    public void runTVDialogue()
+    public void runTVDialogue(int option)
     {
         if (!dialogue.IsDialogueRunning)
         {
-            dialogue.StartDialogue("watchTV");
+            if (option == 0)
+            {
+                dialogue.StartDialogue("watchTV");
+            } else if (option == 1)
+            {
+                dialogue.StartDialogue("finishChores");
+            }
         }
     }
 }

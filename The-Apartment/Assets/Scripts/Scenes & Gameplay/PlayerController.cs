@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void DoTeleport()
+    public void DoTeleport()
     {
         if (doorTeleporter != null)
         {
@@ -119,6 +119,10 @@ public class PlayerController : MonoBehaviour
             else if (doorTeleporter.transform.name == "HallwayDoor206") //Teleport from mainCharacter's room into Hallway
             {
                 SetHallwayVariables();  
+            }
+            else if (doorTeleporter.transform.name == "TV Room")
+            {
+                gameState.watchedTV = true;
             }
 
             StartCoroutine("Teleport");

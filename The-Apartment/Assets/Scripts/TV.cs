@@ -6,8 +6,8 @@ public class TV : MonoBehaviour
 {
     #region Unity_variables
     public SceneTransitions sceneTransition;
-    public string nextScene;
     public GameState gs;
+    public PlayerController player;
     #endregion
 
     // Start is called before the first frame update
@@ -15,7 +15,6 @@ public class TV : MonoBehaviour
     {
         
         sceneTransition = FindObjectOfType<SceneTransitions>();
-        gs = FindObjectOfType<GameState>();
     }
 
     // Update is called once per frame
@@ -29,6 +28,8 @@ public class TV : MonoBehaviour
         // Load TV scene
         Debug.Log("TV Clicked");
         gs.watchedTV = true;
-        StartCoroutine(sceneTransition.LoadScene(nextScene));
+        player.DoTeleport();
+
+        // run TV cutscene here?
     }
 }
