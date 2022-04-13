@@ -50,7 +50,7 @@ public class GasManager : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        gameState = GameObject.FindWithTag("GameController").GetComponent<GameState>();
+        gameState = GameObject.FindWithTag("GameManager").GetComponent<GameState>();
         gasTankSelected = true;// false;
     }
 

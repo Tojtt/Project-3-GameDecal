@@ -48,7 +48,7 @@ public class GameState : MonoBehaviour
     #endregion
 
     #region Location_Variables
-    public int floor = 2;// 0-Basement, 4-Outside
+    public int floor;// 0-Basement, 4-Outside
     public bool inRoom = false;
     public int roomNum = -1;
     #endregion
@@ -65,7 +65,6 @@ public class GameState : MonoBehaviour
    #region Unity_Functions
     private void Awake()
     {
-        Camera.main.orthographicSize = 10;
 
         if (Instance != null)
         {
@@ -169,6 +168,7 @@ public class GameState : MonoBehaviour
     {
         return dayFinished;
     }
+    #endregion
 
     #region Day6_Functions
     void ResetDay6()
