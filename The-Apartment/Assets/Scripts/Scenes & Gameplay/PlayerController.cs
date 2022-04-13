@@ -44,9 +44,11 @@ public class PlayerController : MonoBehaviour
     Text floorText;
     #endregion
 
+    int floor;
+
     #region CameraSize_Variables
     float defaultCameraSize = 5;
-    public float zoomedInSize = 3.5; //3.5 or 4
+    public float zoomedInSize = 3.5F; //3.5 or 4
     #endregion
 
     #region Unity_functions
