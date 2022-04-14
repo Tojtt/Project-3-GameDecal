@@ -50,6 +50,10 @@ public class PlayerController : MonoBehaviour
     float zoomedInSize = 3.5f; //3.5 or 4
     #endregion
 
+    #region Task_Variables
+    public bool inFrontDogHome = false;
+    #endregion
+
     #region Unity_functions
 
     private void Awake()
@@ -268,6 +272,10 @@ public class PlayerController : MonoBehaviour
         {
             stairTeleporter = coll.gameObject;
         }
+        if (coll.CompareTag("DogDoor"))
+        {
+            inFrontDogHome = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D coll)
     {
@@ -290,6 +298,13 @@ public class PlayerController : MonoBehaviour
             if (coll.gameObject == stairTeleporter)
             {
                 stairTeleporter = null;
+            }
+        }
+        if (coll.CompareTag("DogDoor"))
+        {
+            if (inFrontDogHome)
+            {
+                inFrontDogHome = false;
             }
         }
     } 

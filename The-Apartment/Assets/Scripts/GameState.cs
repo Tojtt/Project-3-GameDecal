@@ -67,7 +67,7 @@ public class GameState : MonoBehaviour
     #region TaskCompletion_Variables
     //Fortune Teller
     public bool fortuneTellingComplete = false;
-
+    public bool lostDogComplete = false;
     #endregion
 
     #region Unity_Functions

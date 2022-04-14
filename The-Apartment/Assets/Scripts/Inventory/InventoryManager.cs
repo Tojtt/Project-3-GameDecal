@@ -28,24 +28,29 @@ public class InventoryManager : MonoBehaviour
     // max size of list
     public int maxListSize = 3;
     // index of the item that is currently selected by the Player
-    public int cur = 0;
+    //public int cur = 0;
+    #endregion
 
+    #region Selection_Variables
     public int currSelected = -1; //ItemID of currently selected item
     bool selecting = false;
     #endregion
 
     #region Scene_Variables
     public GameObject itemHolderPrefab;
-
     public GameObject itemPrefab;
-
     public Transform grid;
     #endregion
+
+    #region Referenced_Variables
+    DogScript dog;
+    #endregion 
 
     #region Unity_Functions
     public void Start()
     {
         invM = this;
+        dog = GameObject.Find("Door 306").GetComponent<DogScript>();
     }
     #endregion
 
@@ -101,6 +106,13 @@ public class InventoryManager : MonoBehaviour
         Debug.Log("selected" + currSelected);
         selecting = true;
         Debug.Log("Selected item");
+
+        //Update for outside classes
+        if(itemID == 10) //Check if food
+        {
+            Debug.Log("Yum");
+            dog.holdingFood = true;
+        }
     }
 
     public void DeselectItem()
@@ -110,6 +122,10 @@ public class InventoryManager : MonoBehaviour
             currSelected = -1;
             selecting = false;
             Debug.Log("Deselected item");
+
+            //Update for outside classes
+            Debug.Log("No food");
+            dog.holdingFood = false;
         }
     }
 
@@ -145,4 +161,7 @@ public class InventoryManager : MonoBehaviour
     }
     #endregion
 
+    #region Outside_helpers
+    
+    #endregion
 }
