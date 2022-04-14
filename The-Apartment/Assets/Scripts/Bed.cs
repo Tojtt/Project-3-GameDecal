@@ -31,6 +31,8 @@ public class Bed : MonoBehaviour
                 GameState.Instance.day += 1;
                 nextDay = "Day" + GameState.Instance.day + "Scene";
                 Debug.Log(GameState.Instance.day);
+                GameState.Instance.PrepareNextDay(GameState.Instance.day);
+                GameState.Instance.watchedTV = false;
                 StartCoroutine(sceneTransition.LoadScene(nextDay));
             } else
             {
