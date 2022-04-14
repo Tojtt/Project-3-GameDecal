@@ -2247,7 +2247,7 @@ GameObject:
   - component: {fileID: 736428387}
   m_Layer: 0
   m_Name: HallwayDoor206
-  m_TagString: homeTeleporter
+  m_TagString: DoorTeleporter
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

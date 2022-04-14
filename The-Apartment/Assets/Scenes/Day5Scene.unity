@@ -391,6 +391,7 @@ MonoBehaviour:
   sceneTransition: {fileID: 0}
   gs: {fileID: 30717188}
   player: {fileID: 2001980433}
+  dialogue: {fileID: 0}
 --- !u!114 &155592611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2383,7 +2384,7 @@ GameObject:
   - component: {fileID: 736428387}
   m_Layer: 0
   m_Name: HallwayDoor206
-  m_TagString: homeTeleporter
+  m_TagString: DoorTeleporter
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5897,6 +5898,7 @@ MonoBehaviour:
   sceneTransition: {fileID: 0}
   gs: {fileID: 30717188}
   player: {fileID: 2001980433}
+  dialogue: {fileID: 0}
 --- !u!1001 &1996972277
 PrefabInstance:
   m_ObjectHideFlags: 0
