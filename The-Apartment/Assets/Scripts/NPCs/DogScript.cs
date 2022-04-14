@@ -15,10 +15,13 @@ public class DogScript : MonoBehaviour
     float movespeed;
     private Rigidbody2D dogRB;
     float space = 2;
+
     #region Task_variables
     public bool holdingFood = false; //Player is holding food
     private float timer = 2;
     bool inRoom = false;
+    int startDay = 2; //4; <- CHANGE LATER when moving into game.
+    int endDay = 5;
     #endregion
 
     #region Referenced_Variables
@@ -41,27 +44,25 @@ public class DogScript : MonoBehaviour
 
     void Update()
     {
-        if (holdingFood)
+        if (gameState.day >= startDay && gameState.day <= endDay)
         {
-            //Follow if nearby, but at least some distance away
-            FollowPlayer();
-            
-           
-            
-        }
-        else
-        {
-            //Dog sits in place, ignoring player
-            dogRB.velocity = Vector2.zero;
+            if (holdingFood)
+            {
+                //Follow if nearby, but at least some distance away
+                FollowPlayer();
+            }
+            else
+            {
+                //Dog sits in place, ignoring player
+                dogRB.velocity = Vector2.zero;
 
+            }
         }
-        
+
     }
 
     void CheckReachedDogHome()
     {
-        //if (player.inFrontDogHome)
-        //{
         Debug.Log("Reached dog's home!");
         //Freeze player, Do dog transform animation, dog goes in room <<< ADD ANIMATION HERE
         gameState.lostDogComplete = true;
@@ -91,11 +92,13 @@ public class DogScript : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (doorManager.InClickRange(transform.position)) //If in range of door
+        if (holdingFood)
         {
-            CheckReachedDogHome();
+            if (doorManager.InClickRange(transform.position)) //If in range of door
+            {
+                CheckReachedDogHome();
+            }
         }
-
     }
     //IEnumerator moveTowardPlayer()
     //{

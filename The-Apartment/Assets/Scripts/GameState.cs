@@ -45,8 +45,10 @@ public class GameState : MonoBehaviour
     public List<GameObject> taskQueue;
     // denotes whether the player has watched the TV
     public bool watchedTV;
-
+    //Whether player is frozen
     public bool freezePlayer = false;
+
+    public float moneyEarned = 0;
     #endregion
 
     #region Location_Variables

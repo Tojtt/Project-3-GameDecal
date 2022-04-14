@@ -18,6 +18,7 @@ TagManager:
   - DoorTeleporter
   - ForcedTeleporter
   - DogDoor
+  - MailboxCollectible
   layers:
   - Default
   - TransparentFX

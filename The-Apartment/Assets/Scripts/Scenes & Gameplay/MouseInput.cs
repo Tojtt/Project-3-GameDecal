@@ -25,7 +25,7 @@ public class MouseInput : MonoBehaviour
                 {
                     ClickCollectible(target);
                     break;
-                }
+                } 
                 else if (target.CompareTag("Trash")) 
                 {
                     ClickTrash(target);
@@ -55,6 +55,7 @@ public class MouseInput : MonoBehaviour
         invM.AddItem(target.GetComponent<Item>());
         target.SetActive(false); //<<<< Don't destroy
         // Debug.Log("Added");
+
     }
 
     void ClickTrash(GameObject target)
