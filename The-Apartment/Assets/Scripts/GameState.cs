@@ -47,8 +47,6 @@ public class GameState : MonoBehaviour
     public bool watchedTV;
 
     public bool freezePlayer = false;
-
-    public int FTdoorTimes; //Number of times interact with fortune teller door
     #endregion
 
     #region Location_Variables

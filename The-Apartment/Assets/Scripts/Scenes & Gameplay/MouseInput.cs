@@ -34,7 +34,6 @@ public class MouseInput : MonoBehaviour
                 else if (target.CompareTag("Floor")) 
                 {
                     ClickFloor(target);
-                    break;
                 } else if (target.CompareTag("ItemSlot"))
                 {
                     clickedSlot = true;

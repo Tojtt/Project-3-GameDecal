@@ -33,7 +33,7 @@ public class YarnCommands : MonoBehaviour
 
         dr.AddFunction("getTimesKnocked",
             () => {
-                return GameObject.Find("FortuneTeller").GetComponent<MadamFace>().doorTimes - 1; });
+                return GameObject.Find("RoomDoor302").GetComponent<MadamFace>().doorTimes - 1; });
     }
 
 }
