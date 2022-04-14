@@ -9,13 +9,13 @@ public class Bed : MonoBehaviour
     public SceneTransitions sceneTransition;
     public DialogueRunner dialogue;
     public GameState gs;
+    public string nextDay;
     #endregion
 
     public void Start()
     {
         dialogue = FindObjectOfType<DialogueRunner>();
         sceneTransition = FindObjectOfType<SceneTransitions>();
-
     }
 
     private void OnMouseDown()
@@ -29,8 +29,9 @@ public class Bed : MonoBehaviour
                 // can progress to next day
                 //GameState.Instance.nextDay();
                 GameState.Instance.day += 1;
+                nextDay = "Day" + GameState.Instance.day + "Scene";
                 Debug.Log(GameState.Instance.day);
-                StartCoroutine(sceneTransition.LoadScene("NightCutScene"));
+                StartCoroutine(sceneTransition.LoadScene(nextDay));
             } else
             {
                 // run Dialogue telling Player to watch the TV

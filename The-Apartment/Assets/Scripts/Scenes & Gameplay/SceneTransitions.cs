@@ -6,13 +6,12 @@ using UnityEngine.SceneManagement;
 public class SceneTransitions : MonoBehaviour
 {
     public Animator transitionAnim;
-    public string nextscene;
     public GameState gs;
 
     void Update(){
-        if(Input.GetKeyDown(KeyCode.M)){
-            StartCoroutine(LoadScene(nextscene));
-        }
+        // if(Input.GetKeyDown(KeyCode.M)){
+        //     StartCoroutine(LoadScene(nextscene));
+        //}
     }
 
 
@@ -35,5 +34,4 @@ public class SceneTransitions : MonoBehaviour
     {
         return "Day" + GameState.Instance.day + "Scene";
     }
-
 }
