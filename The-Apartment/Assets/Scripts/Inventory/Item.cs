@@ -9,7 +9,7 @@ public class Item : MonoBehaviour
     public string itemName;
     public string state; //Eg: For gas tank: "Full" or "Empty"
     public Sprite sprite;
-    public bool collectible; //Whether or not can be added to inventory
+    //public bool collectible; //Whether or not can be added to inventory <-Repetitive, because tagged as Collectible
 
     InventoryManager inventory;
 

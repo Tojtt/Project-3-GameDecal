@@ -7,6 +7,8 @@ public class SceneTransitions : MonoBehaviour
 {
     public Animator transitionAnim;
     public string nextscene;
+    public GameState gs;
+
     void Update(){
         if(Input.GetKeyDown(KeyCode.M)){
             StartCoroutine(LoadScene(nextscene));
@@ -19,6 +21,19 @@ public class SceneTransitions : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(sceneName);
 
+    }
+
+    public void OnMouseDown()
+    {
+        Debug.Log("Clicked");
+        string scene = getScene();
+        Debug.Log(scene);
+        StartCoroutine(LoadScene(scene));
+    }
+
+    private string getScene()
+    {
+        return "Day" + GameState.Instance.day + "Scene";
     }
 
 }

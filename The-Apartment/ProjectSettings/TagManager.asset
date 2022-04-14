@@ -11,13 +11,14 @@ TagManager:
   - ApartmentDoor
   - Stair
   - LevelLoader
-  - AptDoorIN
-  - AptDoorOUT
-  - homeTeleporter
   - Inventory
   - ItemSlot
   - Floor
   - GasManager
+  - DoorTeleporter
+  - ForcedTeleporter
+  - DogDoor
+  - MailboxCollectible
   layers:
   - Default
   - TransparentFX

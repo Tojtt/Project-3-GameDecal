@@ -1,0 +1,75 @@
+﻿title: CrackOpenDoor
+---
+Fortune Teller: Hello dear, I sensed you would be here when I felt my secondary moon fall out of balance. 
+Fortune Teller: Would you like your fortune told?
+-> Not really.
+    <<set $response to 0>>
+-> Umm...Sure, I guess.
+    <<set $response to 1>>
+-> Uh, what?
+    <<set $response to 2>>
+
+<<if $response == 0>>
+    Fortune Teller: Alright, but your moons have retrograded behind Jupiter! Come find me again so I can guide you.  
+<<elseif $response == 1>>
+    Fortune Teller: Wonderful, come inside. 
+<<else>>
+    Fortune Teller: I can predict the future. Come in, I've been waiting for you.
+    -> No, thank you.
+        <<set $response to 0>>
+    -> Okay then.
+        <<set $response to 1>>
+
+    <<if $response == 0>>
+        Fortune Teller: Alright, but your moons have retrograded behind Jupiter! Come find me again so I can guide you.
+    <<else>>
+        Fortune Teller: Wonderful, come inside. 	
+    <<endif>>
+<<endif>>
+<<set $done to 1>>
+===
+title: Reaction
+---
+Player: That was strange...
+===
+title: KnockOnDoor
+---
+<<set $timesKnocked to getTimesKnocked()>>
+<<if $timesKnocked == 0>>
+    Fortune Teller: You're back already! So you want to get your fortune told?
+    -> No.
+        <<set $response to 0>>
+    -> Yes.
+        <<set $response to 1>>
+    <<if $response == 0>>
+        Fortune Teller: Then why did you knock on my door?!?! 
+        Fortune Teller: Don't come back until you're ready to hear your future!
+    <<elseif $response == 1>>
+        Fortune Teller: Excellent, come inside. I have my tarot cards ready. 
+    <<endif>>
+<<else>>
+    Fortune Teller: You again? You're here for the fortune telling right...? Not just to knock on my door for no reason?
+    -> No.
+        <<set $response to 0>>
+    -> Yes.
+        <<set $response to 1>>
+    <<if $response == 0>>
+        Fortune Teller: I have things to do you know! I need to cleanse my crystals before sunrise! 
+        Fortune Teller: Stop bothering me unless you are here for the fortune telling!
+    <<elseif $response == 1>>
+        Fortune Teller: Excellent, come inside. I have my tarot cards ready.  
+    <<endif>>
+<<endif>>
+<<set $done to 1>>
+===
+title: ClosedShop
+---
+Fortune Teller: No more fortune tellings for the day! I'm closed!
+===
+title: FortuneTelling
+---
+Fortune Teller: (insert Fortune Here)
+-> Thanks, bye.
+-> Well, I'll be leaving now.
+<<set $done to 2>>
+===

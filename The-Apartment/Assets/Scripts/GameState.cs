@@ -45,6 +45,10 @@ public class GameState : MonoBehaviour
     public List<GameObject> taskQueue;
     // denotes whether the player has watched the TV
     public bool watchedTV;
+    //Whether player is frozen
+    public bool freezePlayer = false;
+
+    public float moneyEarned = 0;
     #endregion
 
     #region Location_Variables
@@ -60,9 +64,15 @@ public class GameState : MonoBehaviour
    bool fireStarted;
 
    int noGasAttempts;
-   #endregion
+    #endregion
 
-   #region Unity_Functions
+    #region TaskCompletion_Variables
+    //Fortune Teller
+    public bool fortuneTellingComplete = false;
+    public bool lostDogComplete = false;
+    #endregion
+
+    #region Unity_Functions
     private void Awake()
     {
 
@@ -80,7 +90,7 @@ public class GameState : MonoBehaviour
     {
         taskQueue = new List<GameObject>();
         tasks_for_day = new List<GameObject[]> {day1_tasks, day2_tasks, day3_tasks, day4_tasks, day5_tasks, day6_tasks, day7_tasks};
-        day = 1;
+        //day = 1;
         watchedTV = false;
         PrepareNextDay(day);
         if (day == 6)

@@ -17,14 +17,8 @@ public class Door : MonoBehaviour
      * 4. Event function
      */
     #region Editor_variables
-    public bool random;
-    public int dialogue_id;
-
     public DialogueRunner dialogueRunner;
-
     public string doorDialogueNode;
-
-    public string dialogue;
     #endregion
 
     #region Non_editor_variables
@@ -36,13 +30,6 @@ public class Door : MonoBehaviour
     void Awake()
     {
         doorManager = GameObject.Find("DoorManager").GetComponent<DoorManager>();
-        //dialogueRunner.AddCommandHandler("random", GetDialogue);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     #endregion
 
@@ -50,23 +37,11 @@ public class Door : MonoBehaviour
     public void Interact()
     {
         clickCount++;
-        //Replace with interact code
-        Debug.Log(name + " clicked");
-        dialogue = doorManager.GetDialogue(dialogue_id, clickCount);
-        Debug.Log(dialogue);
         dialogueRunner.StartDialogue(doorDialogueNode);
-    }
-
-    [YarnCommand("GetDoorDialogue")]
-    public string GetDialogue()
-    {
-        Debug.Log("Gets door dialogue");
-        return dialogue;
     }
 
     void OnMouseDown()
     {
-        //LATER: add wait timer for in between clicks
         if (doorManager.InClickRange(transform.position))
         {
             

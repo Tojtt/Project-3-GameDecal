@@ -28,40 +28,33 @@ public class InventoryManager : MonoBehaviour
     // max size of list
     public int maxListSize = 3;
     // index of the item that is currently selected by the Player
-    public int cur = 0;
+    //public int cur = 0;
+    #endregion
 
+    #region Selection_Variables
     public int currSelected = -1; //ItemID of currently selected item
     bool selecting = false;
     #endregion
 
     #region Scene_Variables
     public GameObject itemHolderPrefab;
-
     public GameObject itemPrefab;
-
     public Transform grid;
     #endregion
+
+    #region Referenced_Variables
+    DogScript dog;
+    #endregion 
 
     #region Unity_Functions
     public void Start()
     {
         invM = this;
+        dog = GameObject.Find("Door 306").GetComponent<DogScript>();
     }
     #endregion
 
     #region Inventory_Functions
-    //private void FillList()
-    //{
-    //    for (int i = 0; i < itemList.Count; i++)
-    //    {
-    //        GameObject holder = Instantiate(itemHolderPrefab, grid, false);
-    //        ItemSlot holderScript = holder.GetComponent<ItemSlot>();
-          
-    //        itemSlotList.Add(holder);
-    //    }
-    //    Debug.Log(itemSlotList.Count);
-
-    //}
 
     /* Adds amount number of itemID to the list. */
     public void AddItem(Item newItem)
@@ -107,33 +100,19 @@ public class InventoryManager : MonoBehaviour
         PrintInventory();
     }
 
-    //void RemoveItem(int itemID, int amount)
-    //{
-    //    // linear time for now
-    //    for (int i = 0; i < itemSlotList.Count; i++)
-    //    {
-    //        ItemSlot s = itemSlotList[i].GetComponent<ItemSlot>();
-    //        if (s.getItemID() == itemID)
-    //        {
-    //            s.amount = Mathf.Max(0, s.amount - amount);
-    //            if (s.amount == 0)
-    //            {
-    //                itemSlotList.Remove(itemSlotList[i]);
-    //                Debug.Log("Removed Item");
-    //                return;
-    //            }
-    //        }
-    //    }
-    //    Debug.Log("No matching items found in inventory.");
-    //    PrintInventory();
-    //}
-
     public void SelectItem(int itemID)
     {
         currSelected = itemID;
         Debug.Log("selected" + currSelected);
         selecting = true;
         Debug.Log("Selected item");
+
+        //Update for outside classes
+        if(itemID == 10) //Check if food
+        {
+            Debug.Log("Yum");
+            dog.holdingFood = true;
+        }
     }
 
     public void DeselectItem()
@@ -143,6 +122,10 @@ public class InventoryManager : MonoBehaviour
             currSelected = -1;
             selecting = false;
             Debug.Log("Deselected item");
+
+            //Update for outside classes
+            Debug.Log("No food");
+            dog.holdingFood = false;
         }
     }
 
@@ -178,4 +161,7 @@ public class InventoryManager : MonoBehaviour
     }
     #endregion
 
+    #region Outside_helpers
+    
+    #endregion
 }
