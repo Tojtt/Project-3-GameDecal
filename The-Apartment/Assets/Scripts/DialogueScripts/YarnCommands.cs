@@ -7,6 +7,9 @@ using Yarn.Unity;
 /* Script holding all the Yarn functions. */
 public class YarnCommands : MonoBehaviour
 {
+    //TODO: Store references in beginning so not too expensive
+
+
     // Loads all Yarn functions at Start
     private void Start()
     {
@@ -27,7 +30,10 @@ public class YarnCommands : MonoBehaviour
                 SceneManager.LoadScene("Hallway");
                 return true;
             });
-        
+
+        dr.AddFunction("getTimesKnocked",
+            () => {
+                return GameObject.Find("RoomDoor302").GetComponent<MadamFace>().doorTimes - 1; });
     }
 
 }

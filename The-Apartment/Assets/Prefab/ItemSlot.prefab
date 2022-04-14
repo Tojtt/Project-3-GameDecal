@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 8367286088070122191}
   m_Layer: 5
   m_Name: ItemSlot
-  m_TagString: Untagged
+  m_TagString: ItemSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -237,7 +237,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
-  itemName: {fileID: 0}
   itemImage: {fileID: 0}
-  amount: 0
   button: {fileID: 0}

@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
     private GameObject doorTeleporter;
     private GameObject stairTeleporter;
+    public GameObject forcedTeleporter;
     #endregion
 
     #region UI
@@ -47,6 +48,10 @@ public class PlayerController : MonoBehaviour
     #region CameraSize_Variables
     float defaultCameraSize = 5;
     float zoomedInSize = 3.5f; //3.5 or 4
+    #endregion
+
+    #region Task_Variables
+    public bool inFrontDogHome = false;
     #endregion
 
     #region Unity_functions
@@ -79,7 +84,14 @@ public class PlayerController : MonoBehaviour
         //get inputs from keyboard
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
-        Move();
+        if (!gameState.freezePlayer)
+        {
+            Move();
+        } else
+        {
+            PlayerRB.velocity = Vector2.zero;
+        }
+        
         if (Input.GetKeyDown(KeyCode.D))
         {
             NightTransition(); //<< Are we still using this?
@@ -118,7 +130,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (doorTeleporter.transform.name == "HallwayDoor206") //Teleport from mainCharacter's room into Hallway
             {
-                SetHallwayVariables();  
+                SetHallwayVariables();
             }
             else if (doorTeleporter.transform.name == "TV Room")
             {
@@ -155,6 +167,22 @@ public class PlayerController : MonoBehaviour
             transform.position = stairTeleporter.GetComponent<Teleporter>().GetDestination().position;
         }
     }
+
+    public void ForcedTeleport()
+    {
+        if (forcedTeleporter != null)
+        {
+            if (forcedTeleporter.transform.name == "RoomDoor302")
+            {
+                SetRoomVariables(302);
+            } else if (forcedTeleporter.transform.name == "HallwayDoor302")
+            {
+                SetHallwayVariables();
+            }
+
+            transform.position = forcedTeleporter.GetComponent<Teleporter>().GetDestination().position;
+        }
+    }
     
     void SetRoomVariables(int roomNum)
     {
@@ -162,7 +190,7 @@ public class PlayerController : MonoBehaviour
         movespeed = roomMoveSpeed;
         Debug.Log(gameState);
         gameState.inRoom = true;
-        gameState.roomNum = 206;
+        gameState.roomNum = roomNum;
         Camera.main.orthographicSize = zoomedInSize;
         Debug.Log("Zoomed in");
     }
@@ -236,22 +264,37 @@ public class PlayerController : MonoBehaviour
     #region Teleporter_Destinations
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.CompareTag("homeTeleporter"))
+        if (coll.CompareTag("DoorTeleporter"))
         {
             doorTeleporter = coll.gameObject;
+        }
+        if (coll.CompareTag("ForcedTeleporter"))
+        {
+            forcedTeleporter = coll.gameObject;
         }
         if (coll.CompareTag("Stair"))
         {
             stairTeleporter = coll.gameObject;
         }
+        if (coll.CompareTag("DogDoor"))
+        {
+            inFrontDogHome = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D coll)
     {
-        if (coll.CompareTag("homeTeleporter"))
+        if (coll.CompareTag("DoorTeleporter"))
         {
             if (coll.gameObject == doorTeleporter)
             {
                 doorTeleporter = null;
+            }
+        }
+        if (coll.CompareTag("ForcedTeleporter"))
+        {
+            if (coll.gameObject == forcedTeleporter)
+            {
+                forcedTeleporter = null;
             }
         }
         if (coll.CompareTag("Stair"))
@@ -261,9 +304,16 @@ public class PlayerController : MonoBehaviour
                 stairTeleporter = null;
             }
         }
+        if (coll.CompareTag("DogDoor"))
+        {
+            if (inFrontDogHome)
+            {
+                inFrontDogHome = false;
+            }
+        }
     } 
 
-    IEnumerable Teleport()
+    public IEnumerable Teleport()
     {
         Debug.Log("Teleport is running");
 

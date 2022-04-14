@@ -11,8 +11,65 @@ ScriptedImporter:
   sourceScripts:
   - {fileID: 6391573757903218779, guid: ada0a5c1efd8246dfb4f125cecfabeee, type: 3}
   - {fileID: 6391573757903218779, guid: 4f0272fd9ff1a45e1b5098f8adba4e8f, type: 3}
+  - {fileID: 6391573757903218779, guid: 639e30423c4af434a9b0b39765e219bd, type: 3}
   compileErrors: []
-  serializedDeclarations: []
+  serializedDeclarations:
+  - name: $response
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: DoorInteract.yarn, node DoorInteract200, line 1
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: ada0a5c1efd8246dfb4f125cecfabeee, type: 3}
+  - name: $response201
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: DoorInteract.yarn, node DoorInteract201, line 1
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: ada0a5c1efd8246dfb4f125cecfabeee, type: 3}
+  - name: $response2
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: DoorInteract.yarn, node DoorDone, line 1
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: ada0a5c1efd8246dfb4f125cecfabeee, type: 3}
+  - name: $responseDog
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: DoorInteract.yarn, node DoorDog, line 1
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: ada0a5c1efd8246dfb4f125cecfabeee, type: 3}
+  - name: $stalkerResponse
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Start.yarn, node Stalker, line 2
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 4f0272fd9ff1a45e1b5098f8adba4e8f, type: 3}
+  - name: $temp
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Start.yarn, node FriendInteract, line 3
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 4f0272fd9ff1a45e1b5098f8adba4e8f, type: 3}
+  - name: $day
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Start.yarn, node TVMessages, line 1
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 4f0272fd9ff1a45e1b5098f8adba4e8f, type: 3}
   defaultLanguage: en-US
   languagesToSourceAssets: []
   useAddressableAssets: 0

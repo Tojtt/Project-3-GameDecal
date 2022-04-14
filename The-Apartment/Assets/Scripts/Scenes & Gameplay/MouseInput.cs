@@ -24,14 +24,20 @@ public class MouseInput : MonoBehaviour
                 if (target.CompareTag("Collectible")) 
                 {
                     ClickCollectible(target);
-                }
+                    break;
+                } 
                 else if (target.CompareTag("Trash")) 
                 {
                     ClickTrash(target);
+                    break;
                 } 
                 else if (target.CompareTag("Floor")) 
                 {
                     ClickFloor(target);
+                } else if (target.CompareTag("ItemSlot"))
+                {
+                    clickedSlot = true;
+                    break;
                 }
             }
 
@@ -49,6 +55,7 @@ public class MouseInput : MonoBehaviour
         invM.AddItem(target.GetComponent<Item>());
         target.SetActive(false); //<<<< Don't destroy
         // Debug.Log("Added");
+
     }
 
     void ClickTrash(GameObject target)

@@ -4,10 +4,10 @@ This is a door. It is locked.
 ===
 title: DoorInteract200
 ---
-<<set $response to random(3)>>
-<<if $response == 0>>
+<<set $response200 to random(3)>>
+<<if $response200 == 0>>
     Unknown: Who's there?
-<<elseif $response == 1>>
+<<elseif $response200 == 1>>
     Unknown: Stop that!
 <<else>>
     Unknown: That's enough!
@@ -46,34 +46,55 @@ title: DoorDone
 <<endif>>
 
 ===
-title: Task3Day1
+title: Door103Day1Call
 ---
 Resident: (On Phone) Do you have the money???  
 Resident: (On Phone) Argh, I told you I need it NOW!!!
 Resident: (On Phone) You idiot, I told you to deliver it to my place!
 Resident: (On Phone) Yes, cash! What?
 Resident: (On Phone) ...yes, just wait a few more days. (something creepy/foreshadowing)
-Resident: (On Phone) Ok, bye.
-Resident: (Hangs up)
 
 ===
-title: Task3Day2
+title: Door103Day2Call
 ---
 Resident: (On Phone) What do you mean, it got lost in the mail? 
 Resident: (On Phone) Don't send it by mail again! You'll just say it got lost again.
 Resident: (On Phone) Just do drive here yourself, and put it in my mailbox.
 Resident: (On Phone) I don't care! Don't forget why you owe me money...
 Resident: (On Phone) ...Whatever, you better take care of it, got it? You better drop it off tomorrow.
-Resident: (Hangs up)
 
 ===
-title: Task3Day3
+title: Door103Day3Call
 ---
 Resident: (On Phone) That's great. So did you get me the money yet?
 Resident: (On Phone) Haha finally. I'll go pick it up tomorrow morning. I'm too tired to leave my apartment.
 Resident: (On Phone) ...
-Resident: (On Phone) Yes, I know the mailbox is only one floor below. Don't tell me what to do!
-Resident: (Hangs up)
+Resident: (On Phone) Yes, I know the mailbox is only a few feet away. Don't tell me what to do!
+
+===
+title: RandomPhoneTalk
+---
+<<set $randomCall to random(8)>>
+
+<<if $randomCall == 0>>
+    Resident: (On Phone) What did you say? I think you're cutting out.
+<<elseif $randomCall == 1>>
+    Resident: (On Phone) You are so useless! Just do what I tell you and there won't be any trouble!
+<<elseif $randomCall == 2>>
+    Resident: (On Phone) Hello? Hello?
+<<elseif $randomCall == 3>>
+    Resident: (On Phone) Yes...Mhm. Okay, great.
+<<elseif $randomCall == 4>>
+    Resident: (On Phone) Hey, don't forget what I told you to do, alright?
+<<elseif $randomCall == 5>>
+    Resident: (On Phone) What do you mean you can't hear me? I'm talking very loud right now!
+<<elseif $randomCall == 6>>
+    Resident: (On Phone) Alright. Yep... Got it.
+<<elseif $randomCall == 7>>
+    Resident: (On Phone) Yes. It will happen soon. Just make sure the cops don't get suspicious again.
+<<else>>
+    Resident: (On Phone) Of course, I live in the middle of nowhere. There won't be any problems.
+<<endif>>
 
 ===
 title: DoorDog

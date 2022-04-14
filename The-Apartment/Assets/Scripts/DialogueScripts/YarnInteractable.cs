@@ -11,9 +11,7 @@ public class YarnInteractable : MonoBehaviour
     #endregion 
 
     private bool canInteract;
-
     private bool isCurConvo;
-
     public int timesSpoken;
 
     public void Start()
@@ -51,6 +49,7 @@ public class YarnInteractable : MonoBehaviour
 
         dialogueRunner.StartDialogue(conversationStartNode);
         timesSpoken++;
+        Debug.Log("Hi");
     }
 
     private void EndConversation()
@@ -59,7 +58,7 @@ public class YarnInteractable : MonoBehaviour
         {
             isCurConvo = false;
         }
-
+        Debug.Log("Bye");
     }
 
     [YarnCommand("disable")]
