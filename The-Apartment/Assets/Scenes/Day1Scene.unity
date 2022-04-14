@@ -391,6 +391,7 @@ MonoBehaviour:
   sceneTransition: {fileID: 0}
   gs: {fileID: 30717188}
   player: {fileID: 2001980433}
+  dialogue: {fileID: 0}
 --- !u!114 &155592611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -935,9 +936,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 700411586}
     - target: {fileID: 5854135430133821460, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
+      propertyPath: day1_tasks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854135430133821460, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
       propertyPath: day3_tasks.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5854135430133821460, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
+      propertyPath: day1_tasks.Array.data[0]
+      value: 
+      objectReference: {fileID: 3285851587316986930, guid: ccf31ad24881541df99125e93544e23b, type: 3}
+    - target: {fileID: 5854135430133821460, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
+      propertyPath: day1_tasks.Array.data[1]
+      value: 
+      objectReference: {fileID: 3982712283394081122, guid: 3da32b094ef774bd39f255dafc7105ac, type: 3}
     - target: {fileID: 5854135430133821460, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
       propertyPath: day3_tasks.Array.data[0]
       value: 
@@ -1654,7 +1667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3982712283394081122, guid: 3da32b094ef774bd39f255dafc7105ac, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6649273829833847091, guid: 3da32b094ef774bd39f255dafc7105ac, type: 3}
       propertyPath: m_RootOrder
@@ -2735,9 +2748,10 @@ GameObject:
   - component: {fileID: 938288800}
   - component: {fileID: 938288801}
   - component: {fileID: 938288802}
+  - component: {fileID: 938288803}
   m_Layer: 0
   m_Name: TV Closeup
-  m_TagString: Untagged
+  m_TagString: DoorTeleporter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2829,6 +2843,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &938288803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938288799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9eb79e65284d847a94fd6eda9ae317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: {fileID: 1983070678}
 --- !u!1 &956003043
 GameObject:
   m_ObjectHideFlags: 0
@@ -4739,11 +4766,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6405677939714604961, guid: cb7dd224487d0449ea9cc1d8cd1cc90d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6405677939714604961, guid: cb7dd224487d0449ea9cc1d8cd1cc90d, type: 3}
       propertyPath: m_TagString
-      value: homeTeleporter
+      value: DoorTeleporter
       objectReference: {fileID: 0}
     - target: {fileID: 6405677939714604962, guid: cb7dd224487d0449ea9cc1d8cd1cc90d, type: 3}
       propertyPath: m_Size.y
@@ -4783,6 +4810,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 938288800}
+--- !u!114 &1722097938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722097936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04d5d207c5a384b37a2a5d8f65e14170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneTransition: {fileID: 0}
+  gs: {fileID: 0}
+  player: {fileID: 0}
+  dialogue: {fileID: 0}
 --- !u!1 &1742492111
 GameObject:
   m_ObjectHideFlags: 0
@@ -5585,11 +5628,11 @@ GameObject:
   - component: {fileID: 1983070683}
   m_Layer: 0
   m_Name: TV Room
-  m_TagString: homeTeleporter
+  m_TagString: DoorTeleporter
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1983070678
 Transform:
   m_ObjectHideFlags: 0
@@ -5731,6 +5774,7 @@ MonoBehaviour:
   sceneTransition: {fileID: 0}
   gs: {fileID: 30717188}
   player: {fileID: 2001980433}
+  dialogue: {fileID: 0}
 --- !u!1001 &1996972277
 PrefabInstance:
   m_ObjectHideFlags: 0
