@@ -142,6 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionAnim: {fileID: 1402639562}
   nextscene: Day2Scene
+  gs: {fileID: 1415368119}
 --- !u!1 &750103228
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionAnim: {fileID: 1402639562}
   nextscene: Day2Scene
+  gs: {fileID: 0}
 --- !u!114 &750103231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,6 +485,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 920511364, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
+      propertyPath: m_Player
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5854135430133821461, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -533,10 +539,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5854135430133821467, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
+--- !u!114 &1415368119 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5854135430133821460, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
+  m_PrefabInstance: {fileID: 1415368118}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385dbd166ce8d412e871db0e8eaa1cc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1579255348
 GameObject:
   m_ObjectHideFlags: 0

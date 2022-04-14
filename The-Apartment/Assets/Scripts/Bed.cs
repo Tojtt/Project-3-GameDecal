@@ -8,6 +8,7 @@ public class Bed : MonoBehaviour
     #region Unity_variables
     public SceneTransitions sceneTransition;
     public DialogueRunner dialogue;
+    public GameState gs;
     #endregion
 
     public void Start()
@@ -27,6 +28,8 @@ public class Bed : MonoBehaviour
             {
                 // can progress to next day
                 //GameState.Instance.nextDay();
+                GameState.Instance.day += 1;
+                Debug.Log(GameState.Instance.day);
                 StartCoroutine(sceneTransition.LoadScene("NightCutScene"));
             } else
             {
