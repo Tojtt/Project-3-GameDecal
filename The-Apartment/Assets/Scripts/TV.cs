@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class TV : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class TV : MonoBehaviour
     public SceneTransitions sceneTransition;
     public GameState gs;
     public PlayerController player;
+    public DialogueRunner dialogue;
+
     #endregion
 
     // Start is called before the first frame update
@@ -15,6 +18,8 @@ public class TV : MonoBehaviour
     {
         
         sceneTransition = FindObjectOfType<SceneTransitions>();
+        dialogue = FindObjectOfType<DialogueRunner>();
+
     }
 
     // Update is called once per frame
@@ -27,8 +32,13 @@ public class TV : MonoBehaviour
     {
         // Load TV scene
         Debug.Log("TV Clicked");
-        gs.watchedTV = true;
-        player.DoTeleport();
+        GameState.Instance.watchedTV = true;
+        if (!dialogue.IsDialogueRunning)
+        {
+            dialogue.StartDialogue("TVDay0");
+        }
+
+        //player.DoTeleport();
 
         // run TV cutscene here?
     }

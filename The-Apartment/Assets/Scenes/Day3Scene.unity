@@ -391,6 +391,7 @@ MonoBehaviour:
   sceneTransition: {fileID: 0}
   gs: {fileID: 30717188}
   player: {fileID: 2001980433}
+  dialogue: {fileID: 0}
 --- !u!114 &155592611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,6 +524,7 @@ MonoBehaviour:
   sceneTransition: {fileID: 0}
   dialogue: {fileID: 0}
   gs: {fileID: 0}
+  nextDay: 
 --- !u!1001 &208704843
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -604,7 +606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2485097342402872729, guid: f1dfce2a481390f40a93b70cefd3b603, type: 3}
       propertyPath: m_TagString
-      value: homeTeleporter
+      value: DoorTeleporter
       objectReference: {fileID: 0}
     - target: {fileID: 3617283538031195840, guid: f1dfce2a481390f40a93b70cefd3b603, type: 3}
       propertyPath: m_Size.y
@@ -616,6 +618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2485097342402872708, guid: f1dfce2a481390f40a93b70cefd3b603, type: 3}
+    - {fileID: 935916238, guid: f1dfce2a481390f40a93b70cefd3b603, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f1dfce2a481390f40a93b70cefd3b603, type: 3}
 --- !u!4 &208704844 stripped
 Transform:
@@ -2385,7 +2388,7 @@ GameObject:
   - component: {fileID: 736428387}
   m_Layer: 0
   m_Name: HallwayDoor206
-  m_TagString: homeTeleporter
+  m_TagString: DoorTeleporter
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2780,7 +2783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6943125469440739878, guid: e47c28582685b294399f8668a0892f80, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6943125469440739901, guid: e47c28582685b294399f8668a0892f80, type: 3}
       propertyPath: m_Pivot.x
@@ -5903,6 +5906,7 @@ MonoBehaviour:
   sceneTransition: {fileID: 0}
   gs: {fileID: 30717188}
   player: {fileID: 2001980433}
+  dialogue: {fileID: 0}
 --- !u!1001 &1996972277
 PrefabInstance:
   m_ObjectHideFlags: 0

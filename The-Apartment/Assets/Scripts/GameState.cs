@@ -112,14 +112,14 @@ public class GameState : MonoBehaviour
     #endregion
 
     #region Daily_Functions
-    private void PrepareNextDay(int day)
+    public void PrepareNextDay(int day)
     {
         if (day < 6)
         {
             taskQueue = new List<GameObject>();
 
             Debug.Log("Preparing day");
-
+            Debug.Log("Current day: " + (day - 1));
             foreach (GameObject task in tasks_for_day[day - 1])
             {
                 taskQueue.Add(Instantiate(task));
