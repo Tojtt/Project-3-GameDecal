@@ -68,8 +68,17 @@ Fortune Teller: No more fortune tellings for the day! I'm closed!
 ===
 title: FortuneTelling
 ---
-Fortune Teller: (insert Fortune Here)
+Fortune Teller: Hello, please come in.
+Fortune Teller: My name is Madam ALSjdlksadkslajdksaljd. 
+Fortune Teller: *reads some tarot cards*
+Fortune Teller: Beware the hounds; their entrance marks a period of grave danger for you
+Fortune Teller: There is only one way you can protect yourself.
+Fortune Teller: It is to buy my special healing crystals. Want one?
+-> Maybe later...
+-> No thank you. I don't really believe in healing crystals.
+Fortune Teller: Alright, goodbye now.
 -> Thanks, bye.
 -> Well, I'll be leaving now.
+Fortune Teller: Bye! And come back another day if you want to buy my healing crystals!
 <<set $done to 2>>
 ===

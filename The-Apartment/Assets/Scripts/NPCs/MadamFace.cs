@@ -13,6 +13,12 @@ public class MadamFace : MonoBehaviour
     4) Add pause before reaction.
     **/
 
+    #region Appearance_Variables
+    public Sprite closedDoorSprite;
+    public Sprite openDoorSprite;
+    SpriteRenderer spriteRenderer;
+    #endregion
+
     #region Dialogue Variables
     public string crackOpenDialogueNode;
     public string reactionDialogueNode;
@@ -28,7 +34,7 @@ public class MadamFace : MonoBehaviour
     #endregion
 
     #region Game_Variables
-    int roomNum = 202; //Change to 302 later
+    int roomNum = 302;
     int firstDay = 2;
     int emptyDay = 4;
     int lastDay = 6;
@@ -44,11 +50,12 @@ public class MadamFace : MonoBehaviour
     
     void Start()
     {
+        spriteRenderer = this.GetComponent<SpriteRenderer>();
         player = GameObject.Find("Player");
         gameState = GameObject.FindWithTag("GameManager").GetComponent<GameState>();
         varStorage = GameObject.Find("Dialogue System").GetComponent<InMemoryVariableStorage>();
         //Set to closed door
-        //this.gameObject.GetComponent<Renderer>().enabled = false;
+        spriteRenderer.sprite = closedDoorSprite;
     }
 
     // Update is called once per frame
@@ -91,11 +98,12 @@ public class MadamFace : MonoBehaviour
 
     void OpenDoor(string dialogueNode)
     {
+        dialogueRunner.Stop();
         Debug.Log("It's madam fortune teller!");
         wasOutsideRange = false;
         gameState.freezePlayer = true;
         //ADD ANIMATION HERE!!!!!!!!
-
+        spriteRenderer.sprite = openDoorSprite;
         //Dialogue
         varStorage.SetValue("$done", 0);
         Debug.Log(dialogueNode);
@@ -112,6 +120,7 @@ public class MadamFace : MonoBehaviour
         string done = GetDialogueVariable("$done");
         if (done == "1") //Dialogue Finished
         {
+            spriteRenderer.sprite = closedDoorSprite;
             Debug.Log("stopped");
             //if (doorTimes == 1)
             //{
@@ -139,6 +148,8 @@ public class MadamFace : MonoBehaviour
                 {
                     dialogueRunner.StartDialogue(reactionDialogueNode);
                 }
+                //Close Door
+                
             }
 
             gameState.freezePlayer = false;
