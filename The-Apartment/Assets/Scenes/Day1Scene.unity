@@ -924,6 +924,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &273267171 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4584223599326875385, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+  m_PrefabInstance: {fileID: 486199724}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &273267172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273267171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff524400d93a2a44a6c4a106f7a9c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueRunner: {fileID: 462507613}
+  doorDialogueNode: GenericDoorInteract
 --- !u!1001 &288527989
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1078,11 +1097,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 752d583c8e5f540c6bb26c79ee98f372, type: 3}
---- !u!224 &332936494 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7711775010421873999, guid: a988072cc8ad94c23bce245f482a7423, type: 3}
-  m_PrefabInstance: {fileID: 7166460104977136403}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &348314823 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1394035107411395215, guid: 752d583c8e5f540c6bb26c79ee98f372, type: 3}
@@ -1588,6 +1602,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1332583567440754291, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: dialogueRunner
+      value: 
+      objectReference: {fileID: 462507613}
     - target: {fileID: 2153487869180905762, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: m_Name
       value: Environment
@@ -1638,6 +1656,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+--- !u!1 &486199725 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4584223599780551690, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+  m_PrefabInstance: {fileID: 486199724}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &486199726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486199725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff524400d93a2a44a6c4a106f7a9c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueRunner: {fileID: 462507613}
+  doorDialogueNode: GenericDoorInteract
 --- !u!1001 &509200856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4232,6 +4269,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1363089114 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4584223600227497396, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+  m_PrefabInstance: {fileID: 486199724}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1363089115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363089114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff524400d93a2a44a6c4a106f7a9c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueRunner: {fileID: 462507613}
+  doorDialogueNode: GenericDoorInteract
 --- !u!1 &1386904280
 GameObject:
   m_ObjectHideFlags: 0
@@ -4364,6 +4420,44 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1 &1439820159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4584223598803046837, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+  m_PrefabInstance: {fileID: 486199724}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1439820160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439820159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff524400d93a2a44a6c4a106f7a9c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueRunner: {fileID: 462507613}
+  doorDialogueNode: GenericDoorInteract
+--- !u!1 &1450787842 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4584223599242327463, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+  m_PrefabInstance: {fileID: 486199724}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1450787843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450787842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff524400d93a2a44a6c4a106f7a9c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueRunner: {fileID: 462507613}
+  doorDialogueNode: GenericDoorInteract
 --- !u!1001 &1464870913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4457,6 +4551,25 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6676c85d0f885364290275d1e5992554, type: 3}
+--- !u!1 &1470169041 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4584223599311915826, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+  m_PrefabInstance: {fileID: 486199724}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1470169042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470169041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff524400d93a2a44a6c4a106f7a9c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueRunner: {fileID: 462507613}
+  doorDialogueNode: GenericDoorInteract
 --- !u!1001 &1540809939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5393,85 +5506,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.192527, y: 5.12}
   m_EdgeRadius: 0
---- !u!1 &1906874735
+--- !u!1 &1893207666 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4584223599927422634, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+  m_PrefabInstance: {fileID: 486199724}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1906874736}
-  - component: {fileID: 1906874738}
-  - component: {fileID: 1906874737}
-  m_Layer: 5
-  m_Name: FloorDescription
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1906874736
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1906874735}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 332936494}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -788, y: 256}
-  m_SizeDelta: {x: 300, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1906874737
+--- !u!114 &1893207667
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1906874735}
+  m_GameObject: {fileID: 1893207666}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ff524400d93a2a44a6c4a106f7a9c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.8962264, g: 0.8931764, b: 0.7327637, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 8a2b9e2a607dd2143b58c44bc32410b4, type: 3}
-    m_FontSize: 40
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: floor 2
---- !u!222 &1906874738
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1906874735}
-  m_CullTransparentMesh: 1
+  dialogueRunner: {fileID: 462507613}
+  doorDialogueNode: GenericDoorInteract
 --- !u!1 &1914402436
 GameObject:
   m_ObjectHideFlags: 0
@@ -6648,10 +6701,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4885213717907794818, guid: a988072cc8ad94c23bce245f482a7423, type: 3}
-      propertyPath: startAutomatically
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5099572326391893476, guid: a988072cc8ad94c23bce245f482a7423, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -6659,10 +6708,6 @@ PrefabInstance:
     - target: {fileID: 7166460104835528009, guid: a988072cc8ad94c23bce245f482a7423, type: 3}
       propertyPath: m_Name
       value: Dialogue System
-      objectReference: {fileID: 0}
-    - target: {fileID: 7166460104835528009, guid: a988072cc8ad94c23bce245f482a7423, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8422802741742080890, guid: a988072cc8ad94c23bce245f482a7423, type: 3}
       propertyPath: m_RootOrder
