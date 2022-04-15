@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region GameObject_components
-    //Animator anim;
+    public Animator anim;
+    private SpriteRenderer sr;
     GameState gameState;
     GameManager gm;
     GameObject gameManager;
@@ -58,12 +59,13 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        sr = GetComponent<SpriteRenderer>();
         //>>>>>NOTE: In inspector, make sure "Order in Sorting Layer" = 1
         defaultMoveSpeed = movespeed;
         PlayerRB = GetComponent<Rigidbody2D>();
         floorText = GameObject.Find("FloorDescription").GetComponent<UnityEngine.UI.Text>();
         collider = GetComponent<BoxCollider2D>();
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
 
         Camera.main.orthographicSize = defaultCameraSize;
     }
@@ -90,6 +92,7 @@ public class PlayerController : MonoBehaviour
         } else
         {
             PlayerRB.velocity = Vector2.zero;
+            anim.SetFloat("Speed", 0);
         }
         
         if (Input.GetKeyDown(KeyCode.D))
@@ -97,10 +100,14 @@ public class PlayerController : MonoBehaviour
             NightTransition(); //<< Are we still using this?
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space))
         {
             DoTeleport();
+        } else if(Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            DownTeleport();
         }
+
     }
     #endregion
 
@@ -124,7 +131,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = doorTeleporter.GetComponent<Teleporter>().GetDestination().position;
 
-            if (doorTeleporter.transform.name == "Apt Door") //Teleport into main character's room
+            if (doorTeleporter.transform.name == "Apt Door206") //Teleport into main character's room
             {
                 SetRoomVariables(206);
             }
@@ -142,16 +149,24 @@ public class PlayerController : MonoBehaviour
 
         if (stairTeleporter != null)
         {
-            if (stairTeleporter.transform.name.Contains("up"))
+            Transform destination = stairTeleporter.GetComponent<StairTeleporter>().GetUpDestination();
+            if (destination != null)
             {
                 gameState.floor += 1;
                 floorText.text = "Floor " + gameState.floor.ToString();
-
+                transform.position = destination.position;
             }
+            
+        }
+    }
 
-            else
+    public void DownTeleport()
+    {
+        if (stairTeleporter != null)
+        {
+            Transform destination = stairTeleporter.GetComponent<StairTeleporter>().GetDownDestination();
+            if (destination != null)
             {
-
                 gameState.floor -= 1;
                 if (gameState.floor == 0)
                 {
@@ -161,18 +176,16 @@ public class PlayerController : MonoBehaviour
                 {
                     floorText.text = "Floor " + gameState.floor.ToString();
                 }
-
-
+                transform.position = destination.position;
             }
-            transform.position = stairTeleporter.GetComponent<Teleporter>().GetDestination().position;
+            
         }
     }
-
     public void ForcedTeleport()
     {
         if (forcedTeleporter != null)
         {
-            if (forcedTeleporter.transform.name == "RoomDoor302")
+            if (forcedTeleporter.transform.name == "Door302-FortuneTeller")
             {
                 SetRoomVariables(302);
             } else if (forcedTeleporter.transform.name == "HallwayDoor302")
@@ -215,24 +228,32 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("input working right?");
             PlayerRB.velocity = Vector2.right * movespeed;
             currDirection = Vector2.right;
-
+            anim.SetFloat("Speed", 1);
+            sr.flipX = true;
         }
         else if (x_input < 0)
         {
+            anim.SetFloat("Speed", 1);
             PlayerRB.velocity = Vector2.left * movespeed;
             currDirection = Vector2.left;
+            sr.flipX = false;
         } else if (y_input > 0 && move2D)  //&& SceneManager.GetActiveScene().name != "HallwayLayout")
         {
             PlayerRB.velocity = Vector2.up * movespeed;
             currDirection = Vector2.up;
+            anim.SetFloat("Speed", 1);
+            sr.flipX = true;
         }
         else if (y_input < 0 && move2D)  //&& SceneManager.GetActiveScene().name != "HallwayLayout")
         {
+            anim.SetFloat("Speed", 1);
             PlayerRB.velocity = Vector2.down * movespeed;
             currDirection = Vector2.down;
+            sr.flipX = true;
         }
         else
         {
+            anim.SetFloat("Speed", 0);
             PlayerRB.velocity = Vector2.zero;
             //anim.SetBool("Moving", false);
         }

@@ -28,7 +28,7 @@ public class BreakerTaskScript : AbstractTask
         taskName = "Power's out";
 
         // turn the lights out!
-        lights = GameObject.Find("Lights");
+        lights = GameObject.Find("HallwayLights");
 
         foreach (Transform child in lights.transform)
         {

@@ -42,6 +42,7 @@ public class Door : MonoBehaviour
 
     void OnMouseDown()
     {
+        Debug.Log("Door");
         if (doorManager.InClickRange(transform.position))
         {
             

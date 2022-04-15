@@ -10,6 +10,7 @@ public class DogScript : MonoBehaviour
      * 2. can you feed the dog?
      * 3. ADD acceleration/decceleration to dog movement
      * 4. Add in dialogue for dog door, when dog is inside!
+     * 5. Change follow if holding food to follow if fed food
      */
 
     float movespeed;
@@ -20,7 +21,7 @@ public class DogScript : MonoBehaviour
     public bool holdingFood = false; //Player is holding food
     private float timer = 2;
     bool inRoom = false;
-    int startDay = 2; //4; <- CHANGE LATER when moving into game.
+    int startDay = 1; //Change later 
     int endDay = 5;
     #endregion
 
@@ -33,13 +34,16 @@ public class DogScript : MonoBehaviour
 
     void Start()
     {
-        
-        player = GameObject.Find("Player").GetComponent<PlayerController>();
-        movespeed = player.movespeed + 0.2f;
         gameState = GameObject.FindWithTag("GameManager").GetComponent<GameState>();
-        dog = GameObject.Find("DogNPC");
-        dogRB = dog.GetComponent<Rigidbody2D>();
-        doorManager = GameObject.Find("DoorManager").GetComponent<DoorManager>();
+        if (gameState.day >= startDay && gameState.day <= endDay)
+        {
+            player = GameObject.Find("Player").GetComponent<PlayerController>();
+            movespeed = player.movespeed + 0.2f;
+            
+            dog = GameObject.Find("DogNPC");
+            dogRB = dog.GetComponent<Rigidbody2D>();
+            doorManager = GameObject.Find("DoorManager").GetComponent<DoorManager>();
+        }
     }
 
     void Update()

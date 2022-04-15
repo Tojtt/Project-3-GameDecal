@@ -35,7 +35,7 @@ public class MadamFace : MonoBehaviour
 
     #region Game_Variables
     int roomNum = 302;
-    int firstDay = 2;
+    int firstDay = 1;
     int emptyDay = 4;
     int lastDay = 6;
 

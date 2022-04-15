@@ -21,14 +21,9 @@ public class InventoryManager : MonoBehaviour
 
     // list of ItemSlots, which hold the item and the amount
     public Dictionary<int, GameObject> itemSlotList = new Dictionary<int, GameObject>();
-
     public Dictionary<int, Item> itemList = new Dictionary<int, Item>(); //ItemID: Item
-
-    //public Dictionary<int, int> tempItemHolder = new Dictionary<int, int>(); <<don't need anymore since for counts
-    // max size of list
     public int maxListSize = 3;
-    // index of the item that is currently selected by the Player
-    //public int cur = 0;
+
     #endregion
 
     #region Selection_Variables
@@ -42,6 +37,15 @@ public class InventoryManager : MonoBehaviour
     public Transform grid;
     #endregion
 
+    #region UI_variables
+    Canvas canvas;
+    float H;
+    float W;
+
+    Vector3 spawnPosition;
+    Vector3 spawnSpacing;
+    #endregion
+
     #region Referenced_Variables
     DogScript dog;
     #endregion 
@@ -50,11 +54,22 @@ public class InventoryManager : MonoBehaviour
     public void Start()
     {
         invM = this;
-        dog = GameObject.Find("Door 306").GetComponent<DogScript>();
+        dog = GameObject.Find("Door 306-Dog").GetComponent<DogScript>();
+        canvas = FindObjectOfType<Canvas>();
+
+        H= canvas.GetComponent<RectTransform>().rect.height;
+        W = canvas.GetComponent<RectTransform>().rect.width;
+
+        spawnPosition = new Vector3(H / 8, W / 8, 0);
+        spawnSpacing = new Vector3(W / 20, 0, 0);
     }
     #endregion
 
     #region Inventory_Functions
+    public void RedrawItems()
+    {
+
+    }
 
     /* Adds amount number of itemID to the list. */
     public void AddItem(Item newItem)
@@ -69,7 +84,9 @@ public class InventoryManager : MonoBehaviour
             itemList[itemID] = newItem;
 
             //Creating new ItemSlot
-            GameObject slotObject = Instantiate(itemHolderPrefab, grid, false);
+            //GameObject slotObject = Instantiate(itemHolderPrefab, grid, false);
+            Vector3 newSpawnPosition = spawnPosition + (itemList.Count - 1) * spawnSpacing;
+            GameObject slotObject = Instantiate(itemHolderPrefab, newSpawnPosition, Quaternion.identity, grid);// false);
             ItemSlot itemSlot = slotObject.GetComponent<ItemSlot>();
             itemSlot.item = newItem;
             
