@@ -18,6 +18,24 @@ Stalker: ...
     Stalker: ...no.
 <<endif>>
 ===
+title: Tutorial1
+---
+Person: Hi, are you new around here?
+-> Yeah, just moving in now!
+    <<set $friendResponse to 0>>
+-> ...no
+    <<set $friendResponse to 1>>
+
+<<if $friendResponse == 0>>
+    Person: Let me give you some pointers!
+    -> Sounds good
+    Person: Walk around using A and D. You can interact with objects by clicking on them.
+    -> Cool
+    Person: Finally, use spacebar to enter other rooms or descend stairs. Now, time for you to do the tasks the landlord wants you to do!
+<<else>>
+    Person: Ok, see you.
+<<endif>>
+===
 title: StalkerDone
 ---
 Stalker: I'm done talking with you.
