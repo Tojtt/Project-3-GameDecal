@@ -16,7 +16,7 @@ public class DinnerItemScript : MonoBehaviour
 
     void OnMouseDown()
     {
-
+        Debug.Log("Dinner item clicked");
         MakeDinnerTask dinnerTask = task.GetComponent<MakeDinnerTask>();
         if (dinnerTask.stage == this.stage)
         {
