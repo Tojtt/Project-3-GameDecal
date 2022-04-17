@@ -17,6 +17,10 @@ public class PlayerController : MonoBehaviour
     bool move2D = false;
     #endregion
 
+    #region Teleport_variables
+    float[] hallTeleportYs = new float[] { -27.8f, -15.8f, -1f, 13.4f, 1f }; //0(basement), f1, f2, f3, 4(outside)
+
+    #endregion
     #region Position_variables
 
     public Vector2 homePosition = new Vector2(30f, 3f);
@@ -129,15 +133,16 @@ public class PlayerController : MonoBehaviour
     {
         if (doorTeleporter != null)
         {
-            transform.position = doorTeleporter.GetComponent<Teleporter>().GetDestination().position;
-
+            Transform destination = doorTeleporter.GetComponent<Teleporter>().GetDestination();
             if (doorTeleporter.transform.name == "Apt Door206") //Teleport into main character's room
             {
                 SetRoomVariables(206);
+                transform.position = destination.position;
             }
             else if (doorTeleporter.transform.name == "HallwayDoor206") //Teleport from mainCharacter's room into Hallway
             {
                 SetHallwayVariables();
+                transform.position = GetTeleportPosition(destination);
             }
             else if (doorTeleporter.transform.name == "TV Room")
             {
@@ -149,15 +154,23 @@ public class PlayerController : MonoBehaviour
 
         if (stairTeleporter != null)
         {
+            //Vector3 newPosition = doorTeleporter.GetComponent<Teleporter>().GetDestination().position;
+            //newPosition.y = hallTeleportYs[gameState.floor];
             Transform destination = stairTeleporter.GetComponent<StairTeleporter>().GetUpDestination();
             if (destination != null)
             {
                 gameState.floor += 1;
                 floorText.text = "Floor " + gameState.floor.ToString();
-                transform.position = destination.position;
+                transform.position = GetTeleportPosition(destination);//destination.position;
             }
             
         }
+    }
+    Vector3 GetTeleportPosition(Transform destination)
+    {
+        Vector3 newPosition = destination.position;
+        newPosition.y = hallTeleportYs[gameState.floor];
+        return newPosition;
     }
 
     public void DownTeleport()
@@ -176,7 +189,8 @@ public class PlayerController : MonoBehaviour
                 {
                     floorText.text = "Floor " + gameState.floor.ToString();
                 }
-                transform.position = destination.position;
+                transform.position = GetTeleportPosition(destination);
+                //transform.position = destination.position;
             }
             
         }
@@ -185,15 +199,17 @@ public class PlayerController : MonoBehaviour
     {
         if (forcedTeleporter != null)
         {
+            Transform destination = forcedTeleporter.GetComponent<Teleporter>().GetDestination();
             if (forcedTeleporter.transform.name == "Door302-FortuneTeller")
             {
                 SetRoomVariables(302);
+                transform.position = destination.position;
             } else if (forcedTeleporter.transform.name == "HallwayDoor302")
             {
                 SetHallwayVariables();
+                transform.position = GetTeleportPosition(destination);
             }
-
-            transform.position = forcedTeleporter.GetComponent<Teleporter>().GetDestination().position;
+            
         }
     }
     

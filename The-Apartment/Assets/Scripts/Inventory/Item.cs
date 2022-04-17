@@ -17,37 +17,4 @@ public class Item : MonoBehaviour
     {
         state = newState;
     }
-    //    #region Unity_Functions
-    //    void Awake()
-    //    {
-    //        if (collectible)
-    //        {
-    //            inventory = GameObject.FindWithTag("Inventory").GetComponent<InventoryManager>();
-    //        }   
-    //    }
-    //    #endregion
-
-    //    #region Interact_Functions
-    //    void OnMouseDown()
-    //    {
-    //        if (collectible)
-    //        {
-    //            inventory.AddItem(thi, 1);
-    //        }
-    //    }
-    //    #endregion
 }
-
-
-/* Items
- * 
- * GasTank
- * 
- * FireExtinguisher
- * 
- * 
- * 
- * 
- * 
- * 
- */
