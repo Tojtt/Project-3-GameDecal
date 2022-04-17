@@ -17,7 +17,9 @@ public class DinnerItemScript : MonoBehaviour
     void OnMouseDown()
     {
         Debug.Log("Dinner item clicked");
+      
         MakeDinnerTask dinnerTask = task.GetComponent<MakeDinnerTask>();
+        Debug.Log(dinnerTask.stage + " " + this.stage);
         if (dinnerTask.stage == this.stage)
         {
             dinnerTask.incrementProgress();

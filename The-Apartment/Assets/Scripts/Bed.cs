@@ -20,17 +20,21 @@ public class Bed : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("Bed clicked");
-        Debug.Log(GameState.Instance.dayFinished);
         if (GameState.Instance.dayFinished)
         {
             if (GameState.Instance.watchedTV)
             {
                 // can progress to next day
                 //GameState.Instance.nextDay();
+
+                // special case for Day 2 to trigger Friend scene
+                if (GameState.Instance.day == 2)
+                {
+                    GameState.Instance.RunFriendDinner();
+                }
+
                 GameState.Instance.day += 1;
                 nextDay = "Day" + GameState.Instance.day + "Scene";
-                Debug.Log(GameState.Instance.day);
                 GameState.Instance.PrepareNextDay(GameState.Instance.day);
                 GameState.Instance.watchedTV = false;
                 StartCoroutine(sceneTransition.LoadScene(nextDay));

@@ -29,6 +29,7 @@ public class MakeDinnerTask : AbstractTask
         description = "Make dinner for your friend!\n" + getStageDesc(stage);
         totalStages = 4;
         taskName = "Dinner";
+        
 
     }
 
@@ -43,6 +44,10 @@ public class MakeDinnerTask : AbstractTask
         description = "Make dinner for your friend!\n" + getStageDesc(stage);
         if (stage == totalStages)
         {
+
+            // run the Dinner cutscene before setting as complete
+            GameState.Instance.RunFriendDinner();
+
             isComplete = true; 
         }
     }
@@ -80,9 +85,10 @@ public class MakeDinnerTask : AbstractTask
                 return "Put the pizza in the oven";
             default:
                 // code block
-                return "Error: Stage not found";
+                return "Dinner is finished!";
         }
     }
 
-    
+
+
 }

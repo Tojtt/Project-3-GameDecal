@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Yarn.Unity;
 
 public class GameState : MonoBehaviour
 {
@@ -47,6 +48,8 @@ public class GameState : MonoBehaviour
     public bool watchedTV;
     //Whether player is frozen
     public bool freezePlayer = false;
+    // dialogue runner object
+    public DialogueRunner dialogue;
 
     public float moneyEarned = 0;
     #endregion
@@ -177,6 +180,23 @@ public class GameState : MonoBehaviour
     public bool isDayFinished()
     {
         return dayFinished;
+    }
+    #endregion
+
+    #region Day2_Functions 
+    public void RunFriendDinner()
+    {
+        // Friend walks in - active 
+
+        Debug.Log("Run friend dinner cutscene");
+        // Dialogue runs
+        if (!dialogue.IsDialogueRunning)
+        {
+            dialogue.StartDialogue("friendCutscene");
+        }
+        
+
+        // Cutscene ends 
     }
     #endregion
 

@@ -12,9 +12,10 @@ ScriptedImporter:
   - {fileID: 6391573757903218779, guid: ada0a5c1efd8246dfb4f125cecfabeee, type: 3}
   - {fileID: 6391573757903218779, guid: 4f0272fd9ff1a45e1b5098f8adba4e8f, type: 3}
   - {fileID: 6391573757903218779, guid: 639e30423c4af434a9b0b39765e219bd, type: 3}
+  - {fileID: 6391573757903218779, guid: 2c3cc5d6828634e2da7a6b1610443dab, type: 3}
   compileErrors: []
   serializedDeclarations:
-  - name: $response
+  - name: $response200
     typeName: Number
     defaultValueBool: 0
     defaultValueNumber: 0
@@ -38,6 +39,14 @@ ScriptedImporter:
     description: DoorInteract.yarn, node DoorDone, line 1
     isImplicit: 1
     sourceYarnAsset: {fileID: 6391573757903218779, guid: ada0a5c1efd8246dfb4f125cecfabeee, type: 3}
+  - name: $randomCall
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: DoorInteract.yarn, node RandomPhoneTalk, line 2
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: ada0a5c1efd8246dfb4f125cecfabeee, type: 3}
   - name: $responseDog
     typeName: Number
     defaultValueBool: 0
@@ -52,6 +61,14 @@ ScriptedImporter:
     defaultValueNumber: 0
     defaultValueString: 
     description: Start.yarn, node Stalker, line 2
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 4f0272fd9ff1a45e1b5098f8adba4e8f, type: 3}
+  - name: $friendResponse
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Start.yarn, node Tutorial1, line 2
     isImplicit: 1
     sourceYarnAsset: {fileID: 6391573757903218779, guid: 4f0272fd9ff1a45e1b5098f8adba4e8f, type: 3}
   - name: $temp
@@ -70,6 +87,30 @@ ScriptedImporter:
     description: Start.yarn, node TVMessages, line 1
     isImplicit: 1
     sourceYarnAsset: {fileID: 6391573757903218779, guid: 4f0272fd9ff1a45e1b5098f8adba4e8f, type: 3}
+  - name: $response
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: FortuneTeller.yarn, node CrackOpenDoor, line 3
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 639e30423c4af434a9b0b39765e219bd, type: 3}
+  - name: $done
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: FortuneTeller.yarn, node CrackOpenDoor, line 26
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 639e30423c4af434a9b0b39765e219bd, type: 3}
+  - name: $timesKnocked
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: FortuneTeller.yarn, node KnockOnDoor, line 1
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 639e30423c4af434a9b0b39765e219bd, type: 3}
   defaultLanguage: en-US
   languagesToSourceAssets: []
   useAddressableAssets: 0
