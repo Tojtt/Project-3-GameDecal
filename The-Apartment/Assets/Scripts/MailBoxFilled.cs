@@ -10,14 +10,19 @@ public class MailBoxFilled : MonoBehaviour
     BoxCollider2D itemCollider;
     bool opened = false;
     bool itemTaken = false;
-    bool mouseLifted = false;
     InventoryManager invM;
     GameState gameState;
+    #endregion
+
+    #region Appearance_variables
+    Renderer renderer;
     #endregion
 
     #region Unity_Functions
     void Awake()
     {
+        renderer = this.GetComponent<Renderer>();
+        renderer.enabled = false;
         item.SetActive(false);
         invM = GameObject.FindWithTag("Inventory").GetComponent<InventoryManager>();
         gameState = GameObject.FindWithTag("GameManager").GetComponent<GameState>();
@@ -25,7 +30,6 @@ public class MailBoxFilled : MonoBehaviour
 
     void OnMouseDown()
     {
-        mouseLifted = false;
         if (!opened)
         {
             OpenMailBox();
@@ -39,24 +43,16 @@ public class MailBoxFilled : MonoBehaviour
         }
     }
 
-    void OnMouseUp()
-    {
-        mouseLifted = true;
-        if (opened && !itemTaken)
-        {
-            item.SetActive(true);
-        }
-        if (!opened && !itemTaken)
-        {
-            item.SetActive(false);
-        }
-    }
     #endregion
 
     void OpenMailBox()
     {
+        renderer.enabled = true;
+        if (!itemTaken)
+        {
+            item.SetActive(true);
+        }
         
-        //Change sprite appearance
         opened = true;
         Debug.Log("Opened mailbox");
     }
@@ -80,9 +76,14 @@ public class MailBoxFilled : MonoBehaviour
     }
     void CloseMailBox()
     {
-        
-        //Change sprite appearance or add coroutine
+        renderer.enabled = false;
+        ////Change sprite appearance or add coroutine
+        //Color color = renderer.material.color;
+        //color.a = 0;  //Make open sprite invisible
+        //renderer.material.color = color;
         opened = false;
         Debug.Log("Closed mailbox");
     }
+
+    //LATER: ADD COROUTINE TO MAILBOX, so opening/closing takes time
 }
