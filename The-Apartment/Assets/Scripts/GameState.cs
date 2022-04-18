@@ -102,6 +102,7 @@ public class GameState : MonoBehaviour
         {
             ResetDay6();
         }
+        friend.SetActive(false);
     }
 
     void Update()
