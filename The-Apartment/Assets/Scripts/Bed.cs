@@ -10,16 +10,21 @@ public class Bed : MonoBehaviour
     public DialogueRunner dialogue;
     public GameState gs;
     public string nextDay;
+    public bool disabled;
     #endregion
 
     public void Start()
     {
         dialogue = FindObjectOfType<DialogueRunner>();
         sceneTransition = FindObjectOfType<SceneTransitions>();
+        disabled = false;
     }
 
     private void OnMouseDown()
     {
+        // don't allow user to skip day if disabled - for cutscenes involving the room
+        if (disabled) return;
+
         if (GameState.Instance.dayFinished)
         {
             if (GameState.Instance.watchedTV)

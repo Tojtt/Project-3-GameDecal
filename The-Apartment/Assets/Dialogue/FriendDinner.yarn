@@ -7,4 +7,9 @@ title: friendCutscene
 Kenn: Thanks for making dinner!
 Kenn: If I'm being honest...
 Kenn: I'm not so sure I like this apartment.
+    -> Why would you say that please I just moved here
+        Kenn: Well, I...
+        Kenn: There's just strange stuff happening here, that's all.
+    -> Why's that?
+        Kenn: 
 ===

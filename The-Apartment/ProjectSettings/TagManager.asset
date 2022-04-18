@@ -21,6 +21,7 @@ TagManager:
   - MailboxCollectible
   - homeTeleporter
   - Door
+  - Friend
   layers:
   - Default
   - TransparentFX

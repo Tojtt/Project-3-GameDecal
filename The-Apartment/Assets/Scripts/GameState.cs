@@ -50,6 +50,8 @@ public class GameState : MonoBehaviour
     public bool freezePlayer = false;
     // dialogue runner object
     public DialogueRunner dialogue;
+    // friend gameobject
+    public GameObject friend;
 
     public float moneyEarned = 0;
     #endregion
@@ -186,7 +188,9 @@ public class GameState : MonoBehaviour
     #region Day2_Functions 
     public void RunFriendDinner()
     {
-        // Friend walks in - active 
+        // Friend walks in - active
+        FindObjectOfType<Bed>().disabled = true;
+        friend.SetActive(true);
 
         Debug.Log("Run friend dinner cutscene");
         // Dialogue runs
