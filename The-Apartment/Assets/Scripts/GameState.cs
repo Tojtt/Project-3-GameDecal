@@ -52,6 +52,8 @@ public class GameState : MonoBehaviour
     public DialogueRunner dialogue;
     // friend gameobject
     public GameObject friend;
+    // denotes whether the entrance is blocked - should be blocked Day 4 and onward
+    public bool entranceBlocked = false;
 
     public float moneyEarned = 0;
     #endregion
