@@ -13,6 +13,10 @@ public class YarnInteractable : MonoBehaviour
     private bool canInteract;
     private bool isCurConvo;
     public int timesSpoken;
+    // denotes whether the original dialogue is finished 
+    public bool finished;
+    // denotes whether the character should run a finished dilaogue
+    public bool canFinish = false;
 
     public void Start()
     {
@@ -20,6 +24,7 @@ public class YarnInteractable : MonoBehaviour
         lineview = FindObjectOfType<LineView>();
         dialogueRunner.onDialogueComplete.AddListener(EndConversation);
         canInteract = true;
+        finished = false;
         timesSpoken = 0;
 
     }
@@ -35,21 +40,24 @@ public class YarnInteractable : MonoBehaviour
     // then we need a function to tell Yarn Spinner to start from {specifiedNodeName}
     public string conversationStartNode;
 
+    // node that plays once, then disables talking to the character
     public string disableNode;
 
+    // node that repeats after the main dialogue has ended 
+    public string repeatNode;
+
     #region Yarn_Functions 
-    private void StartConversation()
+    public void StartConversation()
     {
         isCurConvo = true;
-        // small test in disabling character dialogue
-        if (timesSpoken == 2)
+        if (canFinish && finished)
         {
-            //dialogueRunner.StartDialogue(disableNode);
+            dialogueRunner.StartDialogue(repeatNode);
+            return;
         }
 
         dialogueRunner.StartDialogue(conversationStartNode);
-        timesSpoken++;
-        Debug.Log("Hi");
+        finished = true;
     }
 
     private void EndConversation()

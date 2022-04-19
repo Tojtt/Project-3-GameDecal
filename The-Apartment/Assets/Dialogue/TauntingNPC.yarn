@@ -1,0 +1,28 @@
+﻿title: TauntingNPC
+---
+Stranger: Hey.
+Stranger: You, over there. Let me talk to you.
+Stranger: I heard your friend went missing.
+Stranger: What happened to him?
+
+-> I don't know. He just disappeared.
+    Stranger: Did he now?
+    Stranger: That's such a shame! A real shame!
+    -> You don't seem that upset...
+        Stranger: No, no, no..
+        Stranger: ...
+        Stranger: He will be missed, surely.
+    -> Yeah, it sure is.
+        Stranger: It sure is!
+        Stranger: You're not too bright, are you?
+-> Can you not talk to me?
+    Stranger: HAHAHAHAHAHAHA!!!!
+    Stranger: You should think about being nicer to me.
+    Stranger: Whatever fate your friend met...
+    Stranger: You'd want to make sure the same thing doesn't happen to you.
+===
+title: TauntRepeat
+---
+Stranger: "Kenn", was it?
+Stranger: I'm sure he's living nicely on a farm upstate!
+===

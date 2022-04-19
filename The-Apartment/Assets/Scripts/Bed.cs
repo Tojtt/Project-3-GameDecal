@@ -39,6 +39,11 @@ public class Bed : MonoBehaviour
                 }
 
                 GameState.Instance.day += 1;
+                // special case for Day 4 and onward for entrance blocked
+                if (GameState.Instance.day >= 4)
+                {
+                    GameState.Instance.entranceBlocked = true;
+                }
                 nextDay = "Day" + GameState.Instance.day + "Scene";
                 GameState.Instance.PrepareNextDay(GameState.Instance.day);
                 GameState.Instance.watchedTV = false;

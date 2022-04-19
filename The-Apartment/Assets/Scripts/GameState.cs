@@ -52,6 +52,8 @@ public class GameState : MonoBehaviour
     public DialogueRunner dialogue;
     // friend gameobject
     public GameObject friend;
+    // denotes whether the entrance is blocked - should be blocked Day 4 and onward
+    public bool entranceBlocked = false;
 
     public float moneyEarned = 0;
     #endregion
@@ -62,8 +64,13 @@ public class GameState : MonoBehaviour
     public int roomNum = -1;
     #endregion
 
-   #region Day6_Variables
-   public bool pouredGas;
+    #region Day2_Cutscene_Variables
+    public float speed = 1.0f; // speed of friend moving
+    public Transform target; // location where friend will move, used for cutscenes 
+    #endregion 
+
+    #region Day6_Variables
+    public bool pouredGas;
    bool entranceChainedUp;
    bool fireExtinguisherStolen;
    bool fireStarted;
@@ -206,14 +213,25 @@ public class GameState : MonoBehaviour
         friend.SetActive(true);
 
         Debug.Log("Run friend dinner cutscene");
+        StartCoroutine(MoveFriend());
         // Dialogue runs
         if (!dialogue.IsDialogueRunning)
         {
             dialogue.StartDialogue("friendCutscene");
         }
-        
 
         // Cutscene ends 
+    }
+
+    public IEnumerator MoveFriend()
+    {
+        float step = speed * Time.deltaTime;
+        target.position = new Vector3(32.07f, 5.38f);
+        friend.transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+
+        yield return new WaitForSeconds(0.5f);
+        friend.SetActive(false);
+
     }
     #endregion
 

@@ -1,0 +1,12 @@
+﻿title: DoorBlockNPC
+---
+Stranger: You can't cross.
+-> Why not?
+    Stranger: Construction problems. You can't cross.
+    Stranger: I'm sorry...
+    Stranger: Things have already been set in motion.
+===
+title: DoorBlockRepeat
+---
+Stranger: I'm not moving. Get lost!
+===
