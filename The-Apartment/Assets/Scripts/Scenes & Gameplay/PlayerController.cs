@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     #region Movement_variables
     public float movespeed;
     float defaultMoveSpeed;
-    float roomMoveSpeed = 2.5f;
+    float roomMoveSpeed = 2f;
     float x_input;
     float y_input;
     Vector2 currDirection;

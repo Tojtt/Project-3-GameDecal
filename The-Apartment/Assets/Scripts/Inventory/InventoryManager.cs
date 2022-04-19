@@ -86,7 +86,8 @@ public class InventoryManager : MonoBehaviour
             //Creating new ItemSlot
             //GameObject slotObject = Instantiate(itemHolderPrefab, grid, false);
             Vector3 newSpawnPosition = spawnPosition + (itemList.Count - 1) * spawnSpacing;
-            GameObject slotObject = Instantiate(itemHolderPrefab, newSpawnPosition, Quaternion.identity, grid);// false);
+            GameObject slotObject = Instantiate(itemHolderPrefab, newSpawnPosition, Quaternion.identity);// false);
+            slotObject.transform.SetParent(grid);
             ItemSlot itemSlot = slotObject.GetComponent<ItemSlot>();
             itemSlot.item = newItem;
             

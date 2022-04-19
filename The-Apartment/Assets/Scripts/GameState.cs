@@ -102,18 +102,30 @@ public class GameState : MonoBehaviour
         {
             ResetDay6();
         }
-        friend.SetActive(false);
+        if (day < 4) //No need for friend after day 3
+        {
+            friend.SetActive(false);
+        }
     }
 
     void Update()
     {
-        if (false) //End of day timer
+        if (day == 6)
         {
-            //Ending 0 Cutscene
-        } else if (false) //End of fire timer
-        {
-            //Ending 5 cutscene
+            if (true)
+            {
+
+            }
+            else if (false) //End of day timer
+            {
+                //Ending 0 Cutscene
+            }
+            else if (false) //End of fire timer
+            {
+                //Ending 5 cutscene
+            }
         }
+        
     }
     #endregion
 
@@ -209,7 +221,6 @@ public class GameState : MonoBehaviour
     void ResetDay6()
     {
         pouredGas = false;
-        entranceChainedUp = false;
         fireExtinguisherStolen = false;
         fireStarted = false;
         noGasAttempts = 0;
@@ -220,14 +231,8 @@ public class GameState : MonoBehaviour
         //Assuming we are outside
         if (fireStarted)
         {
-            if (!entranceChainedUp) //Ending 4
-            {
-                //Ending 4 cutscene
-            }
-            else //Ending 1 cutscene
-            {
-                //Ending 1 cutscene
-            }
+            //Ending 1 cutscene
+            
         }
         
     }
@@ -257,14 +262,13 @@ public class GameState : MonoBehaviour
     }
 
     /**List of Day 6 Endings:
-    Ending 0) Still in building by the end of dayTimer ->die
+    Ending 0) Still in building/not started fire by the end of dayTimer ->die
     Ending 1) Success -> All tasks completed
     Ending 2) Did not steal fire extinguisher, but started fire
     Ending 3) Tried to start fire 3 times without gasoline
-    Ending 4) Started fire but ending not chained up 
-    Ending 5) Started fire but timer ran out and you did not escape by end of fireTimer -> burn
+    Ending 4) Started fire but timer ran out and you did not escape by end of fireTimer -> burn
     //Add on
-    Ending 6) You spill gas in front of NPC -> they like what u doing
+    Ending 5) You spill gas in front of NPC -> they like what u doing
     **/
     #endregion
 }
