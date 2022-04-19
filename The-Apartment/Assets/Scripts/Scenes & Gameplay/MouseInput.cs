@@ -6,6 +6,9 @@ using UnityEngine;
 public class MouseInput : MonoBehaviour
 {
     public InventoryManager invM;
+
+    GasManager gasManager;
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -69,8 +72,19 @@ public class MouseInput : MonoBehaviour
         if (invM.GetSelectedID() == 1) //Gas Tank
         {
             Debug.Log(invM.GetSelectedID());
-            GasManager gasManager = GameObject.FindWithTag("GasManager").GetComponent<GasManager>();
+            if (gasManager == null)
+            {
+                gasManager = GameObject.FindWithTag("GasManager").GetComponent<GasManager>();
+            }
             gasManager.BeginSpilling();
+
+        } else if (invM.GetSelectedID() == 3) //Lighter
+        {
+            if (gasManager == null)
+            {
+                gasManager = GameObject.FindWithTag("GasManager").GetComponent<GasManager>();
+            }
+            gasManager.StartFire(true);
         }
     }
     #endregion

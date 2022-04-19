@@ -71,11 +71,10 @@ public class GameState : MonoBehaviour
 
     #region Day6_Variables
     public bool pouredGas;
-   bool entranceChainedUp;
-   bool fireExtinguisherStolen;
-   bool fireStarted;
+   public bool fireExtinguisherStolen;
+   public bool fireStarted;
 
-   int noGasAttempts;
+   int fireFailedAttempts;
     #endregion
 
     #region TaskCompletion_Variables
@@ -241,7 +240,7 @@ public class GameState : MonoBehaviour
         pouredGas = false;
         fireExtinguisherStolen = false;
         fireStarted = false;
-        noGasAttempts = 0;
+        fireFailedAttempts = 0;
     }
 
     void EndDay6() //<<<<<<Call this function when reached outside
@@ -259,13 +258,13 @@ public class GameState : MonoBehaviour
     {
         if (true) //Not near gasoline spill
         {
-            if (noGasAttempts == 3)
+            if (fireFailedAttempts == 3)
             {
                 //Ending 3 Cutscene
             } else
             {
                 //Fire sizzles out cutscene
-                noGasAttempts++;
+                fireFailedAttempts++;
             }
         } else if (!fireExtinguisherStolen) //Ending 2
         {

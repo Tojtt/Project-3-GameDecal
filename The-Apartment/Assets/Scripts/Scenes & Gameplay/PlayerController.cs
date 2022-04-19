@@ -147,6 +147,8 @@ public class PlayerController : MonoBehaviour
             else if (doorTeleporter.transform.name == "TV Room")
             {
                 gameState.watchedTV = true;
+            } else { 
+                transform.position = destination.position;
             }
 
             StartCoroutine("Teleport");

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7264407022382309758}
   - component: {fileID: 7264407022382309745}
+  - component: {fileID: 7070762452807311876}
   m_Layer: 0
   m_Name: SpilledGas
   m_TagString: Untagged
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 1312223797
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a4f934653ff4c2e4d86a9a4baa57d5c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,3 +84,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7070762452807311876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7264407022382309744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ce08d437e6be348980ddef05e1654b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: a4f934653ff4c2e4d86a9a4baa57d5c4, type: 3}
+  - {fileID: 21300000, guid: 917d259abbd923e439d5bb82daada968, type: 3}
+  - {fileID: 21300000, guid: 51a192468fcc47343b12b0060d91ee19, type: 3}
+  - {fileID: 21300000, guid: e7499b040588c5946a09ea1cd310e196, type: 3}
+  - {fileID: 21300000, guid: 853a76f6cb6e7e54d8fdca73d5e85a62, type: 3}
+  - {fileID: 21300000, guid: 048d8111ba71ec449bd4e8947fe7e0ce, type: 3}

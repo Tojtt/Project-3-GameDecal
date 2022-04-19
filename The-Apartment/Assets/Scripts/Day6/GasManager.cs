@@ -8,7 +8,7 @@ public class GasManager : MonoBehaviour
     [Tooltip("The spilledGas prefab")]
     private GameObject m_spilledGas;
 
-    private int maxDrops = 80;
+    private int maxDrops = 20;
     private int numDrops = 0;
 
     private float spill_y = -2.2f;
@@ -74,6 +74,21 @@ public class GasManager : MonoBehaviour
     }
     #endregion
 
+    #region Fire_functions
+    public void StartFire(bool onGas)
+    {
+        if (gameState.pouredGas && onGas)
+        {
+            Debug.Log("Successfully Started Fire");
+
+            gameState.fireStarted = true;
+        } else
+        {
+            Debug.Log("Attempts to start fire, fire sizzles out");
+        }
+    }
+
+    #endregion
     #region Pour_functions
     public void BeginSpilling()
     {
@@ -103,7 +118,7 @@ public class GasManager : MonoBehaviour
         if (numDrops == 0 || (player_x < minX || player_x > maxX)) //Successful spill
         {
             //Debug.Log("spill");
-            Vector3 spillPosition = new Vector3((float)spill_x, spill_y + Random.Range(-y_off, y_off), 0);
+            Vector3 spillPosition = new Vector3((float)spill_x, spill_y + -0.1f + Random.Range(-y_off, y_off), 0);
             Instantiate(m_spilledGas, spillPosition, Quaternion.identity);
            // Debug.Log("Poured gas");
             
