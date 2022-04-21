@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake() 
     {
-        DontDestroyOnLoad(m_Player);
+        //DontDestroyOnLoad(m_Player);
         if (p_PlayerInstance == null)
         {
             p_PlayerInstance = m_Player; 
