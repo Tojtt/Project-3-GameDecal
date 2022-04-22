@@ -44,22 +44,16 @@ public class TV : MonoBehaviour
         Vector3 prevPos = player.transform.position;
         Vector3 target = tvOverlay.transform.position;
         Debug.Log("Current position" + target);
-        //camera.GetComponent<CameraFollow>().SwitchToPosition(target);
-        //Camera maincam = GameObject.Find("Main Camera").GetComponent<Camera>();
         maincam.gameObject.GetComponent<CameraFollow>().followEnabled = false;
 
         maincam.transform.position = target;
-        //player.transform.position = tvOverlay.GetComponent<Teleporter>().GetDestination();
         GameState.Instance.freezePlayer = true;
         Debug.Log("Moved player");
         if (!dialogue.IsDialogueRunning)
         {
             dialogue.StartDialogue("TVDay0");
         }
-        //maincam.gameObject.GetComponent<CameraFollow>().followEnabled = true;
         GameState.Instance.freezePlayer = false;
-        // reset position back to the previously recorded position 
-        //maincam.transform.position = prevPos;
 
         // run TV cutscene here?
     }

@@ -564,6 +564,7 @@ MonoBehaviour:
   dialogue: {fileID: 0}
   gs: {fileID: 0}
   nextDay: 
+  disabled: 0
 --- !u!1001 &203598461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6217,6 +6218,10 @@ PrefabInstance:
     - target: {fileID: 6944791037775653811, guid: 6676c85d0f885364290275d1e5992554, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6944791037775653811, guid: 6676c85d0f885364290275d1e5992554, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6944791037775653811, guid: 6676c85d0f885364290275d1e5992554, type: 3}
       propertyPath: m_TagString
