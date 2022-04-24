@@ -134,10 +134,11 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator DoTeleport()
     {
-        StartCoroutine(sceneTransition.TeleportTransition());
-        yield return new WaitForSeconds(0.5f);
+        
         if (doorTeleporter != null)
         {
+            StartCoroutine(sceneTransition.TeleportTransition());
+            yield return new WaitForSeconds(0.5f);
             Transform destination = doorTeleporter.GetComponent<Teleporter>().GetDestination();
             if (doorTeleporter.transform.name == "Apt Door206") //Teleport into main character's room
             {
@@ -163,6 +164,8 @@ public class PlayerController : MonoBehaviour
         {
             //Vector3 newPosition = doorTeleporter.GetComponent<Teleporter>().GetDestination().position;
             //newPosition.y = hallTeleportYs[gameState.floor];
+            StartCoroutine(sceneTransition.TeleportTransition());
+            yield return new WaitForSeconds(0.5f);
             Transform destination = stairTeleporter.GetComponent<StairTeleporter>().GetUpDestination();
             if (destination != null)
             {
@@ -183,10 +186,10 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator DownTeleport()
     {
-        StartCoroutine(sceneTransition.TeleportTransition());
-        yield return new WaitForSeconds(0.5f);
         if (stairTeleporter != null)
         {
+            StartCoroutine(sceneTransition.TeleportTransition());
+            yield return new WaitForSeconds(0.5f);
             Transform destination = stairTeleporter.GetComponent<StairTeleporter>().GetDownDestination();
             if (destination != null)
             {
