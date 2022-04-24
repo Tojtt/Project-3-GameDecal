@@ -1995,6 +1995,8 @@ MonoBehaviour:
   gs: {fileID: 0}
   player: {fileID: 0}
   dialogue: {fileID: 0}
+  tvOverlay: {fileID: 0}
+  maincam: {fileID: 0}
 --- !u!1 &7783171220323998579
 GameObject:
   m_ObjectHideFlags: 0
@@ -2987,7 +2989,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4900579701247451741, guid: 2f6d5cff4c737f149bbf7e8fa598a551, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2f6d5cff4c737f149bbf7e8fa598a551, type: 3}
 --- !u!4 &7157825647603559135 stripped
 Transform:
