@@ -22,6 +22,7 @@ TagManager:
   - homeTeleporter
   - Door
   - Friend
+  - LoudNeighborDoor
   layers:
   - Default
   - TransparentFX
