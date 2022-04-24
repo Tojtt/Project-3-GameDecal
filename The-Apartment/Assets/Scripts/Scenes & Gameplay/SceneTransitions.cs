@@ -22,6 +22,14 @@ public class SceneTransitions : MonoBehaviour
 
     }
 
+    public IEnumerator TeleportTransition()
+    {
+        transitionAnim.SetTrigger("end");
+        yield return new WaitForSeconds(.5f);
+        transitionAnim.SetTrigger("start");
+
+    }
+
     public void OnMouseDown()
     {
         Debug.Log("Clicked");
