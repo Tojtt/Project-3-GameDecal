@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     #region Physics_components
     Rigidbody2D PlayerRB;
-    BoxCollider2D collider;
+    BoxCollider2D colliders;
     #endregion
 
     #region GameObject_components
@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     private GameObject doorTeleporter;
     private GameObject stairTeleporter;
     public GameObject forcedTeleporter;
+    public SceneTransitions sceneTransition;
     #endregion
 
     #region UI
@@ -68,7 +69,7 @@ public class PlayerController : MonoBehaviour
         defaultMoveSpeed = movespeed;
         PlayerRB = GetComponent<Rigidbody2D>();
         floorText = GameObject.Find("FloorDescription").GetComponent<UnityEngine.UI.Text>();
-        collider = GetComponent<BoxCollider2D>();
+        colliders = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
 
         Camera.main.orthographicSize = defaultCameraSize;
@@ -76,8 +77,9 @@ public class PlayerController : MonoBehaviour
 
     private void Start() 
     {
-        //get GameManager and loadlevel object
+        //get GameManager and scenetransitions object
         gameManager = GameObject.FindWithTag("GameManager");
+        sceneTransition = FindObjectOfType<SceneTransitions>();
         
         //then pull the script from the object
         gm = gameManager.GetComponent<GameManager>();
@@ -106,10 +108,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space))
         {
-            DoTeleport();
+            
+            StartCoroutine(DoTeleport());
         } else if(Input.GetKeyDown(KeyCode.DownArrow))
         {
-            DownTeleport();
+            StartCoroutine(DownTeleport());
         }
 
     }
@@ -129,8 +132,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void DoTeleport()
+    public IEnumerator DoTeleport()
     {
+        StartCoroutine(sceneTransition.TeleportTransition());
+        yield return new WaitForSeconds(0.5f);
         if (doorTeleporter != null)
         {
             Transform destination = doorTeleporter.GetComponent<Teleporter>().GetDestination();
@@ -167,6 +172,7 @@ public class PlayerController : MonoBehaviour
             }
             
         }
+        yield return null;
     }
     Vector3 GetTeleportPosition(Transform destination)
     {
@@ -175,8 +181,10 @@ public class PlayerController : MonoBehaviour
         return newPosition;
     }
 
-    public void DownTeleport()
+    public IEnumerator DownTeleport()
     {
+        StartCoroutine(sceneTransition.TeleportTransition());
+        yield return new WaitForSeconds(0.5f);
         if (stairTeleporter != null)
         {
             Transform destination = stairTeleporter.GetComponent<StairTeleporter>().GetDownDestination();
@@ -378,7 +386,7 @@ public class PlayerController : MonoBehaviour
 
     public float GetColliderY()
     {
-        return collider.bounds.center.y;// + (collider.size.y / 2);// - collider.offset.y;
+        return colliders.bounds.center.y;// + (collider.size.y / 2);// - collider.offset.y;
     }
     #endregion
 
