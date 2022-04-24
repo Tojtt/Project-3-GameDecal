@@ -20,7 +20,15 @@ public class ExterminateBugTask : AbstractTask
     #region Unity_Variables
     public DialogueRunner dialogueRunner;
     public string startNode = "sinkTaskStart";
-    #endregion 
+    #endregion
+
+    #region Editor Variables
+    [SerializeField]
+    [Tooltip("The different types of enemies that should be spawned and their corresponding spawn information.")]
+    private EnemySpawnInfo[] m_EnemyTypes;
+    public bool enabled = false;
+    #endregion
+
 
     #region AbstractTask_Functions
     public override void Awake()
@@ -55,7 +63,7 @@ public class ExterminateBugTask : AbstractTask
 
     public override string getTaskName()
     {
-        throw new System.NotImplementedException();
+        return "Exterminating Bugs";
     }
 
     public override void incrementProgress()
@@ -75,7 +83,51 @@ public class ExterminateBugTask : AbstractTask
     #region Cutscene_Functions
     public void SpawnSpiders()
     {
-        
+        //GetComponent<SpawnManager>().enabled = true;
+        for (int i = 0; i < numSpiders; i++)
+        {
+            EnemySpawnInfo enemy = m_EnemyTypes[i];
+            Instantiate(enemy.EnemyPrefab);
+        }
+    }
+    #endregion
+
+    #region Enemy_Info
+    [System.Serializable]
+    public struct EnemySpawnInfo
+    {
+        #region Editor Variables
+        [SerializeField]
+        [Tooltip("The enemy prefab to spawn. This is what will be instantiated each time.")]
+        private GameObject m_EnemyPrefab;
+
+        [SerializeField]
+        [Tooltip("The time we should wait before the first enemy is spawned.")]
+        private float m_FirstSpawnTime;
+
+        [SerializeField]
+        [Range(0, 100)]
+        [Tooltip("How many enemies should spawn per second.")]
+        private float m_SpawnRate;
+        #endregion
+
+        #region Accessors and Mutators
+        public GameObject EnemyPrefab
+        {
+            get { return m_EnemyPrefab; }
+        }
+
+        public float FirstSpawnTime
+        {
+            get { return m_FirstSpawnTime; }
+        }
+
+        // Doing (1 / SpawnRate) might be more useful than directly using SpawnRate
+        public float SpawnRate
+        {
+            get { return m_SpawnRate; }
+        }
+        #endregion
     }
     #endregion
 
