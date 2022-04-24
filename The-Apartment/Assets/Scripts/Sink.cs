@@ -29,10 +29,10 @@ public class Sink : MonoBehaviour
     private void OnMouseDown()
     {
         // do not trigger the cutscene if the task is not activated
-        if (task == null || !task.isActive)
+        /* if (task == null || !task.isActive)
         {
             return;
-        }
+        } */
 
         // trigger the spiders cutscene
         Debug.Log("Sink clicked");
@@ -51,7 +51,11 @@ public class Sink : MonoBehaviour
             Debug.Log("Run sink dialogue");
             dialogue.StartDialogue("activateSink");
             // run cutscene
+            //GetComponent<ExterminateBugTask>().SpawnSpiders();
         }
+        // stall until the task is completed?
+        // while (!task.isTaskComplete()) { }
+
         // snap back to position
         GameState.Instance.freezePlayer = false;
 
