@@ -1,60 +1,163 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class LoudNeighbor : MonoBehaviour
 {
+    #region Appearance_Variables
+    public Sprite closedDoorSprite;
+    public Sprite openDoorSprite;
+    SpriteRenderer spriteRenderer;
+    #endregion
+
+    #region Dialogue Variables
+    public string nearbyDialogueNode;
+    public string excuseDialogueNode;
+    public string knockDoorDialogueNode;
+    bool wasOutsideRange = true;
+    #endregion
+
+    #region Editor_Variables
     [SerializeField]
-    int floatSpeed;
-    [SerializeField]
-    float appearRange;
-    private bool activeMovement;
-    private float currTimer;
-    private GameObject player;
-    private Rigidbody2D rigidBody;
+    public DialogueRunner dialogueRunner;
+    public float triggerDistance = 1.5f; //For door
+    #endregion
+    
+    #region Game_Variables
+    int roomNum = 205;
+    int firstDay = 1;
+    int emptyDay = 4;
+    int lastDay = 2;
+    public int doorTimes = 0;
+    #endregion
+
+
+    #region Referenced_Variables
+    GameObject player;
+    GameState gameState;
+    Rigidbody2D rigidBody;
+    DoorManager doorManager;
+    InMemoryVariableStorage varStorage;
+    #endregion
     // Start is called before the first frame update
     void Start()
     {
-        currTimer = 0;
+        spriteRenderer = this.GetComponent<SpriteRenderer>();
         player = GameObject.Find("Player");
         rigidBody = this.gameObject.GetComponent<Rigidbody2D>();
-        activeMovement = false;
-    }
+        gameState = GameObject.FindWithTag("GameManager").GetComponent<GameState>();
+        varStorage = GameObject.Find("Dialogue System").GetComponent<InMemoryVariableStorage>();
+        doorManager = GameObject.Find("DoorManager").GetComponent<DoorManager>();
+        //Set to closed door
+        spriteRenderer.sprite = closedDoorSprite;
 
+
+    }
     // Update is called once per frame
     void Update()
     {
-        float toPlayer = Vector3.Distance(player.transform.position,this.gameObject.transform.position);
-        if (toPlayer >= appearRange)
+        if (gameState.day >= firstDay && gameState.day <= emptyDay) //Crack open door
         {
-            currTimer = 0;
-            activeMovement = true;
-            StartCoroutine(floatingAround());
+            if (doorTimes == 0)
+            {
+                CheckNearby();
+            }
+            if (gameState.freezePlayer)
+            {
+                TryToUnfreeze();
+            }
         }
-        else if (toPlayer < appearRange)
-        {
-            currTimer = 0;
-            //Disappear();
-        }
-        currTimer += Time.deltaTime;
+
     }
 
-    IEnumerator floatingAround()
+    #region Behavior_Functions
+    void CheckNearby()
     {
-        // Vector3 toPlayer = player.transform.position - this.gameObject.transform.position;
-        // Vector2 movementVector = new Vector2(toPlayer.normalized[0], 0);
-        // rigidBody.velocity = movementVector * movespeed/3;
-        yield return new WaitForSeconds(1f);
-        // rigidBody.velocity = new Vector2(0, 0);
+        if (gameState.floor == roomNum / 100)
+        {
+            float distance = Vector3.Distance(player.transform.position, transform.position);
+            if (distance < triggerDistance)
+            {
+                if (wasOutsideRange)//!gameState.inDialogue)
+                {
+                    RandomDialogue(nearbyDialogueNode);
+                }
+            }
+            else
+            {
+                wasOutsideRange = true;
+            }
+        }
     }
 
-    IEnumerator moveAwayFromPlayer()
+    void RandomDialogue(string dialogueNode)
     {
-        // Vector3 toPlayer = player.transform.position - this.gameObject.transform.position;
-        // Vector2 movementVector = new Vector2(-1 * toPlayer.normalized[0], 0);
-        // rigidBody.velocity = movementVector * movespeed;
-        yield return new WaitForSeconds(1f);
-        // rigidBody.velocity = new Vector2(0, 0);
-        // retreating = false;
+        Debug.Log("random loud dialogue!");
+        wasOutsideRange = false;
+        //Dialogue
+        varStorage.SetValue("$done", 0);
+        Debug.Log(dialogueNode);
+        dialogueRunner.StartDialogue(dialogueNode);
     }
+
+
+    public void InteractNeighbor()
+    {
+        dialogueRunner.Stop();
+        spriteRenderer.sprite = openDoorSprite;
+        gameState.freezePlayer = true;
+        if(doorTimes == 1)
+        {
+            //Dialogue
+            varStorage.SetValue("$done", 0);
+            Debug.Log(knockDoorDialogueNode);
+            dialogueRunner.StartDialogue(knockDoorDialogueNode);
+
+        } else 
+        {
+            //Dialogue
+            varStorage.SetValue("$done", 0);
+            Debug.Log(excuseDialogueNode);
+            dialogueRunner.StartDialogue(excuseDialogueNode);
+        }
+        doorTimes++;
+    }
+    
+    void TryToUnfreeze()
+    {
+        //float done = 0;
+        //varStorage.TryGetValue("$done", out done);
+        //// Debug.Log(done.ToString());
+        string done = GetDialogueVariable("$done");
+        if (done == "1") //Dialogue Finished
+        {
+            spriteRenderer.sprite = closedDoorSprite;
+            Debug.Log("stopped");
+            gameState.freezePlayer = false;
+        }
+        
+    }
+
+    void OnMouseDown()
+    {
+        if (doorManager.InClickRange(transform.position))
+        {
+            if (doorTimes >= 0 && !gameState.freezePlayer) //Knocking 
+            {
+                InteractNeighbor();
+            }
+        }
+    }
+
+    //Gets variables from dialogue
+    string GetDialogueVariable(string var)
+    {
+        float value = 0;
+        varStorage.TryGetValue(var, out value);
+        return value.ToString();
+    }
+    #endregion
+
+
 }
