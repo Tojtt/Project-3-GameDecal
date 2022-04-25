@@ -15,14 +15,14 @@ public class MailBoxFilled : MonoBehaviour
     #endregion
 
     #region Appearance_variables
-    Renderer renderer;
+    public Renderer renderers;
     #endregion
 
     #region Unity_Functions
     void Awake()
     {
-        renderer = this.GetComponent<Renderer>();
-        renderer.enabled = false;
+        renderers = this.GetComponent<Renderer>();
+        renderers.enabled = false;
         item.SetActive(false);
         invM = GameObject.FindWithTag("Inventory").GetComponent<InventoryManager>();
         gameState = GameObject.FindWithTag("GameManager").GetComponent<GameState>();
@@ -47,7 +47,7 @@ public class MailBoxFilled : MonoBehaviour
 
     void OpenMailBox()
     {
-        renderer.enabled = true;
+        renderers.enabled = true;
         if (!itemTaken)
         {
             item.SetActive(true);
@@ -76,7 +76,7 @@ public class MailBoxFilled : MonoBehaviour
     }
     void CloseMailBox()
     {
-        renderer.enabled = false;
+        renderers.enabled = false;
         ////Change sprite appearance or add coroutine
         //Color color = renderer.material.color;
         //color.a = 0;  //Make open sprite invisible

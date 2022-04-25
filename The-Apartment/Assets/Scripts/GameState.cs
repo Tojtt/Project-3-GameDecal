@@ -51,7 +51,7 @@ public class GameState : MonoBehaviour
     // dialogue runner object
     public DialogueRunner dialogue;
     // friend gameobject
-    public GameObject friend;
+    //public GameObject friend;
     // denotes whether the entrance is blocked - should be blocked Day 4 and onward
     public bool entranceBlocked = false;
 
@@ -66,7 +66,7 @@ public class GameState : MonoBehaviour
 
     #region Day2_Cutscene_Variables
     public float speed = 1.0f; // speed of friend moving
-    public Transform target; // location where friend will move, used for cutscenes 
+    //public Transform target; // location where friend will move, used for cutscenes 
     #endregion 
 
     #region Day6_Variables
@@ -110,7 +110,7 @@ public class GameState : MonoBehaviour
         }
         if (day < 4) //No need for friend after day 3
         {
-            friend.SetActive(false);
+            //friend.SetActive(false);
         }
     }
 
@@ -209,7 +209,7 @@ public class GameState : MonoBehaviour
     {
         // Friend walks in - active
         FindObjectOfType<Bed>().disabled = true;
-        friend.SetActive(true);
+        //friend.SetActive(true);
 
         Debug.Log("Run friend dinner cutscene");
         StartCoroutine(MoveFriend());
@@ -225,11 +225,11 @@ public class GameState : MonoBehaviour
     public IEnumerator MoveFriend()
     {
         float step = speed * Time.deltaTime;
-        target.position = new Vector3(32.07f, 5.38f);
-        friend.transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+        //target.position = new Vector3(32.07f, 5.38f);
+        //friend.transform.position = Vector3.MoveTowards(transform.position, target.position, step);
 
         yield return new WaitForSeconds(0.5f);
-        friend.SetActive(false);
+        //sfriend.SetActive(false);
 
     }
     #endregion

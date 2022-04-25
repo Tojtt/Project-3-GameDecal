@@ -46,7 +46,7 @@ public class MakeDinnerTask : AbstractTask
         {
 
             // run the Dinner cutscene before setting as complete
-            GameState.Instance.RunFriendDinner();
+            //GameState.Instance.RunFriendDinner();
 
             isComplete = true; 
         }
@@ -68,6 +68,36 @@ public class MakeDinnerTask : AbstractTask
     }
 
     #endregion
+
+    /*#region Day2_Functions 
+    public void RunFriendDinner()
+    {
+        // Friend walks in - active
+        FindObjectOfType<Bed>().disabled = true;
+        friend.SetActive(true);
+
+        Debug.Log("Run friend dinner cutscene");
+        StartCoroutine(MoveFriend());
+        // Dialogue runs
+        if (!dialogue.IsDialogueRunning)
+        {
+            dialogue.StartDialogue("friendCutscene");
+        }
+
+        // Cutscene ends 
+    }
+
+    public IEnumerator MoveFriend()
+    {
+        float step = speed * Time.deltaTime;
+        target.position = new Vector3(32.07f, 5.38f);
+        friend.transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+
+        yield return new WaitForSeconds(0.5f);
+        friend.SetActive(false);
+
+    }
+    #endregion */
 
     private string getStageDesc(int stage)
     {

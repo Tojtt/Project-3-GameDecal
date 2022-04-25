@@ -35,7 +35,7 @@ public class Bed : MonoBehaviour
                 // special case for Day 2 to trigger Friend scene
                 if (GameState.Instance.day == 2)
                 {
-                    GameState.Instance.RunFriendDinner();
+                    //GameState.Instance.RunFriendDinner();
                 }
 
                 GameState.Instance.day += 1;
