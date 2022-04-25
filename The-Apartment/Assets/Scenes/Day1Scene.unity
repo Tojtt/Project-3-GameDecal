@@ -324,6 +324,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 241148198134126385, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: dialogueRunner
+      value: 
+      objectReference: {fileID: 462507613}
     - target: {fileID: 5713588016842030224, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: dialogueRunner
       value: 

@@ -254,9 +254,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closedDoorSprite: {fileID: 0}
   openDoorSprite: {fileID: 0}
-  nearbyDialogueNode: 
-  excuseDialogueNode: 
-  knockDoorDialogueNode: 
+  nearbyDialogueNode: NearbyDoor
+  knockDoorDialogueNode: KnockDoorFirst
+  excuseDialogueNode: KnockDoorSubsequent
   dialogueRunner: {fileID: 0}
   triggerDistance: 1.5
   doorTimes: 0

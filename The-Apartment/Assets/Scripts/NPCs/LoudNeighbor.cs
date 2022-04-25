@@ -13,8 +13,9 @@ public class LoudNeighbor : MonoBehaviour
 
     #region Dialogue Variables
     public string nearbyDialogueNode;
-    public string excuseDialogueNode;
     public string knockDoorDialogueNode;
+    public string excuseDialogueNode;
+    
     bool wasOutsideRange = true;
     #endregion
 
@@ -81,7 +82,7 @@ public class LoudNeighbor : MonoBehaviour
             {
                 if (wasOutsideRange)//!gameState.inDialogue)
                 {
-                    RandomDialogue(nearbyDialogueNode);
+                    RandomDialogue();
                 }
             }
             else
@@ -91,14 +92,14 @@ public class LoudNeighbor : MonoBehaviour
         }
     }
 
-    void RandomDialogue(string dialogueNode)
+    void RandomDialogue()
     {
         Debug.Log("random loud dialogue!");
         wasOutsideRange = false;
         //Dialogue
         varStorage.SetValue("$done", 0);
-        Debug.Log(dialogueNode);
-        dialogueRunner.StartDialogue(dialogueNode);
+        Debug.Log(nearbyDialogueNode);
+        dialogueRunner.StartDialogue(nearbyDialogueNode);
     }
 
 
