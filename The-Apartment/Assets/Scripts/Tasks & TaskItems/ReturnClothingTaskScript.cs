@@ -19,7 +19,7 @@ public class ReturnClothingTaskScript : AbstractTask
         clothingAcquired = false;
         friendRoomEntered = false;
         description = "Return your friend's forgotten coat.";
-        taskname = "Return friend's forgotten coast";
+        taskname = "Return coat";
     }
 
     public override string getProgessString()

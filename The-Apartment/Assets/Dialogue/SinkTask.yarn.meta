@@ -11,6 +11,4 @@ ScriptedImporter:
   LastImportHadImplicitStringIDs: 1
   LastImportHadAnyStrings: 1
   isSuccessfullyParsed: 1
-  parseErrorMessages:
-  - "6:0: Error: The node 'activateSink ' contains illegal characters in its title.\ntitle:
-    activateSink \n"
+  parseErrorMessages: []

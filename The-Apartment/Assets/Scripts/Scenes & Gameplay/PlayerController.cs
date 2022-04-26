@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Yarn.Unity;
+
 public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -222,10 +224,51 @@ public class PlayerController : MonoBehaviour
                 SetHallwayVariables();
                 transform.position = GetTeleportPosition(destination);
             }
-            
+            else if (forcedTeleporter.transform.name == "Door-304-friend")
+            {
+                SetRoomVariables(304);
+                transform.position = GetTeleportPosition(destination);
+            }
+            else if (forcedTeleporter.transform.name == "HallwayDoor304")
+            {
+                SetHallwayVariables();
+                transform.position = GetTeleportPosition(destination);
+            }
+
         }
     }
-    
+
+    /* Allows teleport as a command to call in Yarn, to simplify some of the teleporting.
+     * Usage: pass in the name of the door that you want to teleport from.*/
+
+    /* TODO: smooth transitions for teleport? IENumerator? */
+
+    [YarnCommand("teleport")]
+    public void dialogue_teleport_from_door(string door)
+    {
+        Transform destination = GameObject.Find(door).GetComponent<Teleporter>().GetDestination();
+        if (door == "Door302-FortuneTeller")
+        {
+            SetRoomVariables(302);
+            transform.position = destination.position;
+        }
+        else if (door == "HallwayDoor302")
+        {
+            SetHallwayVariables();
+            transform.position = GetTeleportPosition(destination);
+        }
+        else if (door == "Door-304-friend")
+        {
+            SetRoomVariables(304);
+            transform.position = GetTeleportPosition(destination);
+        }
+        else if (door == "HallwayDoor304")
+        {
+            SetHallwayVariables();
+            transform.position = GetTeleportPosition(destination);
+        }
+    }
+
     void SetRoomVariables(int roomNum)
     {
         move2D = true;

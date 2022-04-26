@@ -111,3 +111,13 @@ title: DoorDog
 <<endif>>
 
 ===
+title: FriendDoorAbandoned
+---
+*knock knock* Hey, Kenn! You forgot your coat at my place last night!
+...
+Kenn? Are you there?
+...
+You try the knob and notice that the door is unlocked.
+-> Hmm, I guess I'll just leave his coat inside.
+   <<teleport Player Door-304-friend>>
+===
