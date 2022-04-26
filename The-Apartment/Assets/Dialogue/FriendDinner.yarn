@@ -4,12 +4,60 @@
 ===
 title: friendCutscene
 ---
-Kenn: Thanks for making dinner!
-Kenn: If I'm being honest...
-Kenn: I'm not so sure I like this apartment.
-    -> Why would you say that please I just moved here
-        Kenn: Well, I...
-        Kenn: There's just strange stuff happening here, that's all.
-    -> Why's that?
-        Kenn: 
+Kenn: Hey, thanks for making dinner!
+Kenn: How are you settling in?
+    -> I'm fine, thanks.
+        Kenn: I'm glad to hear. 
+    -> I want to kill myself!
+        Kenn: Don't we all?
+Kenn: Well, uh...
+Kenn: I know I introduced myself earlier, but I'm also studying at the local college here.
+Kenn: How about you?
+    -> Same here. I'm studying computer science.
+        Kenn: Good - I have an idea for a startup.
+        Kenn: Just kidding.
+        Kenn: Hey, c'mon, don't make that face!
+    -> Same here. I'm studying business.
+        Kenn: Do you know what an NFT is?
+    -> Same here. I'm studying psychology.
+        Kenn: Oh good - I think I have several undiagnosed mental disorders. 
+        -> Oh.
+            Kenn: Sorry, I tend to overshare.
+Kenn: That's really cool. I'm honestly stil undeclared, so...
+Kenn: But it's fine, college is a good chance to explore. 
+Kenn: Also...
+Kenn: This is sort of bad timing, but I'm actually moving out. 
+Kenn: Yeah, I know, we just introduced ourselves and all. 
+    -> Any reason why?
+        Kenn: I don't mean to freak you out or anything.
+        Kenn: It's just...
+        Kenn: This apartment has bad vibes. At least for me.
+        -> What do you mean by that?
+        Kenn: Sorry, I shouldn't say stuff like that. Especially since you just moved in.
+        Kenn: The rent is amazing, but some of the residents are a bit...
+        Kenn: Strange.
+        -> Should I be worried?
+        Kenn: No, I'm just a very anxious person.
+        Kenn: Sorry! I think maybe you'll have a different experience.
+        Kenn: Let's talk about more lighthearted things now. 
+            -> OK, let's.
+                Kenn: Yeah, let's talk about something else. 
+            -> Now I'm a little nervous...
+                Kenn: Really, don't be. I'm sorry. I just didn't get along with them.
+Kenn: Anyway, I'm moving back in with my family.
+Kenn: I can't wait to see them again - it feels like it's been ages.
+    -> Yeah, I kind of miss my own family too.
+    -> That's cool. My family and I aren't that close.
+        Kenn: Woah, I...
+        Kenn: I'm sorry to hear that. 
+Kenn: I have a younger sister - she can be annoying as hell sometimes. 
+Kenn: But honestly I'm proud of her.
+Kenn: She's in her last year of high school, so she's applying for colleges now.
+    -> I'm an only child.
+    -> I'm the youngest kid in my family.
+    -> I'm the eldest sibling. 
+Kenn: Interesting!
+Kenn: Well, I have to get back now. Start packing at the last minute, of course.
+Kenn: I know we've only met a couple times, but if you see me around campus, say hi!
+    -> See ya!
 ===
