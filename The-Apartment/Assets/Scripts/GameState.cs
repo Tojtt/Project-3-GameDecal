@@ -51,7 +51,7 @@ public class GameState : MonoBehaviour
     // dialogue runner object
     public DialogueRunner dialogue;
     // friend gameobject
-    //public GameObject friend;
+    public GameObject friend;
     // denotes whether the entrance is blocked - should be blocked Day 4 and onward
     public bool entranceBlocked = false;
 
@@ -66,6 +66,8 @@ public class GameState : MonoBehaviour
 
     #region Day2_Cutscene_Variables
     public float speed = 1.0f; // speed of friend moving
+    public GameObject doorExit;
+    public GameObject tv;
     //public Transform target; // location where friend will move, used for cutscenes 
     #endregion 
 
@@ -209,7 +211,9 @@ public class GameState : MonoBehaviour
     {
         // Friend walks in - active
         FindObjectOfType<Bed>().disabled = true;
-        //friend.SetActive(true);
+        tv = GameObject.Find("TV");
+        tv.SetActive(false);
+        
 
         Debug.Log("Run friend dinner cutscene");
         StartCoroutine(MoveFriend());
@@ -217,20 +221,39 @@ public class GameState : MonoBehaviour
         if (!dialogue.IsDialogueRunning)
         {
             dialogue.StartDialogue("friendCutscene");
+            // when dialogue is finished, have friend disappear
+            dialogue.onDialogueComplete.AddListener(EndDinner);
+            //friend.SetActive(false);
         }
 
-        // Cutscene ends 
+        // Cutscene ends
+        
     }
 
     public IEnumerator MoveFriend()
     {
+        doorExit = GameObject.Find("HallwayDoor206");
+        doorExit.SetActive(false);
+        friend.SetActive(true);
         float step = speed * Time.deltaTime;
-        //target.position = new Vector3(32.07f, 5.38f);
-        //friend.transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+        // move towards these coordinates
+        Vector3 target = new Vector3(75.14f, 1.41f);
+        //friend.transform.position = Vector3.MoveTowards(transform.position, target, step);
+        friend.transform.position = target;
 
+        // pause
         yield return new WaitForSeconds(0.5f);
-        //sfriend.SetActive(false);
+        //friend.SetActive(false);
+        FindObjectOfType<Bed>().disabled = false;
 
+    }
+
+    public void EndDinner()
+    {
+        friend.SetActive(false);
+        doorExit.SetActive(true);
+        tv.SetActive(true);
+        
     }
     #endregion
 
