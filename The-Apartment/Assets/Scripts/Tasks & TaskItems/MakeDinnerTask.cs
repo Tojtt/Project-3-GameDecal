@@ -46,7 +46,7 @@ public class MakeDinnerTask : AbstractTask
         {
 
             // run the Dinner cutscene before setting as complete
-            //GameState.Instance.RunFriendDinner();
+            GameState.Instance.RunFriendDinner();
 
             isComplete = true; 
         }
@@ -69,8 +69,8 @@ public class MakeDinnerTask : AbstractTask
 
     #endregion
 
-    /*#region Day2_Functions 
-    public void RunFriendDinner()
+    #region Day2_Functions 
+    /* public void RunFriendDinner()
     {
         // Friend walks in - active
         FindObjectOfType<Bed>().disabled = true;
@@ -96,8 +96,8 @@ public class MakeDinnerTask : AbstractTask
         yield return new WaitForSeconds(0.5f);
         friend.SetActive(false);
 
-    }
-    #endregion */
+    } */
+    #endregion
 
     private string getStageDesc(int stage)
     {
@@ -105,12 +105,12 @@ public class MakeDinnerTask : AbstractTask
         {
             case 0:
                 // code block
-                return "Get the pizza dough on the counter";
+                return "Get the pizza dough";
             case 1:
                 // code block
                 return "Add in the tomato sauce";
             case 2:
-                return "Add in cheese from the cabinet";
+                return "Add in the cheese";
             case 3:
                 return "Put the pizza in the oven";
             default:
