@@ -66,7 +66,8 @@ public class GameState : MonoBehaviour
 
     #region Day2_Cutscene_Variables
     public float speed = 1.0f; // speed of friend moving
-    public GameObject doorExit; // holds teleporter
+    public GameObject doorExit;
+    public GameObject tv;
     //public Transform target; // location where friend will move, used for cutscenes 
     #endregion 
 
@@ -210,6 +211,9 @@ public class GameState : MonoBehaviour
     {
         // Friend walks in - active
         FindObjectOfType<Bed>().disabled = true;
+        tv = GameObject.Find("TV");
+        tv.SetActive(false);
+        
 
         Debug.Log("Run friend dinner cutscene");
         StartCoroutine(MoveFriend());
@@ -218,7 +222,7 @@ public class GameState : MonoBehaviour
         {
             dialogue.StartDialogue("friendCutscene");
             // when dialogue is finished, have friend disappear
-            dialogue.onDialogueComplete.AddListener(DisableFriend);
+            dialogue.onDialogueComplete.AddListener(EndDinner);
             //friend.SetActive(false);
         }
 
@@ -244,10 +248,11 @@ public class GameState : MonoBehaviour
 
     }
 
-    public void DisableFriend()
+    public void EndDinner()
     {
         friend.SetActive(false);
         doorExit.SetActive(true);
+        tv.SetActive(true);
         
     }
     #endregion
