@@ -664,13 +664,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b4ee221b7356544e972c955c7860d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closedDoorSprite: {fileID: 0}
-  openDoorSprite: {fileID: 0}
+  closedDoorSprite: {fileID: 21300000, guid: dbc826323a6f0f14e87590470c884643, type: 3}
+  openDoorSprite: {fileID: 21300000, guid: 686b084c792394241a02ab5e05d367e0, type: 3}
   nearbyDialogueNode: NearbyDoor
   knockDoorDialogueNode: KnockDoorFirst
   excuseDialogueNode: KnockDoorSubsequent
   dialogueRunner: {fileID: 0}
-  triggerDistance: 1.5
+  triggerDistance: 3.5
   doorTimes: 0
 --- !u!1 &6071060021408679731
 GameObject:

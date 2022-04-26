@@ -22,7 +22,7 @@ public class LoudNeighbor : MonoBehaviour
     #region Editor_Variables
     [SerializeField]
     public DialogueRunner dialogueRunner;
-    public float triggerDistance = 1.5f; //For door
+    public float triggerDistance = 3.0f; //For door
     #endregion
     
     #region Game_Variables
@@ -31,6 +31,7 @@ public class LoudNeighbor : MonoBehaviour
     int emptyDay = 4;
     int lastDay = 2;
     public int doorTimes = 0;
+    public string done;
     #endregion
 
 
@@ -60,10 +61,7 @@ public class LoudNeighbor : MonoBehaviour
     {
         if (gameState.day >= firstDay && gameState.day <= emptyDay) //Crack open door
         {
-            if (doorTimes == 0)
-            {
-                CheckNearby();
-            }
+            CheckNearby();
             if (gameState.freezePlayer)
             {
                 TryToUnfreeze();
@@ -97,7 +95,6 @@ public class LoudNeighbor : MonoBehaviour
         Debug.Log("random loud dialogue!");
         wasOutsideRange = false;
         //Dialogue
-        varStorage.SetValue("$done", 0);
         Debug.Log(nearbyDialogueNode);
         dialogueRunner.StartDialogue(nearbyDialogueNode);
     }
@@ -105,6 +102,7 @@ public class LoudNeighbor : MonoBehaviour
 
     public void InteractNeighbor()
     {
+        doorTimes++;
         dialogueRunner.Stop();
         spriteRenderer.sprite = openDoorSprite;
         gameState.freezePlayer = true;
@@ -122,15 +120,13 @@ public class LoudNeighbor : MonoBehaviour
             Debug.Log(excuseDialogueNode);
             dialogueRunner.StartDialogue(excuseDialogueNode);
         }
-        doorTimes++;
+        
     }
     
     void TryToUnfreeze()
     {
-        //float done = 0;
-        //varStorage.TryGetValue("$done", out done);
-        //// Debug.Log(done.ToString());
-        string done = GetDialogueVariable("$done");
+
+        done = GetDialogueVariable("$done");
         if (done == "1") //Dialogue Finished
         {
             spriteRenderer.sprite = closedDoorSprite;
