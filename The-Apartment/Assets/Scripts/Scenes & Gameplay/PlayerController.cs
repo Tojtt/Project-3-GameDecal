@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
     public IEnumerator DoTeleport()
     {
         
-        if (doorTeleporter != null && teleportCooldown < cooldownThreshold)
+        if (doorTeleporter != null && teleportCooldown > cooldownThreshold)
         {
             teleportCooldown = 0;
             StartCoroutine(sceneTransition.TeleportTransition());
@@ -167,7 +167,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine("Teleport");
         }
 
-        if (stairTeleporter != null && teleportCooldown < cooldownThreshold)
+        if (stairTeleporter != null && teleportCooldown > cooldownThreshold)
         {
             teleportCooldown = 0;
             //Vector3 newPosition = doorTeleporter.GetComponent<Teleporter>().GetDestination().position;
