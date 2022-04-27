@@ -782,7 +782,7 @@ MonoBehaviour:
   itemID: 3
   itemName: Lighter
   state: Off
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: ac151af66d961ff4e8b3a79ca20131e6, type: 3}
 --- !u!61 &902092204
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1041,6 +1041,7 @@ MonoBehaviour:
   target: {fileID: 1135450522}
   offset: {x: 0, y: 1, z: -2}
   smoothFactor: 0
+  followEnabled: 0
 --- !u!114 &1386904285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1854,7 +1855,7 @@ MonoBehaviour:
   itemID: 1
   itemName: Gas Tank
   state: 
-  sprite: {fileID: 21300000, guid: 528a6dd601766934abb8b1053bd798ef, type: 3}
+  sprite: {fileID: 21300000, guid: 20160c37d23beb64880feb5c4efa3556, type: 3}
 --- !u!61 &2016257953
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2185,6 +2186,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pizza
       objectReference: {fileID: 0}
+    - target: {fileID: 608004085207849331, guid: 664f93167c1e5924caf9866f6cd80a29, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 71c2e112cf12401409e39ddd73d08273, type: 3}
     - target: {fileID: 608004085207849334, guid: 664f93167c1e5924caf9866f6cd80a29, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -2295,6 +2300,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 462507613}
     - target: {fileID: 2542808634254623267, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: dialogueRunner
+      value: 
+      objectReference: {fileID: 462507613}
+    - target: {fileID: 8812714151469247025, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: dialogueRunner
       value: 
       objectReference: {fileID: 462507613}
