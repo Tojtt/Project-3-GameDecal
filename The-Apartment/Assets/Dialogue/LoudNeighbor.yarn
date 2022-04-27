@@ -1,7 +1,7 @@
 ﻿title: NearbyDoor
 ---
 Neighbor: Party all night babies. 
-<<set $done to 1>>
+<<set $doneLN to 1>>
 ===
 title: KnockDoorFirst
 ---
@@ -9,7 +9,7 @@ Neighbor: Hey there, how can I help you?
 -> You are making very loud noises. Please keep it down.
 -> Is everything okay? I overheard the noises in the hallway.
 Neighbor: Oh no worries. We will keep it down. Sorry about that!
-<<set $done to 1>>
+<<set $doneLN to 1>>
 ===
 title: KnockDoorSubsequent
 ---
@@ -19,5 +19,5 @@ Neighbor: Hey there, you again? What do you want this time?
 Neighbor: You know what. Mind your own dang business!
 Neighbor: Now get away from my face! 
 Neighbor: *whisper* Good lord such nosy kid! *whisper*
-<<set $done to 1>>
+<<set $doneLN to 1>>
 ===

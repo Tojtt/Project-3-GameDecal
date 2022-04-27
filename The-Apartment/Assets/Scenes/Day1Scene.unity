@@ -332,6 +332,10 @@ PrefabInstance:
       propertyPath: dialogueRunner
       value: 
       objectReference: {fileID: 462507613}
+    - target: {fileID: 5407270164638591373, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: m_TagString
+      value: LoudNeighborDoor
+      objectReference: {fileID: 0}
     - target: {fileID: 5713588016842030224, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: dialogueRunner
       value: 

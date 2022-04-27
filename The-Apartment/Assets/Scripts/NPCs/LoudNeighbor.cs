@@ -109,14 +109,14 @@ public class LoudNeighbor : MonoBehaviour
         if(doorTimes == 1)
         {
             //Dialogue
-            varStorage.SetValue("$done", 0);
+            varStorage.SetValue("$doneLN", 0);
             Debug.Log(knockDoorDialogueNode);
             dialogueRunner.StartDialogue(knockDoorDialogueNode);
 
         } else 
         {
             //Dialogue
-            varStorage.SetValue("$done", 0);
+            varStorage.SetValue("$doneLN", 0);
             Debug.Log(excuseDialogueNode);
             dialogueRunner.StartDialogue(excuseDialogueNode);
         }
@@ -126,7 +126,7 @@ public class LoudNeighbor : MonoBehaviour
     void TryToUnfreeze()
     {
 
-        done = GetDialogueVariable("$done");
+        done = GetDialogueVariable("$doneLN");
         if (done == "1") //Dialogue Finished
         {
             spriteRenderer.sprite = closedDoorSprite;
