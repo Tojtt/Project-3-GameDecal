@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
         //get inputs from keyboard
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
-        teleport += Time.deltatime;
+        teleportCooldown += Time.deltaTime;
 
         if (!gameState.freezePlayer)
         {
