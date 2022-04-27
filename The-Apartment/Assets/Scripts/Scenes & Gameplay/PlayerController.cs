@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     #region Teleport_variables
     float[] hallTeleportYs = new float[] { -27.8f, -15.8f, -1f, 13.4f, 1f }; //0(basement), f1, f2, f3, 4(outside)
+    float teleportCooldown = 2f;
 
     #endregion
     #region Position_variables
@@ -94,6 +95,8 @@ public class PlayerController : MonoBehaviour
         //get inputs from keyboard
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
+        teleport += Time.deltatime;
+
         if (!gameState.freezePlayer)
         {
             Move();
@@ -137,8 +140,9 @@ public class PlayerController : MonoBehaviour
     public IEnumerator DoTeleport()
     {
         
-        if (doorTeleporter != null)
+        if (doorTeleporter != null && teleportCooldown < 1.0f)
         {
+            teleportCooldown = 0;
             StartCoroutine(sceneTransition.TeleportTransition());
             yield return new WaitForSeconds(0.5f);
             Transform destination = doorTeleporter.GetComponent<Teleporter>().GetDestination();
@@ -162,8 +166,9 @@ public class PlayerController : MonoBehaviour
             StartCoroutine("Teleport");
         }
 
-        if (stairTeleporter != null)
+        if (stairTeleporter != null && teleportCooldown < 1.0f)
         {
+            teleportCooldown = 0;
             //Vector3 newPosition = doorTeleporter.GetComponent<Teleporter>().GetDestination().position;
             //newPosition.y = hallTeleportYs[gameState.floor];
             StartCoroutine(sceneTransition.TeleportTransition());
