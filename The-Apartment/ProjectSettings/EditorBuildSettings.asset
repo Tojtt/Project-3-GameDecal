@@ -44,4 +44,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Day6Scene.unity
     guid: 3590fca52e21adb429166b1bbc294cf9
+  - enabled: 1
+    path: Assets/Scenes/EndSceneWin.unity
+    guid: 00706a7ac5ed243249247bd476daf579
+  - enabled: 1
+    path: Assets/Scenes/EndSceneLose.unity
+    guid: a0b77194aab584fd2bb7ef1e0d87d48d
+  - enabled: 1
+    path: Assets/Scenes/Scene0.unity
+    guid: 27c182c5e078543a7aa94c6db005b7fb
   m_configObjects: {}

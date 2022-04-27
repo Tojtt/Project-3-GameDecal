@@ -45,7 +45,23 @@ public class GameManager : MonoBehaviour
         //Starting out game
     public void StartGame()
     {
-        SceneManager.LoadScene("Hallway");
+        SceneManager.LoadScene("Day1Scene");
+    }
+
+    public void EndGameWin()
+    {
+        SceneManager.LoadScene("GameWin");
+    }
+
+    public void EndGameLose()
+    {
+        SceneManager.LoadScene("GameLose");
+   
+    }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene("Scene0");
     }
 
 
