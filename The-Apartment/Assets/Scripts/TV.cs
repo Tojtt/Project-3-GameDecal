@@ -51,7 +51,9 @@ public class TV : MonoBehaviour
         Debug.Log("Moved player");
         if (!dialogue.IsDialogueRunning)
         {
-            dialogue.StartDialogue("TVDay0");
+            // runs the node associated with the current day, or if its broken beyond Day 3
+            string node = GameState.Instance.day <= 3 ? "TVDay" + GameState.Instance.day : "TVBroken";
+            dialogue.StartDialogue(node);
         }
         GameState.Instance.freezePlayer = false;
 

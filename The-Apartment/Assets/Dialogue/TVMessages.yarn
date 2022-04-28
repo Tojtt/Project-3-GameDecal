@@ -1,23 +1,24 @@
-﻿title: TVStart
----
-<<set $day to getCurrentDay()>>
-<<if $day == 1>>
-    [[TVDay1]]
-<<else>>
-    [[TVDay3]]
-<<endif>>
-
-===
-title: TVDay1
+﻿title: TVDay1
 ---
 Reporter: The weather will be sunny tomorrow.
 Reporter: Thanks for tuning in!
 ===
+title: TVDay2
+---
+Reporter: The weather will be cloudy tomorrow.
+Reporter; Thanks for tuning in!
+===
 title: TVDay3
 ---
-Reporter: Breaking news! Kenn Lastname, a local college student in the area is missing.
-Reporter: His family is hoping for any news regarding his disappearance.
-Reporter: Thanks for tuning in!
+Reporter: Breaking news! A local college student has gone missing!
+Reporter: His family says he was supposed to come home, but he never made it.
+Reporter: He was last seen at his apartment.
+Reporter: If anyone has any information regarding Kenn ---
+The TV seems to have been cut off abruptly. 
+===
+title: TVBroken
+---
+You try to turn on the TV, but it remains powered off.
 ===
 title: watchTV
 ---

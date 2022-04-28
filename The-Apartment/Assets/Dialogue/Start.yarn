@@ -65,23 +65,6 @@ title: TVMessages
 <<else>>
     [[TVDay3]]
 <<endif>>
-
-===
-title: TVDay0
----
-Reporter: The weather will be sunny tomorrow.
-Reporter: Thanks for tuning in!
- 
-===
-title: TVDay3
----
-Reporter: Breaking news! Kenn Lastname, a local college student in the area is missing.
-Reporter: His family is hoping for any news regarding his disappearance.
-Reporter: Thanks for tuning in!
-===
-title: watchTV
----
-Player: Before I sleep, I should see what's on TV.
 ===
 title: finishChores
 ---
