@@ -48,6 +48,7 @@ public class InventoryManager : MonoBehaviour
 
     #region Referenced_Variables
     DogScript dog;
+    PlayerController player;
     #endregion 
 
     #region Unity_Functions
@@ -55,20 +56,36 @@ public class InventoryManager : MonoBehaviour
     {
         invM = this;
         dog = GameObject.Find("Door 306-Dog").GetComponent<DogScript>();
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
         canvas = FindObjectOfType<Canvas>();
 
         H= canvas.GetComponent<RectTransform>().rect.height;
         W = canvas.GetComponent<RectTransform>().rect.width;
 
-        spawnPosition = new Vector3(H / 8, W / 8, 0);
-        spawnSpacing = new Vector3(W / 20, 0, 0);
+        spawnPosition = new Vector3(W / 16, H / 7, 0);
+        spawnSpacing = new Vector3(W / 24, 0, 0);
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (selecting)
+            {
+                RemoveItem(currSelected);
+            }
+        }
     }
     #endregion
 
     #region Inventory_Functions
     public void RedrawItems()
     {
-
+        foreach (int i in itemList.Keys)
+        {
+            GameObject itemSlot = itemSlotList[i];
+            itemSlot.transform.localPosition = spawnPosition + i * spawnSpacing;
+        }
     }
 
     /* Adds amount number of itemID to the list. */
@@ -89,8 +106,9 @@ public class InventoryManager : MonoBehaviour
             GameObject slotObject = Instantiate(itemHolderPrefab, newSpawnPosition, Quaternion.identity);// false);
             slotObject.transform.SetParent(grid);
             ItemSlot itemSlot = slotObject.GetComponent<ItemSlot>();
-            itemSlot.item = newItem;
             
+            itemSlot.item = newItem;
+            itemSlot.SetIcon();
 
             itemSlotList[itemID] = slotObject;
 
@@ -110,12 +128,44 @@ public class InventoryManager : MonoBehaviour
 
     void RemoveItem(int itemID)
     {
+        //Drop back into world
+        Item item = itemList[itemID];
+        Vector2 dropPosition = player.GetPosition();
+        float offset = 0.2f;
+        if (player.GetDirection() == Vector2.left)
+        {
+            dropPosition.x -= offset;
+        } else 
+        {
+            dropPosition.x += offset;
+        }
+        item.gameObject.transform.position = dropPosition; //Drop next to player
+        item.gameObject.SetActive(true);
+        StartCoroutine(fall(item.gameObject));
+
+        //Remove
         itemList.Remove(itemID);
         GameObject itemSlot = itemSlotList[itemID];
         Destroy(itemSlot);
         itemSlotList.Remove(itemID);
         Debug.Log("Removed item");
+
+        selecting = false;
+        currSelected = -1;
+        RedrawItems();
         PrintInventory();
+    }
+
+    IEnumerator fall(GameObject itemObject)
+    {
+        float playerY = player.transform.position.y;
+        float velocity = 0.2f;
+        while (itemObject.transform.position.y > playerY - 1f)
+        {
+            itemObject.transform.position -= new Vector3(0, velocity, 0);
+            velocity += 0.05f;
+            yield return new WaitForSeconds(0.05f);
+        }
     }
 
     public void SelectItem(int itemID)
