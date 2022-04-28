@@ -37,6 +37,7 @@ public class Door : MonoBehaviour
     public void Interact()
     {
         clickCount++;
+        dialogueRunner.Stop();
         dialogueRunner.StartDialogue(doorDialogueNode);
     }
 

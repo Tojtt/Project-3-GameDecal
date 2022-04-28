@@ -35,8 +35,8 @@ public class MadamFace : MonoBehaviour
 
     #region Game_Variables
     int roomNum = 302;
-    int firstDay = 1;
-    int emptyDay = 4;
+    int firstDay = 2;
+    int emptyDay = 3;
     int lastDay = 6;
 
     public int doorTimes = 0;
@@ -139,6 +139,7 @@ public class MadamFace : MonoBehaviour
                 PlayerController playerController = player.GetComponent<PlayerController>();
                 playerController.forcedTeleporter = GetComponent<BoxCollider2D>().gameObject;
                 playerController.ForcedTeleport();
+                //StartCoroutine(playerController.ForcedfTeleport());
                 playerController.forcedTeleporter = null;
                 Debug.Log("Should have teleported");
             }

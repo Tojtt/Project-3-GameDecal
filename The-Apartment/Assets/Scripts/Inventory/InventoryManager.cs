@@ -22,6 +22,7 @@ public class InventoryManager : MonoBehaviour
     // list of ItemSlots, which hold the item and the amount
     public Dictionary<int, GameObject> itemSlotList = new Dictionary<int, GameObject>();
     public Dictionary<int, Item> itemList = new Dictionary<int, Item>(); //ItemID: Item
+    List<int> order = new List<int>();
     public int maxListSize = 3;
 
     #endregion
@@ -81,10 +82,11 @@ public class InventoryManager : MonoBehaviour
     #region Inventory_Functions
     public void RedrawItems()
     {
-        foreach (int i in itemList.Keys)
+        for(int i = 0; i < order.Count; i++)
         {
-            GameObject itemSlot = itemSlotList[i];
-            itemSlot.transform.localPosition = spawnPosition + i * spawnSpacing;
+            int itemID = order[i];
+            GameObject itemSlot = itemSlotList[itemID];
+            itemSlot.transform.position = spawnPosition + i * spawnSpacing;
         }
     }
 
@@ -111,9 +113,10 @@ public class InventoryManager : MonoBehaviour
             itemSlot.SetIcon();
 
             itemSlotList[itemID] = slotObject;
+            order.Add(itemID);
 
             Debug.Log("Item has been added");
-
+            
             //Add listener for select itemSlot
             itemSlot.button.onClick.AddListener(() => SelectItem(itemID));
         }
@@ -144,6 +147,7 @@ public class InventoryManager : MonoBehaviour
         StartCoroutine(fall(item.gameObject));
 
         //Remove
+        order.Remove(itemID);
         itemList.Remove(itemID);
         GameObject itemSlot = itemSlotList[itemID];
         Destroy(itemSlot);
