@@ -286,6 +286,12 @@ public class PlayerController : MonoBehaviour
             SetHallwayVariables();
             transform.position = GetTeleportPosition(destination);
         }
+        else if (door == "Door-102-Mother")
+        {
+            SetRoomVariables(102);
+            transform.position = GetTeleportPosition(destination);
+        }
+
     }
 
     void SetRoomVariables(int roomNum)
