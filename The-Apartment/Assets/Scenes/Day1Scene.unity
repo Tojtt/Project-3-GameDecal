@@ -387,7 +387,7 @@ PrefabInstance:
     - target: {fileID: 7478554781211474348, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: tvOverlay
       value: 
-      objectReference: {fileID: 451830483}
+      objectReference: {fileID: 770716055}
     - target: {fileID: 7478554781211474348, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: sceneTransition
       value: 
@@ -874,6 +874,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63eb280b24684efaae8d843cb464e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &770716055 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1402866353, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+  m_PrefabInstance: {fileID: 486199724}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &807581330 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 149045046105151512, guid: dfc061f397c52452483991d6835660dc, type: 3}
