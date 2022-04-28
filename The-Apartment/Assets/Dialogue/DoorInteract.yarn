@@ -124,5 +124,24 @@ You try the knob and notice that the door is unlocked.
 title: Door206
 ---
 Player 206: This is my apartment.
-
+===
+title: FriendDoorAbandoned
+---
+*knock knock* Hey, Kenn! You forgot your coat at my place last night!
+...
+Kenn? Are you there?
+...
+You try the knob and notice that the door is unlocked.
+-> Hmm, I guess I'll just leave his coat inside.
+   <<teleport Player Door-304-friend>>
+   <<StartFriendRoomDialogue Door-304-friend>>
+===
+title: FriendRoomDialogue
+---
+test line
+Hey Kenn, are you th-
+OH MY!!!!!!
+Is that a bloodstain?!?!
+I'm getting out of here!!!
+<<teleport Player HallwayDoor304>>
 ===

@@ -77,5 +77,13 @@ public class FriendDoorScript : MonoBehaviour
     #endregion
 
 
+    [YarnCommand("StartFriendRoomDialogue")]
+    public void dialogue_teleport_from_door()
+    {
+        dialogueRunner.Stop();
+        dialogueRunner.StartDialogue("FriendRoomDialogue");
+    }
+
+
     //>>>>>LATER -> changing appearance/image: https://forum.unity.com/threads/changing-sprite-during-run-time.211817/
 }

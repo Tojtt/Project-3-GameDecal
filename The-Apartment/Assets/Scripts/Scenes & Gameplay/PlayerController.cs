@@ -170,6 +170,11 @@ public class PlayerController : MonoBehaviour
                 SetHallwayVariables();
                 transform.position = GetTeleportPosition(destination);
             }
+            else if (doorTeleporter.transform.name == "HallwayDoor304")
+            {
+                SetHallwayVariables();
+                transform.position = GetTeleportPosition(destination);
+            }
             else
             {
                 transform.position = destination.position;
