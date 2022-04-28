@@ -160,7 +160,18 @@ public class PlayerController : MonoBehaviour
             else if (doorTeleporter.transform.name == "TV Room")
             {
                 gameState.watchedTV = true;
-            } else { 
+            }
+            else if (doorTeleporter.transform.name == "Door302-FortuneTellerPart2")
+            {
+                SetRoomVariables(302);
+                transform.position = destination.position;
+            } else if (doorTeleporter.transform.name == "HallwayDoor302Part2")
+            {
+                SetHallwayVariables();
+                transform.position = GetTeleportPosition(destination);
+            }
+            else
+            {
                 transform.position = destination.position;
             }
 
@@ -172,11 +183,12 @@ public class PlayerController : MonoBehaviour
             teleportCooldown = 0;
             //Vector3 newPosition = doorTeleporter.GetComponent<Teleporter>().GetDestination().position;
             //newPosition.y = hallTeleportYs[gameState.floor];
-            StartCoroutine(sceneTransition.TeleportTransition());
-            yield return new WaitForSeconds(0.5f);
+            
             Transform destination = stairTeleporter.GetComponent<StairTeleporter>().GetUpDestination();
             if (destination != null)
             {
+                StartCoroutine(sceneTransition.TeleportTransition());
+                yield return new WaitForSeconds(0.5f);
                 gameState.floor += 1;
                 floorText.text = "Floor " + gameState.floor.ToString();
                 transform.position = GetTeleportPosition(destination);//destination.position;
@@ -196,11 +208,12 @@ public class PlayerController : MonoBehaviour
     {
         if (stairTeleporter != null)
         {
-            StartCoroutine(sceneTransition.TeleportTransition());
-            yield return new WaitForSeconds(0.5f);
+            
             Transform destination = stairTeleporter.GetComponent<StairTeleporter>().GetDownDestination();
             if (destination != null)
             {
+                StartCoroutine(sceneTransition.TeleportTransition());
+                yield return new WaitForSeconds(0.5f);
                 gameState.floor -= 1;
                 if (gameState.floor == 0)
                 {
@@ -273,6 +286,12 @@ public class PlayerController : MonoBehaviour
             SetHallwayVariables();
             transform.position = GetTeleportPosition(destination);
         }
+        else if (door == "Door-102-Mother")
+        {
+            SetRoomVariables(102);
+            transform.position = GetTeleportPosition(destination);
+        }
+
     }
 
     void SetRoomVariables(int roomNum)

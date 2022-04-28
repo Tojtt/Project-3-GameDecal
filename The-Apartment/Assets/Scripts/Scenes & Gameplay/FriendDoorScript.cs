@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 
-public class Door : MonoBehaviour
+public class FriendDoorScript : MonoBehaviour
 {
     /*NOTES:
     1. Add collider to door
@@ -18,7 +18,11 @@ public class Door : MonoBehaviour
      */
     #region Editor_variables
     public DialogueRunner dialogueRunner;
-    public string doorDialogueNode;
+    public string defaultDoorDialogueNode;
+    public string coatDialogueNode;
+    private GameState g;
+    InMemoryVariableStorage varStorage;
+    GameObject player;
     #endregion
 
     #region Non_editor_variables
@@ -30,31 +34,48 @@ public class Door : MonoBehaviour
     void Awake()
     {
         doorManager = GameObject.Find("DoorManager").GetComponent<DoorManager>();
+        g = GameObject.Find("GameManager").GetComponent<GameState>();
+        varStorage = GameObject.Find("Dialogue System").GetComponent<InMemoryVariableStorage>();
+        player = GameObject.Find("Player");
+    }
+
+    private void Update()
+    {
+       
     }
     #endregion
+
 
     #region Interact_functions
     public void Interact()
     {
         clickCount++;
-        dialogueRunner.Stop();
-        dialogueRunner.StartDialogue(doorDialogueNode);
+        if (g.getCurrentTask().GetComponent<AbstractTask>().getTaskName() == "Return coat")
+        {
+            g.getCurrentTask().GetComponent<AbstractTask>().incrementProgress();
+            dialogueRunner.Stop();
+            dialogueRunner.StartDialogue(coatDialogueNode);
+            //teleport player
+        }
+        else
+        {
+            dialogueRunner.StartDialogue(defaultDoorDialogueNode);
+        }
     }
 
     void OnMouseDown()
     {
-        Debug.Log("Door");
+        Debug.Log("friend Door");
         if (doorManager.InClickRange(transform.position))
         {
-            
             Interact();
         }
-        
+
     }
-    
-    
+
+
     #endregion
 
-    
+
     //>>>>>LATER -> changing appearance/image: https://forum.unity.com/threads/changing-sprite-during-run-time.211817/
 }

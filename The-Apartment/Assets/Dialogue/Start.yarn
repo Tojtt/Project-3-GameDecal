@@ -18,6 +18,29 @@ Stalker: ...
     Stalker: ...no.
 <<endif>>
 ===
+title: MotherEncounter
+---
+Mother: Agh, you're finally here!! Please watch my children while I run some errands.
+-> No need to be so rude...
+    <<set $motherResponse to 0>>
+-> Yes Mrs., take your time.
+    <<set $motherResponse to 1>>
+
+<<if $motherResponse == 0>>
+    The mother glares at you, then turns to leave.
+    <<teleport Player Door-102-Mother>>
+    <<TriggerBabysitSequence BabysitTask1(Clone)>>
+<<else>>
+    Mother: Thanks so much!
+    <<teleport Player Door-102-Mother>>
+    <<TriggerBabysitSequence BabysitTask1(Clone)>>
+<<endif>>
+===
+title: EnterBabysitRoom
+---
+Huh.. where's this lady's kids? Hello?
+So dirty in here..
+===
 title: Tutorial1
 ---
 Person: Hi, are you new around here?

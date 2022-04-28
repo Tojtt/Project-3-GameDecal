@@ -121,3 +121,8 @@ You try the knob and notice that the door is unlocked.
 -> Hmm, I guess I'll just leave his coat inside.
    <<teleport Player Door-304-friend>>
 ===
+title: Door206
+---
+Player 206: This is my apartment.
+
+===
