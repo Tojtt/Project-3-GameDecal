@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &64224096 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4045419697359290772, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
-  m_PrefabInstance: {fileID: 2153487869735473368}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &122322558
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,11 +1163,6 @@ BoxCollider2D:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6944791037775653820, guid: 6676c85d0f885364290275d1e5992554, type: 3}
   m_PrefabInstance: {fileID: 2071278480}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1175987490 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6877575688615500851, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
-  m_PrefabInstance: {fileID: 2153487869735473368}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1198786066
 GameObject:
@@ -2875,7 +2865,7 @@ PrefabInstance:
     - target: {fileID: 4045419697359290773, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: destination
       value: 
-      objectReference: {fileID: 1175987490}
+      objectReference: {fileID: 0}
     - target: {fileID: 5407270164638591373, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: m_TagString
       value: LoudNeighborDoor
@@ -2891,7 +2881,7 @@ PrefabInstance:
     - target: {fileID: 7050782774414195268, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: destination
       value: 
-      objectReference: {fileID: 64224096}
+      objectReference: {fileID: 0}
     - target: {fileID: 7783171220650153653, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: m_Name
       value: Room302-FortuneTellerPART1
