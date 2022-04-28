@@ -8,7 +8,6 @@ public class Bed : MonoBehaviour
     #region Unity_variables
     public SceneTransitions sceneTransition;
     public DialogueRunner dialogue;
-    public GameState gs;
     public string nextDay;
     public bool disabled;
     #endregion
@@ -47,7 +46,16 @@ public class Bed : MonoBehaviour
                 nextDay = "Day" + GameState.Instance.day + "Scene";
                 GameState.Instance.PrepareNextDay(GameState.Instance.day);
                 GameState.Instance.watchedTV = false;
-                StartCoroutine(sceneTransition.LoadScene(nextDay));
+                // run night monologue first
+                int day = GameState.Instance.day;
+                string startNode = "NightDialogue" + day;
+                if (!dialogue.IsDialogueRunning)
+                {
+                    dialogue.StartDialogue(startNode);
+                    //dialogue.onDialogueComplete.AddListener(sceneTransition.LoadScene(nextDay));
+                    StartCoroutine(sceneTransition.LoadScene(nextDay));
+                }
+                
             } else
             {
                 // run Dialogue telling Player to watch the TV
