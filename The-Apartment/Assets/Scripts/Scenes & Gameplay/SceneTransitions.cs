@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Yarn.Unity;
 
 public class SceneTransitions : MonoBehaviour
 {
     public Animator transitionAnim;
     public GameState gs;
+    public DialogueRunner dialogue;
+    public bool runDialogueBefore = false;
 
     void Update(){
         // if(Input.GetKeyDown(KeyCode.M)){
@@ -21,6 +24,7 @@ public class SceneTransitions : MonoBehaviour
         SceneManager.LoadScene(sceneName);
 
     }
+
 
     public IEnumerator TeleportTransition()
     {

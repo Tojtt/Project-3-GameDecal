@@ -127,8 +127,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionAnim: {fileID: 6943125470275393844}
-  nextscene: Day2Scene
   gs: {fileID: 0}
+  dialogue: {fileID: 0}
+  runDialogueBefore: 0
 --- !u!1 &6943125470275393850
 GameObject:
   m_ObjectHideFlags: 0

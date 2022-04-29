@@ -8,6 +8,7 @@ public class Bed : MonoBehaviour
     #region Unity_variables
     public SceneTransitions sceneTransition;
     public DialogueRunner dialogue;
+    public GameObject nightScene;
     public string nextDay;
     public bool disabled;
     #endregion
@@ -47,13 +48,23 @@ public class Bed : MonoBehaviour
                 GameState.Instance.PrepareNextDay(GameState.Instance.day);
                 GameState.Instance.watchedTV = false;
                 // run night monologue first
-                int day = GameState.Instance.day;
+                int day = GameState.Instance.day - 1;
                 string startNode = "NightDialogue" + day;
                 if (!dialogue.IsDialogueRunning)
                 {
                     dialogue.StartDialogue(startNode);
-                    //dialogue.onDialogueComplete.AddListener(sceneTransition.LoadScene(nextDay));
-                    StartCoroutine(sceneTransition.LoadScene(nextDay));
+                    // update camera to show the player sleeping
+                    GameObject player = GameObject.Find("Player");
+                    GameObject maincam = GameObject.Find("Main Camera");
+                    Vector3 prevPos = player.transform.position;
+                    Vector3 target = nightScene.transform.position;
+                    Debug.Log("Current position" + target);
+                    maincam.gameObject.GetComponent<CameraFollow>().followEnabled = false;
+
+                    maincam.transform.position = target;
+                    GameState.Instance.freezePlayer = true;
+
+                    dialogue.onDialogueComplete.AddListener(RunLoadScene);
                 }
                 
             } else
@@ -80,5 +91,11 @@ public class Bed : MonoBehaviour
                 dialogue.StartDialogue("finishChores");
             }
         }
+    }
+
+    public void RunLoadScene()
+    {
+        GameState.Instance.freezePlayer = false;
+        StartCoroutine(sceneTransition.LoadScene(nextDay));
     }
 }
