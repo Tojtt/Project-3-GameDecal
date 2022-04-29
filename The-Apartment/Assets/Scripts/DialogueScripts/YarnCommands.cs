@@ -15,7 +15,7 @@ public class YarnCommands : MonoBehaviour
     {
         DialogueRunner dr = GetComponent<DialogueRunner>();
         // Adds a Yarn Command to generate a number [0, range)
-        dr.AddFunction("random",
+        dr.AddFunction("random2",
             (int range) => { return Random.Range(0, range); });
 
         // Retrieves the current day from GameState

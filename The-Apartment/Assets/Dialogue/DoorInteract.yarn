@@ -4,7 +4,7 @@ This is a door. It is locked.
 ===
 title: DoorInteract200
 ---
-<<set $response200 to random(3)>>
+<<set $response200 to random2(3)>>
 <<if $response200 == 0>>
     Unknown: Who's there?
 <<elseif $response200 == 1>>
@@ -16,7 +16,7 @@ title: DoorInteract200
 ===
 title: DoorInteract201
 ---
-<<set $response201 to random(3)>>
+<<set $response201 to random2(3)>>
 <<if $response201 == 0>>
     Unknown: Hehehe...
 <<elseif $response201 == 1>>
@@ -36,7 +36,7 @@ Unknown: Just leave it at the door!
 ===
 title: DoorDone
 ---
-<<set $response2 to random(3)>>
+<<set $response2 to random2(3)>>
 <<if $response2 == 0>>
     Unknown: SHUT UP!!!
 <<elseif $response2 == 1>>
@@ -74,7 +74,7 @@ Resident: (On Phone) Yes, I know the mailbox is only a few feet away. Don't tell
 ===
 title: RandomPhoneTalk
 ---
-<<set $randomCall to random(8)>>
+<<set $randomCall to random2(8)>>
 
 <<if $randomCall == 0>>
     Resident: (On Phone) What did you say? I think you're cutting out.
@@ -99,7 +99,7 @@ title: RandomPhoneTalk
 ===
 title: DoorDog
 ---
-<<set $responseDog to random(2)>>
+<<set $responseDog to random2(2)>>
 <<if $responseDog == 0>>
     Woof woof!
 <<elseif $responseDog == 1>>
