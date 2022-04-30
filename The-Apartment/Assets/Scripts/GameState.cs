@@ -118,6 +118,7 @@ public class GameState : MonoBehaviour
 
     void Update()
     {
+
         if (day == 6)
         {
             if (true)
@@ -264,6 +265,27 @@ public class GameState : MonoBehaviour
         
     }
     #endregion
+
+    #region Restart_Day_Functions
+    public void RestartDay()
+    {
+        // restart task queue
+        taskQueue = new List<GameObject>();
+        foreach (GameObject task in tasks_for_day[day - 1])
+        {
+            taskQueue.Add(Instantiate(task));
+            Debug.Log(task.name);
+        }
+
+        // other variables?
+        watchedTV = false;
+        dayFinished = false;
+
+        // end with reloading the current scene
+        string curScene = "Day" + day + "Scene";
+        SceneManager.LoadScene(curScene);
+    }
+    #endregion 
 
     #region Day6_Functions
     void ResetDay6()
