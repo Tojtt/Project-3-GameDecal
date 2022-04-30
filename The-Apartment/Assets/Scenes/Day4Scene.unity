@@ -372,8 +372,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneTransition: {fileID: 0}
   gs: {fileID: 30717188}
-  player: {fileID: 2001980433}
+  player: {fileID: 0}
   dialogue: {fileID: 0}
+  tvOverlay: {fileID: 0}
+  maincam: {fileID: 0}
 --- !u!114 &155592611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,7 +507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneTransition: {fileID: 0}
   dialogue: {fileID: 0}
-  gs: {fileID: 0}
+  nightScene: {fileID: 0}
   nextDay: 
   disabled: 0
 --- !u!1001 &208704843
@@ -1326,6 +1328,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6405677939714604964, guid: cb7dd224487d0449ea9cc1d8cd1cc90d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cb7dd224487d0449ea9cc1d8cd1cc90d, type: 3}
+--- !u!4 &377654134 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 377654133}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &392390754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2313,7 +2320,7 @@ Transform:
   - {fileID: 1328081361}
   - {fileID: 1742492112}
   - {fileID: 138653336}
-  - {fileID: 1130468329}
+  - {fileID: 377654134}
   - {fileID: 1722097935}
   - {fileID: 1983070678}
   - {fileID: 155592609}
@@ -3500,11 +3507,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 841282416158200076, guid: f1dfce2a481390f40a93b70cefd3b603, type: 3}
   m_PrefabInstance: {fileID: 1096129464}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1130468329 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6405677939714604960, guid: cb7dd224487d0449ea9cc1d8cd1cc90d, type: 3}
-  m_PrefabInstance: {fileID: 377654133}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1135450522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6944791037775653820, guid: 6676c85d0f885364290275d1e5992554, type: 3}
@@ -4294,6 +4296,7 @@ MonoBehaviour:
   target: {fileID: 1135450522}
   offset: {x: 0, y: 1, z: -2}
   smoothFactor: 0
+  followEnabled: 0
 --- !u!114 &1386904285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4865,7 +4868,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: cb7dd224487d0449ea9cc1d8cd1cc90d, type: 3}
 --- !u!4 &1722097935 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6405677939714604960, guid: cb7dd224487d0449ea9cc1d8cd1cc90d, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1722097934}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1722097936 stripped
@@ -5833,8 +5836,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneTransition: {fileID: 0}
   gs: {fileID: 30717188}
-  player: {fileID: 2001980433}
+  player: {fileID: 0}
   dialogue: {fileID: 0}
+  tvOverlay: {fileID: 0}
+  maincam: {fileID: 0}
 --- !u!1001 &1996972277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5905,17 +5910,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 841282416158200076, guid: f1dfce2a481390f40a93b70cefd3b603, type: 3}
   m_PrefabInstance: {fileID: 1996972277}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2001980433 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6944791037775653822, guid: 6676c85d0f885364290275d1e5992554, type: 3}
-  m_PrefabInstance: {fileID: 2071278480}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 557e6853b3dcccd45b215f5dff6adc2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2003577797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6553,6 +6547,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3528420338049250863, guid: a988072cc8ad94c23bce245f482a7423, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: c0e71974891f94bfeb034b1c9a0e2cfd, type: 2}
+    - target: {fileID: 3528420338049250863, guid: a988072cc8ad94c23bce245f482a7423, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4007006824025103266, guid: c0e71974891f94bfeb034b1c9a0e2cfd, type: 2}
     - target: {fileID: 4077690077415196086, guid: a988072cc8ad94c23bce245f482a7423, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -6601,6 +6603,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8322797829334838061, guid: a988072cc8ad94c23bce245f482a7423, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: c0e71974891f94bfeb034b1c9a0e2cfd, type: 2}
+    - target: {fileID: 8322797829334838061, guid: a988072cc8ad94c23bce245f482a7423, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4007006824025103266, guid: c0e71974891f94bfeb034b1c9a0e2cfd, type: 2}
     - target: {fileID: 8422802741742080890, guid: a988072cc8ad94c23bce245f482a7423, type: 3}
       propertyPath: m_RootOrder
       value: 5

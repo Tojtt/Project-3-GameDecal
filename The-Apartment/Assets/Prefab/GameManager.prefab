@@ -68,7 +68,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -141,10 +141,10 @@ MonoBehaviour:
   - {fileID: 7695479361598868855, guid: 5894de8ab806c428ba4deaae8b474819, type: 3}
   day1_tasks:
   - {fileID: 3982712283394081122, guid: 3da32b094ef774bd39f255dafc7105ac, type: 3}
-  - {fileID: 3285851587316986930, guid: ccf31ad24881541df99125e93544e23b, type: 3}
   day2_tasks:
-  - {fileID: 7695479361598868855, guid: 5894de8ab806c428ba4deaae8b474819, type: 3}
-  day3_tasks: []
+  - {fileID: 3982712283394081122, guid: 3da32b094ef774bd39f255dafc7105ac, type: 3}
+  day3_tasks:
+  - {fileID: 3285851587316986930, guid: ccf31ad24881541df99125e93544e23b, type: 3}
   day4_tasks: []
   day5_tasks: []
   day6_tasks: []
@@ -154,11 +154,19 @@ MonoBehaviour:
   taskQueue: []
   watchedTV: 1
   freezePlayer: 0
+  dialogue: {fileID: 0}
+  friend: {fileID: 0}
+  entranceBlocked: 0
   moneyEarned: 0
   floor: 0
   inRoom: 0
   roomNum: -1
+  speed: 1
+  doorExit: {fileID: 0}
+  tv: {fileID: 0}
   pouredGas: 0
+  fireExtinguisherStolen: 0
+  fireStarted: 0
   fortuneTellingComplete: 0
   lostDogComplete: 0
 --- !u!114 &920511364
