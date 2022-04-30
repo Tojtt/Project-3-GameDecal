@@ -7,6 +7,7 @@ public class Bed : MonoBehaviour
 {
     #region Unity_variables
     public SceneTransitions sceneTransition;
+    public GameObject doorExit;
     public DialogueRunner dialogue;
     public GameObject nightScene;
     public string nextDay;
@@ -52,6 +53,7 @@ public class Bed : MonoBehaviour
                 string startNode = "NightDialogue" + day;
                 if (!dialogue.IsDialogueRunning)
                 {
+                    doorExit.SetActive(false);
                     dialogue.StartDialogue(startNode);
                     // update camera to show the player sleeping
                     GameObject player = GameObject.Find("Player");
@@ -63,6 +65,7 @@ public class Bed : MonoBehaviour
 
                     maincam.transform.position = target;
                     GameState.Instance.freezePlayer = true;
+                    
 
                     dialogue.onDialogueComplete.AddListener(RunLoadScene);
                 }
@@ -96,6 +99,7 @@ public class Bed : MonoBehaviour
     public void RunLoadScene()
     {
         GameState.Instance.freezePlayer = false;
+        doorExit.SetActive(true);
         StartCoroutine(sceneTransition.LoadScene(nextDay));
     }
 }
