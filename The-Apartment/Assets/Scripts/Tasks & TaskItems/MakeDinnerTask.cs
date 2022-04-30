@@ -14,6 +14,12 @@ public class MakeDinnerTask : AbstractTask
     private string taskName;
     #endregion
 
+    #region Unity_Variables
+    public GameObject pizza;
+    [SerializeField]
+    public Sprite[] stages;
+    #endregion 
+
     #region AbstractTask_Funcs
 
     public override void Awake()
@@ -42,6 +48,7 @@ public class MakeDinnerTask : AbstractTask
     {
         stage += 1;
         description = "Make dinner for your friend!\n" + getStageDesc(stage);
+
         if (stage == totalStages)
         {
 
@@ -54,7 +61,7 @@ public class MakeDinnerTask : AbstractTask
 
     public override void Update()
     {
-        
+        pizza.GetComponent<SpriteRenderer>().sprite = stages[stage-1];
     }
 
     public override string getTaskName()
@@ -70,33 +77,7 @@ public class MakeDinnerTask : AbstractTask
     #endregion
 
     #region Day2_Functions 
-    /* public void RunFriendDinner()
-    {
-        // Friend walks in - active
-        FindObjectOfType<Bed>().disabled = true;
-        friend.SetActive(true);
 
-        Debug.Log("Run friend dinner cutscene");
-        StartCoroutine(MoveFriend());
-        // Dialogue runs
-        if (!dialogue.IsDialogueRunning)
-        {
-            dialogue.StartDialogue("friendCutscene");
-        }
-
-        // Cutscene ends 
-    }
-
-    public IEnumerator MoveFriend()
-    {
-        float step = speed * Time.deltaTime;
-        target.position = new Vector3(32.07f, 5.38f);
-        friend.transform.position = Vector3.MoveTowards(transform.position, target.position, step);
-
-        yield return new WaitForSeconds(0.5f);
-        friend.SetActive(false);
-
-    } */
     #endregion
 
     private string getStageDesc(int stage)
@@ -108,6 +89,7 @@ public class MakeDinnerTask : AbstractTask
                 return "Get the pizza dough";
             case 1:
                 // code block
+             
                 return "Add in the tomato sauce";
             case 2:
                 return "Add in the cheese";
