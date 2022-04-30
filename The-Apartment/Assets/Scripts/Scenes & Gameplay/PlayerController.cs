@@ -175,6 +175,7 @@ public class PlayerController : MonoBehaviour
                 SetHallwayVariables();
                 transform.position = GetTeleportPosition(destination);
             }
+            
             else
             {
                 transform.position = destination.position;
@@ -251,9 +252,20 @@ public class PlayerController : MonoBehaviour
             else if (forcedTeleporter.transform.name == "Door-304-friend")
             {
                 SetRoomVariables(304);
-                transform.position = GetTeleportPosition(destination);
+                transform.position = destination.position;
             }
             else if (forcedTeleporter.transform.name == "HallwayDoor304")
+            {
+                SetHallwayVariables();
+                transform.position = GetTeleportPosition(destination);
+            }
+            else if (forcedTeleporter.transform.name == "Door101-WelcomeMat")
+            {
+                Debug.Log("hi");
+                SetRoomVariables(101);
+                transform.position = destination.position;
+            }
+            else if (forcedTeleporter.transform.name == "HallwayDoor101")
             {
                 SetHallwayVariables();
                 transform.position = GetTeleportPosition(destination);

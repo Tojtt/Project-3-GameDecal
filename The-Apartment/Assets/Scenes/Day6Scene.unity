@@ -2180,11 +2180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6944791037775653820, guid: 6676c85d0f885364290275d1e5992554, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 98.64
+      value: -14.9
       objectReference: {fileID: 0}
     - target: {fileID: 6944791037775653820, guid: 6676c85d0f885364290275d1e5992554, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.29
+      value: -15.83
       objectReference: {fileID: 0}
     - target: {fileID: 6944791037775653820, guid: 6676c85d0f885364290275d1e5992554, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2408,6 +2408,18 @@ PrefabInstance:
       propertyPath: dialogueRunner
       value: 
       objectReference: {fileID: 462507613}
+    - target: {fileID: 3313387516068557209, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769554323630607187, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: keyID
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769554323630607187, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: dialogueRunner
+      value: 
+      objectReference: {fileID: 462507613}
     - target: {fileID: 4045419697359290770, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: m_TagString
       value: DoorTeleporter
@@ -2428,6 +2440,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 7041580524376989239, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041580524376989239, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041580524376989239, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041580524376989239, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.63
+      objectReference: {fileID: 0}
     - target: {fileID: 7050782774414195268, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: destination
       value: 
@@ -2447,6 +2475,14 @@ PrefabInstance:
     - target: {fileID: 8812714151469247025, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: doorDialogueNode
       value: Door206
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812714152576459018, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: m_Size.y
+      value: 0.56001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8812714152576459018, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.05068808
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6877575688615500852, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}

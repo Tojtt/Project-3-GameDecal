@@ -184,7 +184,7 @@ public class InventoryManager : MonoBehaviour
         {
             Debug.Log("Yum");
             dog.holdingFood = true;
-        }
+        } 
     }
 
     public void DeselectItem()

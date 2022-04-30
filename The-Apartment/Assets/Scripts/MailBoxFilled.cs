@@ -7,7 +7,7 @@ public class MailBoxFilled : MonoBehaviour
     #region Variables
     //NOTE: No collider on item!
     public GameObject item; //Item inside mailbox, tag as "MailboxCollectible", not "collectible"
-    BoxCollider2D itemCollider;
+    //BoxCollider2D itemCollider;
     bool opened = false;
     bool itemTaken = false;
     InventoryManager invM;
@@ -62,8 +62,7 @@ public class MailBoxFilled : MonoBehaviour
         Item itemScript = item.GetComponent<Item>();
         if (itemScript.itemID == 12) //Cash envelope
         {
-            gameState.moneyEarned += 100;
-            Debug.Log("Earned $100");
+            gameState.EarnMoney(100);
         } else
         {
             invM.AddItem(itemScript); 

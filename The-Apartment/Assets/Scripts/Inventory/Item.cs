@@ -13,7 +13,7 @@ public class Item : MonoBehaviour
 
     InventoryManager inventory;
 
-    void SetState(string newState)
+    public void SetState(string newState)
     {
         state = newState;
     }

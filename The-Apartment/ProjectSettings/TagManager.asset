@@ -23,6 +23,7 @@ TagManager:
   - Door
   - Friend
   - LoudNeighborDoor
+  - Drawer
   layers:
   - Default
   - TransparentFX

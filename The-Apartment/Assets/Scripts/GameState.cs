@@ -137,6 +137,14 @@ public class GameState : MonoBehaviour
     }
     #endregion
 
+    #region Money_Functions
+    public void EarnMoney(int amountMoney)
+    {
+        moneyEarned += amountMoney;
+        Debug.Log("Earned $" + amountMoney);
+    }
+    #endregion
+
     #region Daily_Functions
     public void PrepareNextDay(int day)
     {
