@@ -11,10 +11,22 @@ public class Item : MonoBehaviour
     public Sprite sprite;
     //public bool collectible; //Whether or not can be added to inventory <-Repetitive, because tagged as Collectible
 
+    public bool taken;
     InventoryManager inventory;
 
     public void SetState(string newState)
     {
         state = newState;
+    }
+
+    void OnMouseDown()
+    {
+        taken = true;
+    }
+
+
+    public bool wasTaken()
+    {
+        return taken;
     }
 }
