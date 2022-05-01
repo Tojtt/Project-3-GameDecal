@@ -16,8 +16,12 @@ public class MakeDinnerTask : AbstractTask
 
     #region Unity_Variables
     public GameObject pizza;
+    public GameObject oven;
     [SerializeField]
     public Sprite[] stages;
+    [SerializeField]
+    public Sprite ovenInProgress;
+    public Sprite ovenDone;
     #endregion 
 
     #region AbstractTask_Funcs
@@ -35,7 +39,8 @@ public class MakeDinnerTask : AbstractTask
         description = "Make dinner for your friend!\n" + getStageDesc(stage);
         totalStages = 4;
         taskName = "Dinner";
-        
+
+        oven = GameObject.Find("Oven");
 
     }
 
@@ -46,6 +51,12 @@ public class MakeDinnerTask : AbstractTask
 
     public override void incrementProgress()
     {
+        // putting pizza in the oven
+        if (stage == 3)
+        {
+            StartCoroutine(OvenAnimation());
+        }
+
         stage += 1;
         description = "Make dinner for your friend!\n" + getStageDesc(stage);
 
@@ -54,6 +65,8 @@ public class MakeDinnerTask : AbstractTask
 
             // run the Dinner cutscene before setting as complete
             GameState.Instance.RunFriendDinner();
+            // remove pizza from scene 
+            pizza.SetActive(false);
 
             isComplete = true; 
         }
@@ -76,7 +89,16 @@ public class MakeDinnerTask : AbstractTask
 
     #endregion
 
-    #region Day2_Functions 
+    #region Day2_Functions
+
+    public IEnumerator OvenAnimation()
+    {
+        // change to in progress
+        oven.GetComponent<SpriteRenderer>().sprite = ovenInProgress; // sprite
+        yield return new WaitForSeconds(3f);
+        oven.GetComponent<SpriteRenderer>().sprite = ovenDone; // sprite
+
+    }
 
     #endregion
 
