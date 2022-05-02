@@ -161,21 +161,18 @@ public class PlayerController : MonoBehaviour
             {
                 gameState.watchedTV = true;
             }
-            else if (doorTeleporter.transform.name == "Door302-FortuneTellerPart2")
-            {
-                SetRoomVariables(302);
-                transform.position = destination.position;
-            } else if (doorTeleporter.transform.name == "HallwayDoor302Part2")
-            {
-                SetHallwayVariables();
-                transform.position = GetTeleportPosition(destination);
-            }
+            
             else if (doorTeleporter.transform.name == "HallwayDoor304")
             {
                 SetHallwayVariables();
                 transform.position = GetTeleportPosition(destination);
             }
-            
+            else if (doorTeleporter.transform.name == "HallwayDoor302Part2")
+            {
+                SetHallwayVariables();
+                transform.position = GetTeleportPosition(destination);
+            }
+
             else
             {
                 transform.position = destination.position;
@@ -270,6 +267,12 @@ public class PlayerController : MonoBehaviour
                 SetHallwayVariables();
                 transform.position = GetTeleportPosition(destination);
             }
+            else if (forcedTeleporter.transform.name == "Door302-FortuneTellerPart2")
+            {
+                SetRoomVariables(302);
+                transform.position = destination.position;
+            }
+            
 
         }
     }

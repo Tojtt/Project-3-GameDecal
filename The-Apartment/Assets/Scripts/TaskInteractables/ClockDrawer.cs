@@ -1,31 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
-public class Drawer : MonoBehaviour
+public class ClockDrawer : MonoBehaviour
 {
     #region Editor_Variables
-    public GameObject item; 
+    public GameObject item;
     public bool containsCollectible;
     public bool isLocked;
     public bool isEmpty;
     public bool invisibleSprite; //If the open sprite should be invisible instead of replaced
     public Sprite openedSprite;
     public Sprite closedSprite;
+
+    public GameObject clock;
+
+    public DialogueRunner dialogueRunner;
+    public string completedFT2DialogueNode;
+    public string completedFT2DialogueNodeAlt;
     #endregion
 
     #region Drawer_variables
     bool opened = false;
     bool itemTaken = false;
     bool unlocked = false;
-
-    BoxCollider2D itemCollider;
     #endregion
 
     #region Referenced_Variables
     InventoryManager invM;
     GameState gameState;
-    SpriteRenderer playerRenderer;
+    
+    ClockTime clockScript;
     #endregion
 
 
@@ -38,49 +44,47 @@ public class Drawer : MonoBehaviour
     void Awake()
     {
         renderer = GetComponent<SpriteRenderer>();
-        if (!isEmpty) {
+        if (!isEmpty)
+        {
             item.SetActive(false);
-            
-            itemCollider = item.GetComponent<BoxCollider2D>();
-            if (itemCollider)
-            {
-                itemCollider.enabled = false;
-            }
-                
-            if (!item.GetComponent<Item>().notDroppable)
-            {
-                playerRenderer = GameObject.FindWithTag("Player").GetComponent<PlayerController>().GetComponent<SpriteRenderer>();
-            }
         }
-        
+
         if (invisibleSprite)
         {
             renderer.enabled = false; //Set invisible
-        } else
+        }
+        else
         {
             renderer.sprite = closedSprite;
         }
 
-        
         invM = GameObject.FindWithTag("Inventory").GetComponent<InventoryManager>();
         gameState = GameObject.FindWithTag("GameManager").GetComponent<GameState>();
+        clockScript = clock.GetComponent<ClockTime>();
     }
 
     void OnMouseDown()
     {
+        if (!unlocked && isLocked && clockScript.GetHour() == 7)
+        {
+            Unlock();
+        }
         if (!opened)
         {
             if (!isLocked || unlocked)
             {
                 OpenDrawer();
             }
-        } else if (!isEmpty && !itemTaken)
+        }
+        else if (!isEmpty && !itemTaken)
         {
             TakeItem();
-        } else
+        }
+        else
         {
             CloseDrawer();
         }
+        
     }
     #endregion
 
@@ -110,17 +114,23 @@ public class Drawer : MonoBehaviour
         if (containsCollectible)
         {
             invM.AddItem(itemScript);
-            if (!itemScript.notDroppable)
-            {
-                //Change tag of item to collectible
-                itemScript.gameObject.tag = "Collectible";
-                itemCollider.enabled = true;
-                itemScript.SetOrder(playerRenderer.sortingOrder - 1);
-            }
-        } else //Contains MONEY
+        }
+        else //Contains MONEY
         {
             Money moneyScript = item.GetComponent<Money>();
             gameState.EarnMoney(moneyScript.amountMoney);
+            Debug.Log("Fortune Telling part 2 completed!");
+            gameState.fortuneTellingPart2Complete = true;
+
+            dialogueRunner.Stop();
+            if (gameState.fortuneTellingComplete)
+            {
+                dialogueRunner.StartDialogue(completedFT2DialogueNode);
+            } else
+            {
+                dialogueRunner.StartDialogue(completedFT2DialogueNodeAlt);
+            }
+            
         }
         item.SetActive(false);
         itemTaken = true;
@@ -143,7 +153,8 @@ public class Drawer : MonoBehaviour
 
     public void Unlock()
     {
-       unlocked = true;
+        unlocked = true;
+        Debug.Log("Unlocked");
     }
     #endregion
 }

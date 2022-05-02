@@ -146,7 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneTransition: {fileID: 0}
+  doorExit: {fileID: 0}
   dialogue: {fileID: 0}
-  gs: {fileID: 0}
+  nightScene: {fileID: 0}
   nextDay: 
   disabled: 0

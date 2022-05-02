@@ -28,7 +28,7 @@ public class RedCrystalBall : MonoBehaviour
     {
         for (int i = 1; i < 6; i++)
         {
-            SetAlpha(i * 0.5f);
+            SetAlpha(i * 0.2f);
             lightScript.addIntensity(0.2f);
             yield return new WaitForSeconds(0.2f);
         }

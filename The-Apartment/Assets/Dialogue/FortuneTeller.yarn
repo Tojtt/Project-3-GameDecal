@@ -82,3 +82,11 @@ Fortune Teller: Alright, goodbye now.
 Fortune Teller: Bye! And come back another day if you want to buy my healing crystals!
 <<set $done to 2>>
 ===
+title: FT2TaskComplete
+---
+Player: I knew that woman had to have a lot of money somewhere...trying to scam me with healing crystals and what not.
+===
+title: FT2TaskCompleteAlt
+---
+Player: I knew that fortune telling woman had to have a lot of money somewhere.
+===

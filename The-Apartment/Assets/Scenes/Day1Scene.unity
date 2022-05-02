@@ -354,7 +354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1402866354, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 241148198134126385, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: dialogueRunner
@@ -380,10 +380,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: LoudNeighborDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 5667843869139803529, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 5713588016842030224, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: dialogueRunner
       value: 
       objectReference: {fileID: 462507613}
+    - target: {fileID: 6428228317456084269, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 7478554781211474348, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: gs
       value: 
@@ -452,10 +460,6 @@ PrefabInstance:
       propertyPath: dialogue
       value: 
       objectReference: {fileID: 462507613}
-    - target: {fileID: 7858555711628934093, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
-      propertyPath: doorExit
-      value: 
-      objectReference: {fileID: 554335956}
     - target: {fileID: 7858555711628934093, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: sceneTransition
       value: 
@@ -666,11 +670,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &554335956 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7783171219219693549, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
-  m_PrefabInstance: {fileID: 486199724}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &572307175
 PrefabInstance:
   m_ObjectHideFlags: 0

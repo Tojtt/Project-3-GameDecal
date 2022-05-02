@@ -143,7 +143,7 @@ public class InventoryManager : MonoBehaviour
             dropPosition.x += offset;
         }
 
-        if (fall)
+        if (fall && !item.notDroppable)
         {
             item.gameObject.transform.position = dropPosition; //Drop next to player
             item.gameObject.SetActive(true);
