@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     float y_input;
     Vector2 currDirection;
     bool move2D = false;
+    private SpriteRenderer sr;
     #endregion
 
     #region Teleport_variables
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
     #region GameObject_components
     public Animator anim;
-    private SpriteRenderer sr;
+    private SpriteRenderer spriteRenderer;
     private AudioSource footstep_sound;
     GameState gameState;
     GameManager gm;
@@ -101,6 +102,8 @@ public class PlayerController : MonoBehaviour
         y_input = Input.GetAxisRaw("Vertical");
         teleportCooldown += Time.deltaTime;
 
+        // will run even if there's no gameState
+
         if (!gameState.freezePlayer)
         {
             Move();
@@ -124,10 +127,10 @@ public class PlayerController : MonoBehaviour
             footstep_sound.Stop();
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        /* if (Input.GetKeyDown(KeyCode.D))
         {
             NightTransition(); //<< Are we still using this?
-        }
+        } */
 
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space))
         {
