@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     #region GameObject_components
     public Animator anim;
     private SpriteRenderer sr;
+    private AudioSource footstep_sound;
     GameState gameState;
     GameManager gm;
     GameObject gameManager;
@@ -75,6 +76,9 @@ public class PlayerController : MonoBehaviour
         floorText = GameObject.Find("FloorDescription").GetComponent<UnityEngine.UI.Text>();
         colliders = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        footstep_sound = GetComponent<AudioSource>();
+        Debug.Log("Sound");
+        Debug.Log(footstep_sound);
 
         Camera.main.orthographicSize = defaultCameraSize;
     }
@@ -344,6 +348,7 @@ public class PlayerController : MonoBehaviour
             currDirection = Vector2.right;
             anim.SetFloat("Speed", 1);
             sr.flipX = true;
+            footstep_sound.Play();
         }
         else if (x_input < 0)
         {
@@ -351,12 +356,14 @@ public class PlayerController : MonoBehaviour
             PlayerRB.velocity = Vector2.left * movespeed;
             currDirection = Vector2.left;
             sr.flipX = false;
+            footstep_sound.Play();
         } else if (y_input > 0 && move2D)  //&& SceneManager.GetActiveScene().name != "HallwayLayout")
         {
             PlayerRB.velocity = Vector2.up * movespeed;
             currDirection = Vector2.up;
             anim.SetFloat("Speed", 1);
             sr.flipX = true;
+            footstep_sound.Play();
         }
         else if (y_input < 0 && move2D)  //&& SceneManager.GetActiveScene().name != "HallwayLayout")
         {
@@ -364,11 +371,13 @@ public class PlayerController : MonoBehaviour
             PlayerRB.velocity = Vector2.down * movespeed;
             currDirection = Vector2.down;
             sr.flipX = true;
+            footstep_sound.Play();
         }
         else
         {
             anim.SetFloat("Speed", 0);
             PlayerRB.velocity = Vector2.zero;
+            footstep_sound.Stop();
             //anim.SetBool("Moving", false);
         }
         //anim.SetFloat("DirX", currDirection.x);

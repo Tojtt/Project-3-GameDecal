@@ -10,6 +10,8 @@ public class StalkerScript : MonoBehaviour
     float walkDelay;
     [SerializeField]
     float retreatRange;
+    [SerializeField]
+    float retreatSpeed;
     private bool retreating;
     private float currTimer;
     private GameObject player;
@@ -54,7 +56,7 @@ public class StalkerScript : MonoBehaviour
     {
         Vector3 toPlayer = player.transform.position - this.gameObject.transform.position;
         Vector2 movementVector = new Vector2(-1 * toPlayer.normalized[0], 0);
-        rigidBody.velocity = movementVector * movespeed;
+        rigidBody.velocity = movementVector * retreatSpeed;
         yield return new WaitForSeconds(1f);
         rigidBody.velocity = new Vector2(0, 0);
         retreating = false;

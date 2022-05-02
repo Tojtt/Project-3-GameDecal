@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2360037916022864783}
   - component: {fileID: 2360037916022864768}
   - component: {fileID: 2360037916022864780}
+  - component: {fileID: 1877061306}
   m_Layer: 0
   m_Name: StalkerNPC
   m_TagString: Untagged
@@ -122,6 +123,7 @@ MonoBehaviour:
   movespeed: 3
   walkDelay: 3
   retreatRange: 5
+  retreatSpeed: 8
 --- !u!114 &2360037916022864780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +136,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef302f7ffbcc246f2a2165674b1f5b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineview: {fileID: 0}
   timesSpoken: 0
+  finished: 0
+  canFinish: 0
   conversationStartNode: Stalker
   disableNode: StalkerDone
+  repeatNode: 
+--- !u!61 &1877061306
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2360037916022864769}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.12839785, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.192527, y: 5.12}
+  m_EdgeRadius: 0
