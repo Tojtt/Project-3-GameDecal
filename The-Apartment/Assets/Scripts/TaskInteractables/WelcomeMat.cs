@@ -60,10 +60,10 @@ public class WelcomeMat : MonoBehaviour
             OpenDrawer();
             
         }
-        else if (!isEmpty && !itemTaken)
-        {
-            TakeItem();
-        }
+        //else if (!isEmpty && !itemTaken)
+        //{
+        //    TakeItem();
+        //}
         else
         {
 
@@ -88,18 +88,21 @@ public class WelcomeMat : MonoBehaviour
         gameObject.transform.position += shiftPosition;
         opened = true;
         Debug.Log("Opened drawer");
-        item.SetActive(true);
+        if (!itemTaken)
+        {
+            item.SetActive(true);
+        }
     }
 
-    void TakeItem()
-    {
-        Item itemScript = item.GetComponent<Item>();
-        invM.AddItem(itemScript);
+    //void TakeItem()
+    //{
+    //    Item itemScript = item.GetComponent<Item>();
+    //    invM.AddItem(itemScript);
 
-        item.SetActive(false);
-        itemTaken = true;
-        Debug.Log("Item taken");
-    }
+    //    item.SetActive(false);
+    //    itemTaken = true;
+    //    Debug.Log("Item taken");
+    //}
 
     void CloseDrawer()
     {
@@ -107,6 +110,8 @@ public class WelcomeMat : MonoBehaviour
         renderer.sprite = closedSprite;
         opened = false;
         Debug.Log("Closed drawer");
+        //Just assume will take cuz no time
+        itemTaken = true;
     }
 
     public void Unlock()

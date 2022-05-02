@@ -7,6 +7,7 @@ public class FireManager : MonoBehaviour
     public GameObject redGlobalLight;
     public GameObject normalGlobalLight;
     public GameObject playerLight;
+    public SceneTransitions sceneTransition;
 
     void Awake()
     {
@@ -27,14 +28,7 @@ public class FireManager : MonoBehaviour
     #region Fire_functions
     public void StartFire()
     {
-        normalGlobalLight.SetActive(false);
-        redGlobalLight.SetActive(true);
-        TurnOffHallwayLights();
-        //  playerLight.SetActive(true);
-        foreach (Transform child in transform)
-        {
-            child.gameObject.SetActive(true);
-        }
+        StartCoroutine(beginFire());
     }
 
     void TurnOffHallwayLights()
@@ -48,4 +42,19 @@ public class FireManager : MonoBehaviour
         }
     }
     #endregion
+
+    IEnumerator beginFire()
+    {
+        
+        StartCoroutine(sceneTransition.TeleportTransition());
+        yield return new WaitForSeconds(1f);
+        normalGlobalLight.SetActive(false);
+        redGlobalLight.SetActive(true);
+        TurnOffHallwayLights();
+        //  playerLight.SetActive(true);
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+    }
 }

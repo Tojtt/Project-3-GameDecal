@@ -163,10 +163,11 @@ public class PlayerController : MonoBehaviour
         
         if (doorTeleporter != null && teleportCooldown > cooldownThreshold)
         {
+            Transform destination = doorTeleporter.GetComponent<Teleporter>().GetDestination();
             teleportCooldown = 0;
             StartCoroutine(sceneTransition.TeleportTransition());
             yield return new WaitForSeconds(0.5f);
-            Transform destination = doorTeleporter.GetComponent<Teleporter>().GetDestination();
+            
             if (doorTeleporter.transform.name == "Apt Door206") //Teleport into main character's room
             {
                 SetRoomVariables(206);
@@ -188,6 +189,11 @@ public class PlayerController : MonoBehaviour
                 transform.position = GetTeleportPosition(destination);
             }
             else if (doorTeleporter.transform.name == "HallwayDoor302Part2")
+            {
+                SetHallwayVariables();
+                transform.position = GetTeleportPosition(destination);
+            }
+            else if (doorTeleporter.transform.name == "HallwayDoor101")
             {
                 SetHallwayVariables();
                 transform.position = GetTeleportPosition(destination);
