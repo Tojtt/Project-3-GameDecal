@@ -12,6 +12,8 @@ public class DogScript : MonoBehaviour
      * 4. Add in dialogue for dog door, when dog is inside!
      * 5. Change follow if holding food to follow if fed food
      */
+    public Animator anim;
+    private SpriteRenderer sr;
 
     float movespeed;
     private Rigidbody2D dogRB;
@@ -22,7 +24,7 @@ public class DogScript : MonoBehaviour
     private float timer = 2;
     bool inRoom = false;
     int startDay = 1; //Change later 
-    int endDay = 5;
+    int endDay = 6;
     #endregion
 
     #region Referenced_Variables
@@ -34,6 +36,7 @@ public class DogScript : MonoBehaviour
 
     void Start()
     {
+        
         gameState = GameObject.FindWithTag("GameManager").GetComponent<GameState>();
         if (gameState.day >= startDay && gameState.day <= endDay)
         {
@@ -41,6 +44,7 @@ public class DogScript : MonoBehaviour
             movespeed = player.movespeed + 0.2f;
             
             dog = GameObject.Find("DogNPC");
+            sr = dog.GetComponent<SpriteRenderer>();
             dogRB = dog.GetComponent<Rigidbody2D>();
             doorManager = GameObject.Find("DoorManager").GetComponent<DoorManager>();
         }
@@ -81,15 +85,20 @@ public class DogScript : MonoBehaviour
         {
             if (player.transform.position.x < dogRB.transform.position.x) //Player to left
             {
+                sr.flipX = false;
                 dogRB.velocity = Vector2.left * movespeed;
+                anim.SetFloat("Speed", 1);
             }
             else
             {
+                sr.flipX = true;
                 dogRB.velocity = Vector2.right * movespeed;
+                anim.SetFloat("Speed", 1);
             }
         } else
         {
             dogRB.velocity = Vector2.zero;
+            anim.SetFloat("Speed", 0);
         }
         
     }
