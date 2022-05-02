@@ -22,4 +22,5 @@ Player: AGHHH!!! GET AWAY FROM ME!!!!!!!!
 You dash back towards the door.
 -->  I NEED TO GET OUT OF HERE NOW!!! AND I NEED TO STOP THEM!!
 <<teleport Player InRitualDoor>>
+<<BeginEndGame RitualInvestigateTask>>
 ===
