@@ -86,7 +86,7 @@ public class GasManager : MonoBehaviour
         if (gameState.pouredGas && onGas)
         {
             Debug.Log("Successfully Started Fire");
-
+            fireManager.gameObject.SetActive(true);
             gameState.fireStarted = true;
             fireManager.StartFire();
         } else

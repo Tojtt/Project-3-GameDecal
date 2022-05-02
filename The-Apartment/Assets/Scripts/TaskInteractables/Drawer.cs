@@ -41,7 +41,10 @@ public class Drawer : MonoBehaviour
     {
         renderer = GetComponent<SpriteRenderer>();
         if (!isEmpty) {
-            item.SetActive(false);
+            if (item.GetComponent<Item>().itemID != 2) { //Not fire extinguisher
+                item.SetActive(false);
+            }
+            
             
             itemCollider = item.GetComponent<BoxCollider2D>();
             if (itemCollider)
