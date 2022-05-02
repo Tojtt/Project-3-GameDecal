@@ -7,7 +7,7 @@ public class TV : MonoBehaviour
 {
     #region Unity_variables
     public SceneTransitions sceneTransition;
-    public GameState gs;
+    GameState gs;
     public GameObject player;
     public DialogueRunner dialogue;
     public GameObject tvOverlay;
@@ -23,7 +23,7 @@ public class TV : MonoBehaviour
         dialogue = FindObjectOfType<DialogueRunner>();
         maincam = GameObject.Find("Main Camera");
         hallwayTeleporter = GameObject.Find("HallwayDoor206");
-
+        gs = GameObject.FindWithTag("GameManager").GetComponent<GameState>();
     }
 
     // Update is called once per frame
@@ -49,7 +49,7 @@ public class TV : MonoBehaviour
         maincam.gameObject.GetComponent<CameraFollow>().followEnabled = false;
 
         maincam.transform.position = target;
-        GameState.Instance.freezePlayer = true;
+        gs.freezePlayer = true;
         Debug.Log("Moved player");
         hallwayTeleporter.SetActive(false);
         if (!dialogue.IsDialogueRunning)
@@ -59,7 +59,7 @@ public class TV : MonoBehaviour
             dialogue.StartDialogue(node);
             dialogue.onDialogueComplete.AddListener(ReaddTeleporter);
         }
-        GameState.Instance.freezePlayer = false;
+        gs.freezePlayer = false;
 
         // run TV cutscene here?
     }

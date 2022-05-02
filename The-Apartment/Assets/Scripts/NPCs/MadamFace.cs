@@ -35,9 +35,9 @@ public class MadamFace : MonoBehaviour
 
     #region Game_Variables
     int roomNum = 302;
-    int firstDay = 2;
-    int emptyDay = 3;
-    int lastDay = 6;
+    int firstDay = 3;
+    int emptyDay = 4;
+    int lastDay = 5;
 
     public int doorTimes = 0;
     #endregion
@@ -62,7 +62,7 @@ public class MadamFace : MonoBehaviour
     void Update()
     {
 
-        if (gameState.day >= firstDay && gameState.day <= emptyDay && !gameState.fortuneTellingComplete) //Crack open door
+        if (gameState.day >= firstDay && gameState.day < emptyDay && !gameState.fortuneTellingComplete) //Crack open door
         {
             if (doorTimes == 0)
             {
