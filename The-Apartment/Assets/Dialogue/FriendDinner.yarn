@@ -11,16 +11,8 @@ Kenn: How are you settling in?
 Kenn: Well, uh...
 Kenn: I know I introduced myself earlier, but I'm also studying at the local college here.
 Kenn: How about you?
-    -> Same here. I'm studying computer science.
-        Kenn: Good - I have an idea for a startup.
-        Kenn: Just kidding.
-        Kenn: Hey, c'mon, don't make that face!
-    -> Same here. I'm studying psychology.
-        Kenn: Oh good - I think I have several undiagnosed mental disorders. 
-        -> Oh.
-            Kenn: Sorry, I tend to overshare.
-Kenn: That's really cool. I'm honestly stil undeclared, so...
-Kenn: But it's fine, college is a good chance to explore. 
+    -> Same here.
+Kenn: Yo, that's pretty cool!
 Kenn: Also...
 Kenn: This is sort of bad timing, but I'm actually moving out. 
 Kenn: Yeah, I know, we just introduced ourselves and all. 
@@ -39,13 +31,9 @@ Kenn: Yeah, I know, we just introduced ourselves and all.
             -> OK, let's.
                 Kenn: Yeah, let's talk about something else. 
             -> Now I'm a little nervous...
-                Kenn: Really, don't be. I'm sorry. I just didn't get along with them.
+                Kenn: Really, don't be.
 Kenn: Anyway, I'm moving back in with my family.
 Kenn: I can't wait to see them again - it feels like it's been ages.
-    -> Yeah, I kind of miss my own family too.
-    -> That's cool. My family and I aren't that close.
-        Kenn: Woah, I...
-        Kenn: I'm sorry to hear that. 
 Kenn: Well, I have to get back now. Start packing at the last minute, of course.
 Kenn: I know we've only met a couple times, but if you see me around campus, say hi!
     -> See ya!
