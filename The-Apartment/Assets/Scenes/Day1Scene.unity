@@ -343,7 +343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5854135430133821460, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
       propertyPath: day2_tasks.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5854135430133821460, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
       propertyPath: day3_tasks.Array.size
@@ -372,7 +372,7 @@ PrefabInstance:
     - target: {fileID: 5854135430133821460, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
       propertyPath: day2_tasks.Array.data[1]
       value: 
-      objectReference: {fileID: 3953519476548736071, guid: 5c79fb216aafe4d3da323525f31823e7, type: 3}
+      objectReference: {fileID: 346802202}
     - target: {fileID: 5854135430133821460, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
       propertyPath: day2_tasks.Array.data[2]
       value: 
@@ -384,7 +384,7 @@ PrefabInstance:
     - target: {fileID: 5854135430133821460, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
       propertyPath: day4_tasks.Array.data[0]
       value: 
-      objectReference: {fileID: 7695479361598868855, guid: 5894de8ab806c428ba4deaae8b474819, type: 3}
+      objectReference: {fileID: 6873023116803985731, guid: f3a7ea99ad150476dacae44eb2d6bba9, type: 3}
     - target: {fileID: 5854135430133821460, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
       propertyPath: day5_tasks.Array.data[0]
       value: 
@@ -439,6 +439,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
+--- !u!1 &346802202 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3982712283394081122, guid: 3da32b094ef774bd39f255dafc7105ac, type: 3}
+  m_PrefabInstance: {fileID: 2037507105}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &462507613 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4885213717907794818, guid: a988072cc8ad94c23bce245f482a7423, type: 3}
