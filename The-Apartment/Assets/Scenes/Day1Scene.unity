@@ -2739,6 +2739,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sink
       objectReference: {fileID: 0}
+    - target: {fileID: 8356576600669432028, guid: 04e5dfb01e3f748dd92b0f4d74bad2f3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8677141481771005440, guid: 04e5dfb01e3f748dd92b0f4d74bad2f3, type: 3}
       propertyPath: m_IsTrigger
       value: 1
