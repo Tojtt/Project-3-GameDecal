@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class RitualInvestigateTaskScript : AbstractTask
 {
 
     private bool taskFinished;
+    public DialogueRunner dialogueRunner;
 
     public override void Awake()
     {
@@ -52,8 +54,28 @@ public class RitualInvestigateTaskScript : AbstractTask
         //dialogue "im getting out of here!!!"
         //walk away
         //teleport away, trigger endgame (day6)
-        yield return new WaitForSeconds(0.5f);
+        Debug.Log("In Coroutine");
+        dialogueRunner.StartDialogue("RitualApproachDoor");
+        yield return new WaitForSeconds(0.1f);
     }
 
-    //
+    [YarnCommand("inRitualDialogue")]
+    public void in_ritual_dialogue_door()
+    {
+        dialogueRunner.Stop();
+        dialogueRunner.StartDialogue("InRitual");
+    }
+
+    [YarnCommand("RitualTurnAndLeave")]
+    public void ritual_anim()
+    {
+        //Trigger orient all models toward player
+        //make them start walking towards player
+        //dialogue "im getting out of here!!!"
+        //walk away
+        //teleport away, trigger endgame (day6)
+        dialogueRunner.Stop();
+        dialogueRunner.StartDialogue("RitualLeave");
+    }
+
 }

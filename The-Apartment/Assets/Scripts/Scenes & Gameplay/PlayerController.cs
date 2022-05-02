@@ -302,6 +302,7 @@ public class PlayerController : MonoBehaviour
     [YarnCommand("teleport")]
     public void dialogue_teleport_from_door(string door)
     {
+        Debug.Log("attempted to teleport");
         Transform destination = GameObject.Find(door).GetComponent<Teleporter>().GetDestination();
         if (door == "Door302-FortuneTeller")
         {
@@ -326,6 +327,17 @@ public class PlayerController : MonoBehaviour
         else if (door == "Door-102-Mother")
         {
             SetRoomVariables(102);
+            transform.position = GetTeleportPosition(destination);
+        }
+        else if (door == "RitualDoor")
+        {
+            Debug.Log("Attempted ritual door teleport");
+            SetRoomVariables(777);
+            transform.position = GetTeleportPosition(destination);
+        }
+        else if (door == "InRitualDoor")
+        {
+            SetHallwayVariables();
             transform.position = GetTeleportPosition(destination);
         }
 

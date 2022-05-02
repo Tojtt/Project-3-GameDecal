@@ -1,0 +1,25 @@
+title: RitualApproachDoor
+---
+You hear loud, rhythmic noises eminating from the door...
+Me: What the..
+<<teleport Player RitualDoor>>
+<<inRitualDialogue RitualInvestigateTask>>
+===
+title: InRitual
+---
+...
+...
+Me: Wh-
+Ritual Acolytes: ...sacrifice to bear witness... sacrifice to bear witness... sacrifice to bear witness...
+Me: WHAT THE FU- KENN?!?!? IS THAT YOU???
+The ritual acolytes hear your cries and turn to look at you..
+<<RitualTurnAndLeave RitualInvestigateTask>>
+===
+title: RitualLeave
+---
+...
+Me: AGHHH!!! GET AWAY FROM ME!!!!!!!!
+You dash back towards the door.
+-->  I NEED TO GET OUT OF HERE NOW!!! AND I NEED TO STOP THEM!!
+<<teleport Player InRitualDoor>>
+===
