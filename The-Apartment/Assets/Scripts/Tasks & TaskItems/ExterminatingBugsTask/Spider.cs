@@ -28,6 +28,7 @@ public class Spider : MonoBehaviour
         sinkOverlay = GameObject.Find("SinkOverlay");
         bugTask = sinkOverlay.GetComponent<ExterminateBugTask>();
         anim = GetComponent<Animator>();
+        //RANDOM coroutine <<<<<<<<<<<
         StartCoroutine(CrawlRight());
         sr = GetComponent<SpriteRenderer>();
     }
@@ -36,7 +37,6 @@ public class Spider : MonoBehaviour
     {
 
         Debug.Log("Killed Bug");
-        //Changed to squashed bug sprite
         bugTask.incrementProgress();
         StartCoroutine(Squash());
     }
@@ -44,7 +44,7 @@ public class Spider : MonoBehaviour
     IEnumerator Squash()
     {
         Instantiate(smush, transform.position, Quaternion.identity);
-        //TODO: Add fade out
+        //TODO: Add fade out 
         Destroy(this.gameObject);
         yield return null;
     }
@@ -79,6 +79,7 @@ public class Spider : MonoBehaviour
 
     IEnumerator CrawlRight()
     {
+        //RANDOM ANGLE
         transform.Rotate(Vector3.forward * (90f));
         while (transform.position.x > rx1)
         {
@@ -94,6 +95,18 @@ public class Spider : MonoBehaviour
         }
         Destroy(this.gameObject);
     }
+
+    IEnumerator CrawlLeft()
+    {
+        transform.Rotate(Vector3.forward * (90f));
+        while (transform.position.x <-100f)
+        {
+            transform.position += new Vector3(0.1f, 0, 0);//0.1f * (float)System.Math.Cos(crawlAngle), 0.1f * (float)System.Math.Sin(crawlAngle), 0);
+            yield return new WaitForSeconds(0.07f);
+        }
+        Destroy(this.gameObject);
+    }
+
 
     IEnumerator CrawlDown()
     {
