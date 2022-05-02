@@ -6,18 +6,18 @@ Neighbor: We are going to have so much fun tonight.
 title: KnockDoorFirst
 ---
 Neighbor: Hey there, how can I help you?
--> You are making very loud noises. Please keep it down.
--> Is everything okay? I overheard the noises in the hallway.
+-> You're making very loud noises. Please keep it down.
+-> Is everything okay? I overheard some noises in the hallway.
 Neighbor: Oh no worries. We will keep it down. Sorry about that!
 <<set $doneLN to 1>>
 ===
 title: KnockDoorSubsequent
 ---
 Neighbor: Hey there, you again? What do you want this time?
--> I am still hearing the noises.
--> It looks like there are something not normal happening inside.
+-> I am still hearing noises.
+-> It looks like there's something abnormal happening inside.
 Neighbor: You know what. Mind your own dang business!
 Neighbor: Now get away from my face! 
-Neighbor: *whisper* Good lord such nosy kid! *whisper*
+Neighbor: *whisper* Good lord! Such a nosy kid! *whisper*
 <<set $doneLN to 1>>
 ===
