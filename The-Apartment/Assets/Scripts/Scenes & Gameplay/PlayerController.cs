@@ -79,7 +79,6 @@ public class PlayerController : MonoBehaviour
         footstep_sound = GetComponent<AudioSource>();
         Debug.Log("Sound");
         Debug.Log(footstep_sound);
-
         Camera.main.orthographicSize = defaultCameraSize;
     }
 
@@ -111,6 +110,20 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat("Speed", 0);
         }
         
+        if (!PlayerRB.velocity.Equals(Vector2.zero))
+        {
+            Debug.Log("Moving");
+            if (!footstep_sound.isPlaying)
+            {
+                footstep_sound.Play();
+            }
+        }
+        else
+        {
+            Debug.Log("NOT Moving");
+            footstep_sound.Stop();
+        }
+
         if (Input.GetKeyDown(KeyCode.D))
         {
             NightTransition(); //<< Are we still using this?
@@ -351,7 +364,6 @@ public class PlayerController : MonoBehaviour
             currDirection = Vector2.right;
             anim.SetFloat("Speed", 1);
             sr.flipX = true;
-            footstep_sound.Play();
         }
         else if (x_input < 0)
         {
@@ -359,14 +371,12 @@ public class PlayerController : MonoBehaviour
             PlayerRB.velocity = Vector2.left * movespeed;
             currDirection = Vector2.left;
             sr.flipX = false;
-            footstep_sound.Play();
         } else if (y_input > 0 && move2D)  //&& SceneManager.GetActiveScene().name != "HallwayLayout")
         {
             PlayerRB.velocity = Vector2.up * movespeed;
             currDirection = Vector2.up;
             anim.SetFloat("Speed", 1);
             sr.flipX = true;
-            footstep_sound.Play();
         }
         else if (y_input < 0 && move2D)  //&& SceneManager.GetActiveScene().name != "HallwayLayout")
         {
@@ -374,13 +384,11 @@ public class PlayerController : MonoBehaviour
             PlayerRB.velocity = Vector2.down * movespeed;
             currDirection = Vector2.down;
             sr.flipX = true;
-            footstep_sound.Play();
         }
         else
         {
             anim.SetFloat("Speed", 0);
             PlayerRB.velocity = Vector2.zero;
-            footstep_sound.Stop();
             //anim.SetBool("Moving", false);
         }
         //anim.SetFloat("DirX", currDirection.x);
