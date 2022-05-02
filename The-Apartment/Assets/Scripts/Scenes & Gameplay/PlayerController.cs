@@ -264,9 +264,9 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator DownTeleport()
     {
-        if (stairTeleporter != null)
+        if (stairTeleporter != null && teleportCooldown > cooldownThreshold)
         {
-            
+            teleportCooldown = 0;
             Transform destination = stairTeleporter.GetComponent<StairTeleporter>().GetDownDestination();
             if (destination != null)
             {

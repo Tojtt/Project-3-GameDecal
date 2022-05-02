@@ -497,6 +497,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 40.259293
       objectReference: {fileID: 0}
+    - target: {fileID: 4463726987343176562, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 5407270164638591373, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: m_TagString
       value: LoudNeighborDoor
@@ -2601,6 +2605,10 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 843856456}
+    - target: {fileID: 6944791037775653822, guid: 6676c85d0f885364290275d1e5992554, type: 3}
+      propertyPath: cooldownThreshold
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6676c85d0f885364290275d1e5992554, type: 3}
 --- !u!1001 &2122649133
