@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
         
         if (!PlayerRB.velocity.Equals(Vector2.zero))
         {
-            Debug.Log("Moving");
+           // Debug.Log("Moving");
             if (!footstep_sound.isPlaying)
             {
                 footstep_sound.Play();
@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("NOT Moving");
+           // Debug.Log("NOT Moving");
             footstep_sound.Stop();
         }
 

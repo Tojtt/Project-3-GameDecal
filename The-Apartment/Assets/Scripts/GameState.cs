@@ -84,6 +84,7 @@ public class GameState : MonoBehaviour
     public bool fortuneTellingComplete = false;
     public bool fortuneTellingPart2Complete = false;
     public bool lostDogComplete = false;
+    public bool spidersComplete = false;
     #endregion
 
     #region Unity_Functions
