@@ -55,7 +55,14 @@ public class InventoryManager : MonoBehaviour
     #region Unity_Functions
     public void Start()
     {
+        if (invM != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         invM = this;
+        DontDestroyOnLoad(gameObject);
         dog = GameObject.Find("Door 306-Dog").GetComponent<DogScript>();
         player = GameObject.Find("Player").GetComponent<PlayerController>();
         canvas = FindObjectOfType<Canvas>();
@@ -73,7 +80,7 @@ public class InventoryManager : MonoBehaviour
         {
             if (selecting)
             {
-                RemoveItem(currSelected);
+                RemoveItem(currSelected, true);
             }
         }
     }
@@ -129,7 +136,7 @@ public class InventoryManager : MonoBehaviour
         return;
     }
 
-    void RemoveItem(int itemID)
+    public void RemoveItem(int itemID, bool fall)
     {
         //Drop back into world
         Item item = itemList[itemID];
@@ -142,9 +149,16 @@ public class InventoryManager : MonoBehaviour
         {
             dropPosition.x += offset;
         }
-        item.gameObject.transform.position = dropPosition; //Drop next to player
-        item.gameObject.SetActive(true);
-        StartCoroutine(fall(item.gameObject));
+
+        if (fall && !item.notDroppable)
+        {
+            item.gameObject.transform.position = dropPosition; //Drop next to player
+            item.gameObject.SetActive(true);
+            StartCoroutine(Fall(item.gameObject));
+        } else
+        {
+            //Nothing
+        }
 
         //Remove
         order.Remove(itemID);
@@ -160,7 +174,7 @@ public class InventoryManager : MonoBehaviour
         PrintInventory();
     }
 
-    IEnumerator fall(GameObject itemObject)
+    IEnumerator Fall(GameObject itemObject)
     {
         float playerY = player.transform.position.y;
         float velocity = 0.2f;

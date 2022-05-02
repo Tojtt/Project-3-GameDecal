@@ -186,12 +186,15 @@ MonoBehaviour:
   stage: 0
   taskName: 
   pizza: {fileID: 1445628802437742166}
+  oven: {fileID: 0}
   stages:
   - {fileID: 21300000, guid: 4777d8115bb92ee40832db6c2439281e, type: 3}
   - {fileID: 21300000, guid: c6bb81e19cfa45b4f9ac9e4448144e71, type: 3}
   - {fileID: 21300000, guid: 67db5e37f21ad4d49b4b31b48a81f572, type: 3}
   - {fileID: 21300000, guid: 0e84bd47fd80c5b4a8be26c447b2048f, type: 3}
   - {fileID: 21300000, guid: 104683f9908e6f040b3d9809d7f35fe1, type: 3}
+  ovenInProgress: {fileID: 21300000, guid: 337ddf9755cdc9942adf48f82ae55433, type: 3}
+  ovenDone: {fileID: 21300000, guid: 6792b32b95846ab42b07452b56c08896, type: 3}
 --- !u!61 &1089101350
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -279,6 +282,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 2027297900314218793, guid: b7c998723bca744059b8f164c1b1dd8b, type: 3}
+      propertyPath: oven
+      value: 
+      objectReference: {fileID: 4220001016031692600}
+    - target: {fileID: 2027297900314218793, guid: b7c998723bca744059b8f164c1b1dd8b, type: 3}
+      propertyPath: ovenDone
+      value: 
+      objectReference: {fileID: 21300000, guid: 6792b32b95846ab42b07452b56c08896, type: 3}
+    - target: {fileID: 2027297900314218793, guid: b7c998723bca744059b8f164c1b1dd8b, type: 3}
+      propertyPath: ovenInProgress
+      value: 
+      objectReference: {fileID: 21300000, guid: 337ddf9755cdc9942adf48f82ae55433, type: 3}
     - target: {fileID: 2712861521337133214, guid: b7c998723bca744059b8f164c1b1dd8b, type: 3}
       propertyPath: m_RootOrder
       value: 1

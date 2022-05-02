@@ -412,6 +412,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5854135430133821460, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
+      propertyPath: watchedTV
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854135430133821460, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
       propertyPath: tasks.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -422,6 +426,10 @@ PrefabInstance:
     - target: {fileID: 5854135430133821460, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
       propertyPath: fortuneTellingComplete
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5854135430133821460, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
+      propertyPath: fortuneTellingPart2Complete
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5854135430133821461, guid: 0f949795ff8f94e9e9e3d11dc238ea71, type: 3}
       propertyPath: m_RootOrder
@@ -884,6 +892,8 @@ MonoBehaviour:
   itemName: Lighter
   state: Off
   sprite: {fileID: 21300000, guid: ac151af66d961ff4e8b3a79ca20131e6, type: 3}
+  notDroppable: 0
+  taken: 0
 --- !u!61 &902092204
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -950,6 +960,8 @@ MonoBehaviour:
   itemName: Fire Extinguisher
   state: 
   sprite: {fileID: 0}
+  notDroppable: 0
+  taken: 0
 --- !u!61 &1304771471
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1957,6 +1969,8 @@ MonoBehaviour:
   itemName: Gas Tank
   state: 
   sprite: {fileID: 21300000, guid: 20160c37d23beb64880feb5c4efa3556, type: 3}
+  notDroppable: 0
+  taken: 0
 --- !u!61 &2016257953
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2180,11 +2194,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6944791037775653820, guid: 6676c85d0f885364290275d1e5992554, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.9
+      value: -10.5
       objectReference: {fileID: 0}
     - target: {fileID: 6944791037775653820, guid: 6676c85d0f885364290275d1e5992554, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.83
+      value: -0.73
       objectReference: {fileID: 0}
     - target: {fileID: 6944791037775653820, guid: 6676c85d0f885364290275d1e5992554, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2408,10 +2422,30 @@ PrefabInstance:
       propertyPath: dialogueRunner
       value: 
       objectReference: {fileID: 462507613}
+    - target: {fileID: 3087342100337734305, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: dialogueRunner
+      value: 
+      objectReference: {fileID: 462507613}
+    - target: {fileID: 3117638114781476430, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: dialogueRunner
+      value: 
+      objectReference: {fileID: 462507613}
+    - target: {fileID: 3194861530057535778, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: dialogueRunner
+      value: 
+      objectReference: {fileID: 462507613}
+    - target: {fileID: 3194861530057535778, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: completedFT2DialogueNodeAlt
+      value: FT2TaskCompleteAlt
+      objectReference: {fileID: 0}
     - target: {fileID: 3313387516068557209, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3579159008102363429, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: dialogueRunner
+      value: 
+      objectReference: {fileID: 462507613}
     - target: {fileID: 3769554323630607187, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: keyID
       value: 11
@@ -2432,6 +2466,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: LoudNeighborDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 5831185895544406331, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6877575688615500851, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.3
@@ -2440,6 +2478,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 7015069173661875279, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+      propertyPath: dialogueRunner
+      value: 
+      objectReference: {fileID: 462507613}
     - target: {fileID: 7041580524376989239, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.8
@@ -2486,6 +2528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6877575688615500852, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
+    - {fileID: 1353274601706664506, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fd7ae5d58a05f9746af9bd6ceda8612d, type: 3}
 --- !u!1001 &7166460104977136403
 PrefabInstance:

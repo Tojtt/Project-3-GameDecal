@@ -12,6 +12,7 @@ public class TV : MonoBehaviour
     public DialogueRunner dialogue;
     public GameObject tvOverlay;
     public GameObject maincam;
+    public GameObject hallwayTeleporter;
     #endregion
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class TV : MonoBehaviour
         sceneTransition = FindObjectOfType<SceneTransitions>();
         dialogue = FindObjectOfType<DialogueRunner>();
         maincam = GameObject.Find("Main Camera");
+        hallwayTeleporter = GameObject.Find("HallwayDoor206");
 
     }
 
@@ -49,14 +51,21 @@ public class TV : MonoBehaviour
         maincam.transform.position = target;
         GameState.Instance.freezePlayer = true;
         Debug.Log("Moved player");
+        hallwayTeleporter.SetActive(false);
         if (!dialogue.IsDialogueRunning)
         {
             // runs the node associated with the current day, or if its broken beyond Day 3
             string node = GameState.Instance.day <= 3 ? "TVDay" + GameState.Instance.day : "TVBroken";
             dialogue.StartDialogue(node);
+            dialogue.onDialogueComplete.AddListener(ReaddTeleporter);
         }
         GameState.Instance.freezePlayer = false;
 
         // run TV cutscene here?
+    }
+
+    public void ReaddTeleporter()
+    {
+        hallwayTeleporter.SetActive(true);
     }
 }
