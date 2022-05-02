@@ -59,7 +59,7 @@ public class GameState : MonoBehaviour
     #endregion
 
     #region Location_Variables
-    public int floor;// 0-Basement, 4-Outside
+    public int floor;// 0-Basement, 4-Outside, 5 - secret path
     public bool inRoom = false;
     public int roomNum = -1;
     #endregion
@@ -77,6 +77,8 @@ public class GameState : MonoBehaviour
    public bool fireStarted;
 
    public int fireFailedAttempts;
+
+   
     #endregion
 
     #region TaskCompletion_Variables

@@ -198,12 +198,41 @@ public class PlayerController : MonoBehaviour
                 SetHallwayVariables();
                 transform.position = GetTeleportPosition(destination);
             }
-
+            else if (doorTeleporter.transform.name == "HallwayDoor101")
+            {
+                SetHallwayVariables();
+                transform.position = GetTeleportPosition(destination);
+            }
+            else if (doorTeleporter.transform.name == "SecretPathDoor")
+            {
+                SetHallwayVariables();
+                gameState.floor = 5;
+                transform.position = destination.position;
+            }
+            else if (doorTeleporter.transform.name == "SecretHallDoor")
+            {
+                SetHallwayVariables();
+                gameState.floor = 2;
+                transform.position = destination.position;
+            }
+            else if (doorTeleporter.transform.name == "OutToSecretDoor")
+            {
+                SetHallwayVariables();
+                move2D = true;
+                gameState.floor = 4;
+                transform.position = destination.position;
+            }
+            else if (doorTeleporter.transform.name == "SecretToOutDoor")
+            {
+                SetHallwayVariables();
+                gameState.floor = 5;
+                transform.position = destination.position;
+            }
             else
             {
                 transform.position = destination.position;
             }
-
+            Debug.Log(gameState.floor);
             StartCoroutine("Teleport");
         }
 
@@ -284,7 +313,6 @@ public class PlayerController : MonoBehaviour
             }
             else if (forcedTeleporter.transform.name == "Door101-WelcomeMat")
             {
-                Debug.Log("hi");
                 SetRoomVariables(101);
                 transform.position = destination.position;
             }
