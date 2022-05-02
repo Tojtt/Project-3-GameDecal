@@ -12,6 +12,8 @@ public class Drawer : MonoBehaviour
     public bool invisibleSprite; //If the open sprite should be invisible instead of replaced
     public Sprite openedSprite;
     public Sprite closedSprite;
+
+    public Sprite itemNewSprite;
     #endregion
 
     #region Drawer_variables
@@ -116,6 +118,10 @@ public class Drawer : MonoBehaviour
                 itemScript.gameObject.tag = "Collectible";
                 itemCollider.enabled = true;
                 itemScript.SetOrder(playerRenderer.sortingOrder - 1);
+                if (itemScript.itemID == 3) //Lighter
+                {
+                    item.GetComponent<SpriteRenderer>().sprite = itemNewSprite;
+                }
             }
         } else //Contains MONEY
         {

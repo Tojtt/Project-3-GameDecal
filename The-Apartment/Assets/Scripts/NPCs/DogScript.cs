@@ -24,7 +24,7 @@ public class DogScript : MonoBehaviour
     private float timer = 2;
     bool inRoom = false;
     int startDay = 1; //Change later 
-    int endDay = 6;
+    int endDay = 4;
     #endregion
 
     #region Referenced_Variables

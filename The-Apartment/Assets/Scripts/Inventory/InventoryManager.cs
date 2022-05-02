@@ -178,10 +178,10 @@ public class InventoryManager : MonoBehaviour
     {
         float playerY = player.transform.position.y;
         float velocity = 0.2f;
-        while (itemObject.transform.position.y > playerY - 1f)
+        while (itemObject.transform.position.y > playerY - 0.8f)
         {
             itemObject.transform.position -= new Vector3(0, velocity, 0);
-            velocity += 0.05f;
+            velocity += 0.04f;
             yield return new WaitForSeconds(0.05f);
         }
     }
@@ -244,6 +244,11 @@ public class InventoryManager : MonoBehaviour
             Debug.Log(itemID + ": " + item.itemName);
         }
         Debug.Log(".");
+    }
+
+    public void SetItemState(int itemID, string state)
+    {
+        itemList[itemID].SetState(state);
     }
     #endregion
 
