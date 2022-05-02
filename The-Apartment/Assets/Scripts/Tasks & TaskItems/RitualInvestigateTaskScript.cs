@@ -5,7 +5,7 @@ using UnityEngine;
 public class RitualInvestigateTaskScript : AbstractTask
 {
 
-    private bool doorClicked;
+    private bool taskFinished;
 
     public override void Awake()
     {
@@ -14,7 +14,7 @@ public class RitualInvestigateTaskScript : AbstractTask
 
     public override void Start()
     {
-        doorClicked = false;
+        taskFinished = false;
     }
 
     public override void Update()
@@ -34,11 +34,26 @@ public class RitualInvestigateTaskScript : AbstractTask
 
     public override void incrementProgress()
     {
-        doorClicked = true;
+        taskFinished = true;
     }
 
     public override bool isTaskComplete()
     {
-        return doorClicked;
+        return taskFinished;
     }
+
+    public IEnumerator ScriptRitualCutscene()
+    {
+        //Teleport the player to the ritual room
+        //Trigger dialogue
+        //Trigger sound effect; horror + chanting
+        //Trigger orient all models toward player
+        //make them start walking towards player
+        //dialogue "im getting out of here!!!"
+        //walk away
+        //teleport away, trigger endgame (day6)
+        yield return new WaitForSeconds(0.5f);
+    }
+
+    //
 }

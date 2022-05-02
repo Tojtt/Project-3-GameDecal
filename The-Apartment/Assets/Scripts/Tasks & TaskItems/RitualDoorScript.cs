@@ -16,6 +16,7 @@ public class RitualDoorScript : MonoBehaviour
 
     void OnMouseDown()
     {
-        task.GetComponent<RitualInvestigateTaskScript>().incrementProgress();
+        //task.GetComponent<RitualInvestigateTaskScript>().incrementProgress();
+        StartCoroutine(task.GetComponent<RitualInvestigateTaskScript>().ScriptRitualCutscene());
     }
 }
