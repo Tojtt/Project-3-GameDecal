@@ -30,7 +30,7 @@ public class ExterminateBugTask : AbstractTask
     public bool enabled = false;
     Vector3 startPosition;
     #endregion
-
+    GameState gameState;
 
     #region AbstractTask_Functions
     public override void Awake()
@@ -50,8 +50,8 @@ public class ExterminateBugTask : AbstractTask
         //{
         //    dialogueRunner.StartDialogue(startNode);
         //}
+        gameState = GameObject.FindWithTag("GameManager").GetComponent<GameState>();
 
-        
         Debug.Log("done");
     }
 
