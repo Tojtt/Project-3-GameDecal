@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
+using UnityEngine.SceneManagement;
 
 public class RitualInvestigateTaskScript : AbstractTask
 {
@@ -76,6 +77,13 @@ public class RitualInvestigateTaskScript : AbstractTask
         //teleport away, trigger endgame (day6)
         dialogueRunner.Stop();
         dialogueRunner.StartDialogue("RitualLeave");
+    }
+
+    [YarnCommand("BeginEndGame")]
+    public void to_endgame()
+    {
+        SceneManager.LoadScene("Day5Scene");
+        incrementProgress();
     }
 
 }
