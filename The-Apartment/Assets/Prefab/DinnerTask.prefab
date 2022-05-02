@@ -282,6 +282,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 2027297900314218793, guid: b7c998723bca744059b8f164c1b1dd8b, type: 3}
+      propertyPath: oven
+      value: 
+      objectReference: {fileID: 4220001016031692600}
+    - target: {fileID: 2027297900314218793, guid: b7c998723bca744059b8f164c1b1dd8b, type: 3}
+      propertyPath: ovenDone
+      value: 
+      objectReference: {fileID: 21300000, guid: 6792b32b95846ab42b07452b56c08896, type: 3}
+    - target: {fileID: 2027297900314218793, guid: b7c998723bca744059b8f164c1b1dd8b, type: 3}
+      propertyPath: ovenInProgress
+      value: 
+      objectReference: {fileID: 21300000, guid: 337ddf9755cdc9942adf48f82ae55433, type: 3}
     - target: {fileID: 2712861521337133214, guid: b7c998723bca744059b8f164c1b1dd8b, type: 3}
       propertyPath: m_RootOrder
       value: 1

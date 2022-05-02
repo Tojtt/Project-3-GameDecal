@@ -51,11 +51,6 @@ public class MakeDinnerTask : AbstractTask
 
     public override void incrementProgress()
     {
-        // putting pizza in the oven
-        if (stage == 3)
-        {
-            StartCoroutine(OvenAnimation());
-        }
 
         stage += 1;
         description = "Make dinner for your friend!\n" + getStageDesc(stage);
@@ -74,7 +69,8 @@ public class MakeDinnerTask : AbstractTask
 
     public override void Update()
     {
-        pizza.GetComponent<SpriteRenderer>().sprite = stages[stage-1];
+        if (stage-1 >= 0 && stage-1 < 5)
+            pizza.GetComponent<SpriteRenderer>().sprite = stages[stage-1];
     }
 
     public override string getTaskName()
@@ -90,15 +86,6 @@ public class MakeDinnerTask : AbstractTask
     #endregion
 
     #region Day2_Functions
-
-    public IEnumerator OvenAnimation()
-    {
-        // change to in progress
-        oven.GetComponent<SpriteRenderer>().sprite = ovenInProgress; // sprite
-        yield return new WaitForSeconds(3f);
-        oven.GetComponent<SpriteRenderer>().sprite = ovenDone; // sprite
-
-    }
 
     #endregion
 
