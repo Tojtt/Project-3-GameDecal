@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
     private GameObject stairTeleporter;
     public GameObject forcedTeleporter;
     public SceneTransitions sceneTransition;
+
+    GameObject dog;
     #endregion
 
     #region UI
@@ -81,6 +83,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Sound");
         Debug.Log(footstep_sound);
         Camera.main.orthographicSize = defaultCameraSize;
+        dog = GameObject.Find("DogNPC");
     }
 
     private void Start() 
@@ -250,6 +253,10 @@ public class PlayerController : MonoBehaviour
                 gameState.floor += 1;
                 floorText.text = "Floor " + gameState.floor.ToString();
                 transform.position = GetTeleportPosition(destination);//destination.position;
+                if (dog != null)
+                {
+                    dog.transform.position = GetTeleportPosition(destination);
+                }
             }
             
         }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class DogScript : MonoBehaviour
 {
@@ -14,11 +15,13 @@ public class DogScript : MonoBehaviour
      */
     public Animator anim;
     private SpriteRenderer sr;
+    public DialogueRunner dialogueRunner;
+    public string doorDialogueNode;
+    public SceneTransitions sceneTransition;
 
     float movespeed;
     private Rigidbody2D dogRB;
     float space = 2;
-
     #region Task_variables
     public bool holdingFood = false; //Player is holding food
     private float timer = 2;
@@ -47,6 +50,9 @@ public class DogScript : MonoBehaviour
             sr = dog.GetComponent<SpriteRenderer>();
             dogRB = dog.GetComponent<Rigidbody2D>();
             doorManager = GameObject.Find("DoorManager").GetComponent<DoorManager>();
+            anim = dog.GetComponent<Animator>();
+            anim.SetBool("Transform", false);
+            anim.SetBool("GiveMoney", false);
         }
     }
 
@@ -63,7 +69,7 @@ public class DogScript : MonoBehaviour
             {
                 //Dog sits in place, ignoring player
                 dogRB.velocity = Vector2.zero;
-
+                anim.SetFloat("Speed", 0);
             }
         }
 
@@ -71,11 +77,14 @@ public class DogScript : MonoBehaviour
 
     void CheckReachedDogHome()
     {
+        
         Debug.Log("Reached dog's home!");
         //Freeze player, Do dog transform animation, dog goes in room <<< ADD ANIMATION HERE
-        gameState.lostDogComplete = true;
-        dog.SetActive(false);
+        //gameState.lostDogComplete = true;
+        //dog.SetActive(false);
         //}
+        gameState.freezePlayer = true;
+        StartCoroutine(Transform());
     }
 
     void FollowPlayer()
@@ -105,13 +114,36 @@ public class DogScript : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (holdingFood)
+        if (doorManager.InClickRange(transform.position) && Vector3.Distance(dogRB.transform.position,  player.transform.position) < 6f) //If in range of door
         {
-            if (doorManager.InClickRange(transform.position)) //If in range of door
-            {
-                CheckReachedDogHome();
-            }
+            CheckReachedDogHome();
         }
+    }
+
+    IEnumerator Transform()
+    {
+        if (player.transform.position.x < dogRB.transform.position.x) //Player to left
+        {
+            sr.flipX = false;
+        }
+        else
+        {
+            sr.flipX = true;
+        }
+        anim.SetFloat("Speed", 0f);
+        yield return new WaitForSeconds(1.5f);
+        anim.SetBool("Transform", true);
+        yield return new WaitForSeconds(3f);
+        dialogueRunner.Stop();
+        dialogueRunner.StartDialogue(doorDialogueNode);
+        anim.SetBool("GiveMoney", true);
+        yield return new WaitForSeconds(1.5f);
+        gameState.lostDogComplete = true;
+        StartCoroutine(sceneTransition.TeleportTransition());
+        dog.SetActive(false);
+        gameState.freezePlayer = false;
+        dialogueRunner.Stop();
+
     }
     //IEnumerator moveTowardPlayer()
     //{
