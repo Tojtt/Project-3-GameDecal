@@ -8,7 +8,7 @@ public class GasManager : MonoBehaviour
     [Tooltip("The spilledGas prefab")]
     private GameObject m_spilledGas;
 
-    private int maxDrops = 20;
+    private int maxDrops = 30;
     private int numDrops = 0;
 
     private float spill_y = -2.2f;
@@ -25,6 +25,8 @@ public class GasManager : MonoBehaviour
     double minX;
     double maxX;
     double radius = 0.5;
+
+    InventoryManager invM;
     #endregion
 
     #region spillLocation_Variables
@@ -44,14 +46,18 @@ public class GasManager : MonoBehaviour
     //GameObject player;
     PlayerController player;
     GameState gameState;
+    FireManager fireManager;
     #endregion
 
     #region Unity_functions
     void Awake()
     {
+        invM = GameObject.FindWithTag("Inventory").GetComponent<InventoryManager>();
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         gameState = GameObject.FindWithTag("GameManager").GetComponent<GameState>();
-        gasTankSelected = true;// false;
+        fireManager = GameObject.Find("FireManager").GetComponent<FireManager>();
+        gasTankSelected = true;
+        GameObject.Find("FireManager").SetActive(false);
     }
 
     void Update()
@@ -80,11 +86,17 @@ public class GasManager : MonoBehaviour
         if (gameState.pouredGas && onGas)
         {
             Debug.Log("Successfully Started Fire");
-
+            fireManager.gameObject.SetActive(true);
             gameState.fireStarted = true;
+            fireManager.StartFire();
         } else
         {
             Debug.Log("Attempts to start fire, fire sizzles out");
+            gameState.fireFailedAttempts += 1;
+            if (gameState.fireFailedAttempts == 3)
+            {
+                //Ending 3 Cutscene
+            }
         }
     }
 
@@ -140,6 +152,9 @@ public class GasManager : MonoBehaviour
                 doneSpilling = true;
                 gameState.pouredGas = true;
                 Debug.Log("Finish spilling gas!");
+                invM.SetItemState(1, "Empty");
+                invM.RemoveItem(1, true);
+                
             }
             spillTimer = spillWait;
         }

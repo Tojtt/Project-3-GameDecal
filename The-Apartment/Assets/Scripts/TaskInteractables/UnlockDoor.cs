@@ -101,6 +101,4 @@ public class UnlockDoor : MonoBehaviour
     }
     #endregion
 
-
-    //>>>>>LATER -> changing appearance/image: https://forum.unity.com/threads/changing-sprite-during-run-time.211817/
 }

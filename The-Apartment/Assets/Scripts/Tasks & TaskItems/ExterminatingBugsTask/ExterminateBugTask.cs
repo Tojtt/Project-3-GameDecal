@@ -9,17 +9,18 @@ public class ExterminateBugTask : AbstractTask
     private bool isComplete; // denotes completion of task
     private string description; // denotes description of task
     public bool isActive;
-    private int spidersKilled;
+    public int spidersKilled;
     #endregion
 
     #region Minigame_Configs
-    public int numSpiders = 10;
+    public int numSpiders;
     public float speed = 5.0f;
+    int numSpidersToComplete = 10;
     #endregion 
 
     #region Unity_Variables
     public DialogueRunner dialogueRunner;
-    public string startNode = "sinkTaskStart";
+    public string startNode;
     #endregion
 
     #region Editor Variables
@@ -27,8 +28,9 @@ public class ExterminateBugTask : AbstractTask
     [Tooltip("The different types of enemies that should be spawned and their corresponding spawn information.")]
     private EnemySpawnInfo[] m_EnemyTypes;
     public bool enabled = false;
+    Vector3 startPosition;
     #endregion
-
+    GameState gameState;
 
     #region AbstractTask_Functions
     public override void Awake()
@@ -38,14 +40,19 @@ public class ExterminateBugTask : AbstractTask
 
     public override void Start()
     {
+        startPosition = new Vector3(-112.64f, 18.058f, 0);
         isComplete = false;
         isActive = true;
         spidersKilled = 0;
         description = "Check your sink...";
-        if (!dialogueRunner.IsDialogueRunning)
-        {
-            dialogueRunner.StartDialogue(startNode);
-        }
+        //dialogueRunner.Stop();
+        //if (!dialogueRunner.IsDialogueRunning)
+        //{
+        //    dialogueRunner.StartDialogue(startNode);
+        //}
+        gameState = GameObject.FindWithTag("GameManager").GetComponent<GameState>();
+
+        Debug.Log("done");
     }
 
     public override void Update()
@@ -54,6 +61,8 @@ public class ExterminateBugTask : AbstractTask
         {
             isActive = false;
         }
+
+        
     }
 
     public override string getProgessString()
@@ -71,6 +80,12 @@ public class ExterminateBugTask : AbstractTask
         // if spider killed
         spidersKilled += 1;
 
+        if (spidersKilled == numSpidersToComplete)
+        {
+            isComplete = true;
+            gameState.spidersComplete = true;
+            Debug.Log("Spider task done");
+        }
     }
 
     public override bool isTaskComplete()
@@ -81,13 +96,19 @@ public class ExterminateBugTask : AbstractTask
     #endregion
 
     #region Cutscene_Functions
-    public void SpawnSpiders()
+    public void Spawn()
+    {
+        StartCoroutine(SpawnSpiders());
+    }
+
+    IEnumerator SpawnSpiders()
     {
         //GetComponent<SpawnManager>().enabled = true;
         for (int i = 0; i < numSpiders; i++)
         {
-            EnemySpawnInfo enemy = m_EnemyTypes[i];
-            Instantiate(enemy.EnemyPrefab);
+            EnemySpawnInfo enemy = m_EnemyTypes[0];
+            Instantiate(enemy.EnemyPrefab, startPosition, Quaternion.identity);
+            yield return new WaitForSeconds(2f);
         }
     }
     #endregion

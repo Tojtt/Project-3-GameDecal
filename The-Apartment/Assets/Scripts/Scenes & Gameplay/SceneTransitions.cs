@@ -17,7 +17,6 @@ public class SceneTransitions : MonoBehaviour
         //}
     }
 
-
     public IEnumerator LoadScene(string sceneName){
         transitionAnim.SetTrigger("end");
         yield return new WaitForSeconds(1.5f);
@@ -25,12 +24,25 @@ public class SceneTransitions : MonoBehaviour
 
     }
 
-
     public IEnumerator TeleportTransition()
     {
         transitionAnim.SetTrigger("end");
         yield return new WaitForSeconds(.5f);
         transitionAnim.SetTrigger("start");
+
+    }
+
+    public IEnumerator T1()
+    {
+        transitionAnim.SetTrigger("end");
+        yield return new WaitForSeconds(1.5f);
+
+    }
+
+    public IEnumerator T2()
+    {
+        transitionAnim.SetTrigger("start");
+        yield return new WaitForSeconds(.5f);
 
     }
 

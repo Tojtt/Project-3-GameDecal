@@ -103,7 +103,7 @@ MonoBehaviour:
   movespeed: 5
   cooldownThreshold: 1
   homePosition: {x: 30, y: 3}
-  anim: {fileID: 843856456}
+  anim: {fileID: 0}
   forcedTeleporter: {fileID: 0}
   sceneTransition: {fileID: 0}
   inFrontDogHome: 0
@@ -167,7 +167,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 7ba9e179df0c41a4188b1e0cffc527b7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.5
   Loop: 1
   Mute: 0
   Spatialize: 0

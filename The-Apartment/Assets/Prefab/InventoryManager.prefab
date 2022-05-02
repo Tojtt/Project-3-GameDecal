@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5864098691799599156}
   m_Layer: 0
   m_Name: InventoryManager
-  m_TagString: Untagged
+  m_TagString: Inventory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,10 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63eb280b24684efaae8d843cb464e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSlotList: []
-  itemList: []
-  listSize: 3
-  cur: 0
+  maxListSize: 3
+  currSelected: -1
   itemHolderPrefab: {fileID: 7846662989558735040, guid: 15b8a57080d3941679a2bdacd715c49b, type: 3}
   itemPrefab: {fileID: 8339432294201747317, guid: 90c7b6927509640bbbefbb11f88c6b65, type: 3}
   grid: {fileID: 0}

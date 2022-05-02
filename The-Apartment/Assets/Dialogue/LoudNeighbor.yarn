@@ -1,6 +1,6 @@
 ﻿title: NearbyDoor
 ---
-Neighbor: Party all night babies.
+Neighbor: We are going to have so much fun tonight. 
 <<set $doneLN to 1>>
 ===
 title: KnockDoorFirst
@@ -17,7 +17,7 @@ Neighbor: Hey there, you again? What do you want this time?
 -> I am still hearing the noises.
 -> It looks like there are something not normal happening inside.
 Neighbor: You know what. Mind your own dang business!
-Neighbor: Now get away from my face!
+Neighbor: Now get away from my face! 
 Neighbor: *whisper* Good lord such nosy kid! *whisper*
 <<set $doneLN to 1>>
 ===

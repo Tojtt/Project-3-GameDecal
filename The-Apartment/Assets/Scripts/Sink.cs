@@ -14,8 +14,8 @@ public class Sink : MonoBehaviour
     public GameObject sinkOverlay;
     // player
     public GameObject player;
-
-    public ExterminateBugTask task;
+    GameState gameState;
+    ExterminateBugTask task;
 
     #endregion
 
@@ -23,7 +23,10 @@ public class Sink : MonoBehaviour
     {
         maincam = GameObject.Find("Main Camera");
         dialogue = FindObjectOfType<DialogueRunner>();
-        task = GetComponent<ExterminateBugTask>();
+        player = GameObject.Find("Player");
+        task = sinkOverlay.GetComponent<ExterminateBugTask>();
+        gameState = GameObject.FindWithTag("GameManager").GetComponent<GameState>();
+
     }
 
     private void OnMouseDown()
@@ -42,22 +45,24 @@ public class Sink : MonoBehaviour
         Vector3 target = sinkOverlay.transform.position;
         Debug.Log("Current position" + target);
         maincam.gameObject.GetComponent<CameraFollow>().followEnabled = false;
-        maincam.transform.position = target;
+        maincam.transform.position = new Vector3(target.x, target.y, -1);
         // disable player movement, start cutscene
-        GameState.Instance.freezePlayer = true;
+        gameState.freezePlayer = true;
         Debug.Log("Moved player");
         if (!dialogue.IsDialogueRunning)
         {
             Debug.Log("Run sink dialogue");
             dialogue.StartDialogue("activateSink");
+            
             // run cutscene
             //GetComponent<ExterminateBugTask>().SpawnSpiders();
         }
+        task.Spawn();
         // stall until the task is completed?
         // while (!task.isTaskComplete()) { }
 
         // snap back to position
-        GameState.Instance.freezePlayer = false;
+        gameState.freezePlayer = false;
 
     }
 }

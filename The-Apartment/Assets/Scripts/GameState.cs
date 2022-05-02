@@ -59,7 +59,7 @@ public class GameState : MonoBehaviour
     #endregion
 
     #region Location_Variables
-    public int floor;// 0-Basement, 4-Outside
+    public int floor;// 0-Basement, 4-Outside, 5 - secret path
     public bool inRoom = false;
     public int roomNum = -1;
     #endregion
@@ -72,11 +72,13 @@ public class GameState : MonoBehaviour
     #endregion 
 
     #region Day6_Variables
-    public bool pouredGas;
+   public bool pouredGas;
    public bool fireExtinguisherStolen;
    public bool fireStarted;
 
-   int fireFailedAttempts;
+   public int fireFailedAttempts;
+
+   
     #endregion
 
     #region TaskCompletion_Variables
@@ -84,6 +86,7 @@ public class GameState : MonoBehaviour
     public bool fortuneTellingComplete = false;
     public bool fortuneTellingPart2Complete = false;
     public bool lostDogComplete = false;
+    public bool spidersComplete = false;
     #endregion
 
     #region Unity_Functions
@@ -107,7 +110,7 @@ public class GameState : MonoBehaviour
         //day = 1;
         watchedTV = false;
         PrepareNextDay(day);
-        if (day == 6)
+        if (day == 5)
         {
             ResetDay6();
         }
@@ -150,7 +153,7 @@ public class GameState : MonoBehaviour
     #region Daily_Functions
     public void PrepareNextDay(int day)
     {
-        if (day < 6)
+        if (day < 5)
         {
             taskQueue = new List<GameObject>();
 
@@ -309,29 +312,29 @@ public class GameState : MonoBehaviour
         
     }
 
-    void StartFire()
-    {
-        if (true) //Not near gasoline spill
-        {
-            if (fireFailedAttempts == 3)
-            {
-                //Ending 3 Cutscene
-            } else
-            {
-                //Fire sizzles out cutscene
-                fireFailedAttempts++;
-            }
-        } else if (!fireExtinguisherStolen) //Ending 2
-        {
-            //Begin fire animation only for a few seconds
-            fireStarted = true;
-            //Ending 2 Cutscene 
-        } else
-        {
-            //Begin fire animation
-            fireStarted = true;
-        }
-    }
+    //void StartFire()
+    //{
+    //    if (true) //Not near gasoline spill
+    //    {
+    //        if (fireFailedAttempts == 3)
+    //        {
+    //            //Ending 3 Cutscene
+    //        } else
+    //        {
+    //            //Fire sizzles out cutscene
+    //            fireFailedAttempts++;
+    //        }
+    //    } else if (!fireExtinguisherStolen) //Ending 2
+    //    {
+    //        //Begin fire animation only for a few seconds
+    //        fireStarted = true;
+    //        //Ending 2 Cutscene 
+    //    } else
+    //    {
+    //        //Begin fire animation
+    //        fireStarted = true;
+    //    }
+    //}
 
     /**List of Day 6 Endings:
     Ending 0) Still in building/not started fire by the end of dayTimer ->die

@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     float y_input;
     Vector2 currDirection;
     bool move2D = false;
+    private SpriteRenderer sr;
     #endregion
 
     #region Teleport_variables
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
     #region GameObject_components
     public Animator anim;
-    private SpriteRenderer sr;
+    private SpriteRenderer spriteRenderer;
     private AudioSource footstep_sound;
     GameState gameState;
     GameManager gm;
@@ -101,6 +102,8 @@ public class PlayerController : MonoBehaviour
         y_input = Input.GetAxisRaw("Vertical");
         teleportCooldown += Time.deltaTime;
 
+        // will run even if there's no gameState
+
         if (!gameState.freezePlayer)
         {
             Move();
@@ -112,7 +115,7 @@ public class PlayerController : MonoBehaviour
         
         if (!PlayerRB.velocity.Equals(Vector2.zero))
         {
-            Debug.Log("Moving");
+           // Debug.Log("Moving");
             if (!footstep_sound.isPlaying)
             {
                 footstep_sound.Play();
@@ -120,14 +123,14 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("NOT Moving");
+           // Debug.Log("NOT Moving");
             footstep_sound.Stop();
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        /* if (Input.GetKeyDown(KeyCode.D))
         {
             NightTransition(); //<< Are we still using this?
-        }
+        } */
 
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space))
         {
@@ -160,10 +163,11 @@ public class PlayerController : MonoBehaviour
         
         if (doorTeleporter != null && teleportCooldown > cooldownThreshold)
         {
+            Transform destination = doorTeleporter.GetComponent<Teleporter>().GetDestination();
             teleportCooldown = 0;
             StartCoroutine(sceneTransition.TeleportTransition());
             yield return new WaitForSeconds(0.5f);
-            Transform destination = doorTeleporter.GetComponent<Teleporter>().GetDestination();
+            
             if (doorTeleporter.transform.name == "Apt Door206") //Teleport into main character's room
             {
                 SetRoomVariables(206);
@@ -189,12 +193,46 @@ public class PlayerController : MonoBehaviour
                 SetHallwayVariables();
                 transform.position = GetTeleportPosition(destination);
             }
-
+            else if (doorTeleporter.transform.name == "HallwayDoor101")
+            {
+                SetHallwayVariables();
+                transform.position = GetTeleportPosition(destination);
+            }
+            else if (doorTeleporter.transform.name == "HallwayDoor101")
+            {
+                SetHallwayVariables();
+                transform.position = GetTeleportPosition(destination);
+            }
+            else if (doorTeleporter.transform.name == "SecretPathDoor")
+            {
+                SetHallwayVariables();
+                gameState.floor = 5;
+                transform.position = destination.position;
+            }
+            else if (doorTeleporter.transform.name == "SecretHallDoor")
+            {
+                SetHallwayVariables();
+                gameState.floor = 2;
+                transform.position = destination.position;
+            }
+            else if (doorTeleporter.transform.name == "OutToSecretDoor")
+            {
+                SetHallwayVariables();
+                move2D = true;
+                gameState.floor = 4;
+                transform.position = destination.position;
+            }
+            else if (doorTeleporter.transform.name == "SecretToOutDoor")
+            {
+                SetHallwayVariables();
+                gameState.floor = 5;
+                transform.position = destination.position;
+            }
             else
             {
                 transform.position = destination.position;
             }
-
+            Debug.Log(gameState.floor);
             StartCoroutine("Teleport");
         }
 
@@ -226,9 +264,9 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator DownTeleport()
     {
-        if (stairTeleporter != null)
+        if (stairTeleporter != null && teleportCooldown > cooldownThreshold)
         {
-            
+            teleportCooldown = 0;
             Transform destination = stairTeleporter.GetComponent<StairTeleporter>().GetDownDestination();
             if (destination != null)
             {
@@ -275,7 +313,6 @@ public class PlayerController : MonoBehaviour
             }
             else if (forcedTeleporter.transform.name == "Door101-WelcomeMat")
             {
-                Debug.Log("hi");
                 SetRoomVariables(101);
                 transform.position = destination.position;
             }
