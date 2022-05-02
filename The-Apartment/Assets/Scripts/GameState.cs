@@ -240,6 +240,7 @@ public class GameState : MonoBehaviour
         
     }
 
+
     public IEnumerator MoveFriend()
     {
         doorExit = GameObject.Find("HallwayDoor206");
