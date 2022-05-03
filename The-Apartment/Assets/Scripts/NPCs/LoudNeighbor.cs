@@ -96,6 +96,7 @@ public class LoudNeighbor : MonoBehaviour
         wasOutsideRange = false;
         //Dialogue
         Debug.Log(nearbyDialogueNode);
+        dialogueRunner.Stop();
         dialogueRunner.StartDialogue(nearbyDialogueNode);
     }
 
