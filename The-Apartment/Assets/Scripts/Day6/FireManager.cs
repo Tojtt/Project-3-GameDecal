@@ -11,7 +11,7 @@ public class FireManager : MonoBehaviour
 
     public GameObject bus;
 
-    int busStopX = 0;
+    int busStopX = -22;
     bool endStarted = false;
     GameState gameState;
     GameObject player;
@@ -73,16 +73,18 @@ public class FireManager : MonoBehaviour
     IEnumerator EndWin()
     {
         //Bus drives up
+        Vector3 p = player.transform.position;
         while (bus.transform.position.x > busStopX)
         {
             Vector3 pos = bus.transform.position;
-            bus.transform.position = new Vector3(pos.x - 0.5f, pos.y, 0);
+            
+            bus.transform.position = new Vector3(pos.x - 0.5f, p.y, 0);
             yield return new WaitForSeconds(0.05f);
         }
         for (int i = 1; i < 6; i++)
         {
             Vector3 pos = bus.transform.position;
-            bus.transform.position = new Vector3(pos.x - 0.5f / i, pos.y, 0);
+            bus.transform.position = new Vector3(pos.x - 0.5f / i, p.y, 0);
             yield return new WaitForSeconds(0.07f);
         }
         //Pause
@@ -93,14 +95,14 @@ public class FireManager : MonoBehaviour
         for (int i = 1; i < 6; i++)
         {
             Vector3 pos = bus.transform.position;
-            bus.transform.position = new Vector3(pos.x + 0.5f / (6- i), pos.y, 0);
+            bus.transform.position = new Vector3(pos.x + 0.5f / (6- i), p.y, 0);
             yield return new WaitForSeconds(0.07f);
         }
         
-        while (bus.transform.position.x < 40f)
+        while (bus.transform.position.x < 0f)
         {
             Vector3 pos = bus.transform.position;
-            bus.transform.position = new Vector3(pos.x + 0.5f, pos.y, 0);
+            bus.transform.position = new Vector3(pos.x + 0.5f, p.y, 0);
             yield return new WaitForSeconds(0.05f);
         }
         StartCoroutine(sceneTransition.LoadScene("EndSceneWin"));
