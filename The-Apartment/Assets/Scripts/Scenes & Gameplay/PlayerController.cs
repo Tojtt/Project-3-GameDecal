@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour
     public bool inFrontDogHome = false;
     #endregion
 
+    DogScript ds;
     #region Unity_functions
 
     private void Awake()
@@ -84,6 +85,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log(footstep_sound);
         Camera.main.orthographicSize = defaultCameraSize;
         dog = GameObject.Find("DogNPC");
+        ds = GameObject.Find("Door 306-Dog").GetComponent<DogScript>();
     }
 
     private void Start() 
@@ -253,7 +255,7 @@ public class PlayerController : MonoBehaviour
                 gameState.floor += 1;
                 floorText.text = "Floor " + gameState.floor.ToString();
                 transform.position = GetTeleportPosition(destination);//destination.position;
-                if (dog != null)
+                if (dog != null && ds.holdingFood)
                 {
                     dog.transform.position = GetTeleportPosition(destination);
                 }

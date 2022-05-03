@@ -68,18 +68,32 @@ Fortune Teller: No more fortune tellings for the day! I'm closed!
 ===
 title: FortuneTelling
 ---
-Fortune Teller: Hello, please come in.
-Fortune Teller: My name is Madam ALSjdlksadkslajdksaljd. 
-Fortune Teller: *reads some tarot cards*
-Fortune Teller: Beware the hounds; their entrance marks a period of grave danger for you
-Fortune Teller: There is only one way you can protect yourself.
-Fortune Teller: It is to buy my special healing crystals. Want one?
--> Maybe later...
--> No thank you. I don't really believe in healing crystals.
-Fortune Teller: Alright, goodbye now.
--> Thanks, bye.
--> Well, I'll be leaving now.
-Fortune Teller: Bye! And come back another day if you want to buy my healing crystals!
+Fortune Teller: Hello dear, come inside.
+Fortune Teller: I'll be reading tarot cards for you.
+Fortune Teller: This is the Hanged Man. Quite uncommon to see it these days.
+Fortune Teller: You would soon have to make a sacrifice in your life in order to move forward.
+Player: ...What kind of sacrifice would I need to make?
+Fortune Teller: That is only for you to figure out and decide. 
+Fortune Teller: The sacrifice will not be obvious to you but in due time you will come to realize.
+Fortune Teller: This is the Hound. Very interesting
+Fortune Teller: It looks like you will have a companion in your life soon.
+Fortune Teller: It could be an animal, or not. 
+Players: I already have friend... Why would I want a companion?
+Fortune Teller: Only you can find out why. It could be that you will be in danger and need a protector, like a dog.
+Fortune Teller: Whoa. The Sun. Such good fortune.
+Fortune Teller: Good opportunities will fire up your way. Be on the lookout for them.
+Fortune Teller: You may have difficulties leading up to the good fortune. But the "ray of sunshine" will guide you.
+Player: Hmm sounds great. Who doesn't love hearing about good fortune
+Fortune Teller: Others may also sense your good fortune and have resentment towards you. So be careful as well.
+Fortune Teller: Now go and good luck my dear. 
+Fortune Teller: Oh dear. We got a Death card in the Upright position.
+Fortune Teller: This means that a major change will happen to your life soon.
+Fortune Teller: A phrase in your life is ending and you will get into a new chapter of your life.
+Player: Oh wow! Do you know what this new chapter will be about??
+Fortune Teller: It is a bit hazy. This can be a scary time for you because you may be unsure of what will happen in the future
+Fortune Teller: But I can tell you one thing for sure. 
+Fortune Teller: The past needs to be placed behind you, so you can focus your energy on what is ahead of you.  
+Fortune Teller: That is all I have to say. Goodbye.
 <<set $done to 2>>
 ===
 title: FT2TaskComplete

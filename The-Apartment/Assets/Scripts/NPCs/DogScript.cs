@@ -26,7 +26,7 @@ public class DogScript : MonoBehaviour
     public bool holdingFood = false; //Player is holding food
     private float timer = 2;
     bool inRoom = false;
-    int startDay = 1; //Change later 
+    int startDay = 3; //Change later 
     int endDay = 4;
     #endregion
 
